@@ -1,9 +1,80 @@
+@import "./../variables.scss";
+//Подключение шрифта
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff2") format("woff2"), url("../fonts/#{$file_name}.woff") format("woff");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+//Адаптивное свойство
+@mixin adaptive-value($property, $startSize, $minSize, $type) {
+	$addSize: $startSize - $minSize;
+	@if $type==1 {
+		//Только если меньше контейнера
+		#{$property}: $startSize + px;
+		@media (max-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+		}
+	} @else if $type==2 {
+		//Только если больше контейнера
+		#{$property}: $startSize + px;
+		@media (min-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+		}
+	} @else {
+		//Всегда
+		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+	}
+}
+
+@mixin adaptive-value-between($property, $startSize, $endSize, $startWidth, $endWidth) {
+    $sizeDiff: $startSize - $endSize;
+    $widthDiff: $startWidth - $endWidth;
+  
+    #{$property}: rem($startSize);
+  
+    @media (max-width: #{rem($startWidth)}) {
+      #{$property}: calc(#{rem($endSize)} + #{$sizeDiff} * ((100vw - #{rem($endWidth)}) / #{$widthDiff}));
+    }
+  
+    @media (max-width: #{rem($endWidth)}) {
+      #{$property}: rem($endSize);
+    }
+}
+
+
+//Адаптивное свойство до
+@mixin adaptive-value-to($property, $startSize, $minSize, $minWidth) {
+	$addSize: $startSize - $minSize;
+	//#{$property}: $minSize + px;
+	@media (min-width: #{$minWidth + px}) {
+		#{$property}: calc(#{$minSize + px} + #{$addSize} * (((100vw - #{$minWidth + px})) / ((#{$maxWidthContainer - $minWidth}))));
+	}
+}
+@function rem($pixels){
+    @return #{calc($pixels / $rootFontSize)}rem;
+}
+
+@function em($pixels, $context: $rootFontSize) {
+    @return #{calc($pixels / $context)}em;
+  }
+
+@function percent($value1, $value2) {
+    @return percentage(calc($value1 / $value2));
+}
+
+
 @mixin flexbox-centered($direction: row){
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: $direction;
 }
+
 
 @mixin triangle($height, $color, $dir: bottom){
     content: '';
@@ -35,3 +106,30 @@
     }
     
 }
+
+
+
+@mixin hoverDecor($type, $offset){
+    @media (any-hover: hover)
+    {
+        &:hover{
+            text-decoration: $type;
+            text-underline-offset: $offset;
+        }
+    }
+}
+
+// @mixin adaptive-value-between($property, $startSize, $endSize, $startWidth, $endWidth) {
+//     $sizeDiff: $startSize - $endSize;
+//     $widthDiff: $startWidth - $endWidth;
+  
+//     #{$property}: $startSize + px;
+  
+//     @media (max-width: #{$startWidth + px}) {
+//       #{$property}: calc(#{$endSize + px} + #{$sizeDiff} * ((100vw - #{$endWidth + px}) / #{$widthDiff}));
+//     }
+  
+//     @media (max-width: #{$endWidth + px}) {
+//       #{$property}: $endSize + px;
+//     }
+// }
