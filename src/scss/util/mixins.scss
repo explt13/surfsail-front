@@ -1,0 +1,37 @@
+@mixin flexbox-centered($direction: row){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin triangle($height, $color, $dir: bottom){
+    content: '';
+    position: absolute;
+    transform: translate(-50%);
+    width: 0;
+    height: 0;
+    z-index: 1;
+    @if ($dir == bottom){
+        bottom: -$height;
+        border-top: $height solid $color;
+        border-left: $height  solid transparent;
+        border-right: $height  solid transparent;
+    } @else if ($dir == top){
+        top: -$height;
+        border-bottom: $height solid $color;
+        border-left: $height  solid transparent;
+        border-right: $height  solid transparent;
+    } @else if ($dir == left){
+        left: -$height;
+        border-right: $height  solid $color;
+        border-bottom: $height solid transparent;
+        border-top: $height  solid transparent;
+    } @else if ($dir == right){
+        right: -$height;
+        border-left: $height  solid $color;
+        border-bottom: $height solid transparent;
+        border-top: $height  solid transparent;
+    }
+    
+}
