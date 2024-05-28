@@ -1,2 +1,211 @@
 @import 'swiper/swiper';
-@import 'swiper/pagination'
+@import 'swiper/pagination';
+
+
+.swiper{
+    cursor: default;
+    width: 100%;
+    margin: 0;
+}
+
+.swiper-wrapper{
+    display: flex;
+}
+
+
+.slider-main{
+
+    align-self: flex-start;
+    .pagination{
+        margin: 0 0 0 rem(10);
+    }
+    .swiper-wrapper{
+        margin: 0 0 rem(30) 0;
+    }
+}
+
+.slide-main-block {
+    // .slide-main-block__content
+    &__content {
+        max-width: rem(910);
+        width: 100%;
+    }
+    // .slide-main-block__title
+    &__title {
+        font-weight: 700;
+        font-size: rem(36);
+        line-height: 1.27778;
+        letter-spacing: 0.03em;
+        color: #fff;
+        &:not(:last-child){
+            margin: 0 0 rem(15) 0;
+        }
+    }
+    // .slide-main-block__sub-title
+    &__sub-title {
+        font-weight: 500;
+        font-size: rem(36);
+        line-height: 1.27778;
+        letter-spacing: 0.03em;
+        color: #fff;
+        &:not(:last-child){
+            margin: 0 0 rem(30) 0;
+        }
+    }
+    // .slide-main-block__text
+    &__text {
+        font-weight: 500;
+        font-size: rem(20);
+        line-height: 1.5;
+        letter-spacing: 0.03em;
+        color: rgba(255, 255, 255, 0.7);
+        &:not(:last-child){
+            margin: 0 0 rem(60) 0;
+        }
+    }
+    // .slide-main-block__button
+    &__button {
+        font-size: rem(20);
+    }
+}
+
+
+.body-products{
+    margin: 0 rem(-15);
+}
+
+.slider-products{
+    padding: rem(15);
+    &__slide{
+    }
+    .pagination{
+        justify-content: center;
+        height: rem(10);
+    }
+    .swiper-wrapper{
+        margin: 0 0 rem(30) 0;
+   
+    }
+    .swiper-pagination-bullet{
+        background-color: #898989;
+        &-active{
+            background-color: $mainOrangeColor;
+            &::before{
+                animation: paginationProgress 3s linear forwards;
+            }
+        }
+    }
+    @media (max-width: $phone){
+        .pagination{
+            display: none;
+        }
+        .swiper-wrapper{
+            margin: 0 0 rem(30) 0;
+            flex-direction: column;
+        }
+    }
+    
+}
+
+
+.slider-new-products{
+
+    padding: rem(15);
+    &__slide{
+        height: unset;
+    }
+   
+    .pagination{
+        justify-content: center;
+        height: rem(10);
+        position: relative;
+    }
+    .swiper-wrapper{
+        margin: 0 0 rem(30) 0;
+    }
+    .swiper-pagination-bullet{
+        background-color: #fff;
+        &-active{
+            background-color: $mainOrangeColor;
+            &::before{
+                animation: paginationProgress 3s linear forwards;
+            }
+        }
+    }
+
+}
+
+.images-product__slider,
+.images-product__thumbs{
+    overflow: hidden;
+}
+.images-product__slider{
+    margin: 0 0 rem(16) 0;
+}
+
+
+.pagination{
+    gap: rem(32);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+.pagination-fraction{
+    display: flex;
+    align-items: last baseline;
+    letter-spacing: 0.1em;
+    &__active{
+        font-weight: 600;
+        font-size: rem(24);
+        line-height: 1.91667;
+        color: #e8aa31;
+    }
+    &__total{
+        font-size: rem(18);
+        color: #fff;
+    }
+}
+
+.pagination-bullets{
+    display: flex;
+    gap: rem(15);
+    position: static;
+    width: unset!important;
+
+}
+
+.swiper-pagination-bullet{
+    margin: 0!important;
+    width: rem(18);
+    border-radius: 0;
+    height: 1px;
+    background-color: #fff;
+    opacity: 1;
+
+    &-active{
+        position: relative;
+        width: rem(20);
+        background-color: $mainOrangeColor;
+
+        &::before{
+            content: '';
+            animation: paginationProgress 3s linear forwards;
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%) translateX(-100%);
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            box-shadow: 0 4px 20px 0 rgba(232, 170, 49, 0.66);
+            background-color: $mainOrangeColor;
+        }
+    }
+}
+
+@keyframes paginationProgress{
+    from{left: 0%; transform: translateY(-50%) translateX(-100%)};
+    to{left: 100%; transform: translateY(-50%) translateX(0)};
+}
+
