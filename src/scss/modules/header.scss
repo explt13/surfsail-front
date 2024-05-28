@@ -375,6 +375,9 @@
         @media (max-width: rem(524)){
             display: none;
         }
+        @media (max-width: $tablet){
+            color: #fff;
+        }
     }
     &__list{
  
@@ -597,7 +600,6 @@
                 margin: 0 0 rem(37) 0;
             }
         }
-        
     }
     @media (min-width: $tabletMF){
         position: relative;
@@ -671,7 +673,7 @@
                 display: block;
             }
         }
-        @media (min-width: 992px){
+        @media (min-width: $tabletMF){
             padding: rem(20);
         }
     }
@@ -733,6 +735,10 @@
     }
     &__footer{
         padding: rem(30) rem(15) rem(30) 0;
+        @media (max-width: $tablet){
+            padding: 0;
+            height: 0;
+        }
     }
     &__all {
         font-weight: 500;

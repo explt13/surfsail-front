@@ -8,4 +8,13 @@
 
 @import 'common';
 
+@import './modules/checkbox';
+@import './modules/swiper';
+@import './modules/select';
+@import './modules/rating';
+@import './modules/nouislider';
+@import './modules/quantity';
+@import './modules/tippy';
 @import './modules/header';
+
+@import 'home';
