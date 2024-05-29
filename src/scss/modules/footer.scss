@@ -1,0 +1,359 @@
+.footer {
+    // .footer__top-row
+    &__top-row {
+    }
+}
+.top-row-footer {
+    background: url('@img/home/footer/footer_bg.jpg') 100% 30% /cover no-repeat;
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    position: relative;
+
+    // .top-row-footer__container
+    &__container {
+    }
+    // .top-row-footer__description
+    &__description {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+}
+
+.description-footer {
+    padding: rem(60) 0;
+    // .description-footer__title
+    &__title {
+        font-weight: 700;
+        font-size: rem(30);
+        line-height: 1.53333;
+        letter-spacing: 0.05em;
+        color: $mainOrangeColor;
+        text-align: center;
+        &:not(:last-child){
+            margin: 0 0 rem(30) 0;
+        }
+    }
+    // .description-footer__text
+    &__text {
+        font-weight: 500;
+        font-size: rem(18);
+        line-height: 1.5;
+        letter-spacing: 0.03em;
+        color: #fff;
+    }
+    @media (max-width: $medPhone){
+        &__title{
+            font-size: rem(24);
+        }
+        &__text {
+            font-size: rem(16);
+        }
+    }
+}
+
+
+.footer {
+    // .footer__body
+    &__body {
+    }
+}
+.body-footer {
+    @include adaptive-value('padding-top', 100, 50, 1);
+    @include adaptive-value('padding-bottom', 50, 25, 1);
+    background-color: $mainBlueColor;
+
+    // .body-footer__container
+    &__container {
+    }
+    // .body-footer__row
+    &__row {
+    }
+    // .body-footer__socials
+    &__socials{
+        display: flex;
+        gap: 20px;
+        margin: rem(30) 0 0 0;
+
+        @media (max-width: $medPhone){
+            justify-content: center;
+        }
+    }
+}
+.footer-body-row {
+    @include adaptive-value('column-gap', 120, 20, 1);
+    @include adaptive-value('row-gap', 100, 60, 1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(240), 1fr));
+    &_top{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        &:not(:last-child){
+            padding-bottom: rem(30);
+            margin: 0 0 rem(35) 0;
+        }
+    }
+    // .footer-body-row__column
+    &__column {
+    }
+    @media (max-width: $medPhone){
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 0;
+        &_top{
+            border-bottom: none;
+            &:not(:last-child){
+                margin: 0;
+                padding: 0;
+            }
+   
+        }
+    }
+    
+}
+.column-item {
+    &_mailing{
+        @media (max-width: $medPhone){
+            .column-item__title:not(:last-child){
+                margin: 0 0 rem(15) 0;
+            }
+            margin-top: rem(30);
+        }
+    }
+    // .column-item__title
+    &__title {
+        font-weight: 600;
+        font-size: rem(18);
+        color: #fff;
+        text-transform: uppercase;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        &._active{
+            &::after{
+                transform: rotateZ(180deg);
+            }
+        }
+        &::after{
+            content: '\e900';
+            font-size: 12px;
+            transition: transform 0.3s ease-in-out;
+            @extend %ic;
+            @media (min-width: rem(601)){
+                display: none;
+            }
+        }
+
+        &:not(:last-child){
+            margin: 0 0 rem(30) 0;
+        }
+    }
+    &__title._not-spoller{
+        justify-content: flex-start;
+        &::after{
+            display: none;
+        }
+    }
+    // .column-item__list
+    &__list {
+        @media (max-width: $medPhone){
+            padding: 0 0 rem(30) 0;
+        }
+    }
+    // .column-item__list-item
+    &__list-item {
+        &:not(:last-child){
+            margin: 0 0 rem(20) 0;
+        }
+    }
+    // .column-item__link
+    &__link {
+        font-weight: 500;
+        font-size: rem(18);
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.15s ease-in-out;
+        @media (any-hover: hover){
+            &:hover{
+                color: $mainOrangeColor;
+            }
+        }
+    }
+    a[class*="column-item__link _icon-"]{
+        gap: 16px;
+        display: inline-flex;
+    }
+}
+.item-guarantee{
+    &__text{
+        display: block;
+        font-weight: 500;
+        font-size: rem(18);
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    &__link{
+        color: #e8aa31;
+        transition: color ease-in-out .1s;
+        @media (any-hover: hover){
+            &:hover{
+                color: #af8532;
+            }
+        }
+    }
+}
+
+.form-mailing {
+    // .form-mailing__input-container
+    &__input-container {
+        display: flex;
+        &:not(:last-child){
+            margin: 0 0 rem(22) 0;
+        }
+
+    }
+    &__label{
+        display: block;
+        font-weight: 500;
+        font-size: rem(18);
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.8);
+        &:not(:last-child){
+            margin: 0 0 rem(25) 0;
+        }
+        @media (max-width: $medPhone){
+            &:not(:last-child){
+                margin: 0 0 rem(10) 0;
+            }
+        }
+    }
+    // .form-mailing__input
+    &__input {
+        font-size: rem(16);
+        flex: 1;
+        border-radius: rem(3);
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: rem(15) rem(24);
+        color: rgba(255, 255, 255, 0.86);
+        &::placeholder{
+            color: rgba(255, 255, 255, 0.52);
+            opacity: 1;
+            transition: .1s ease-in-out opacity;
+        }
+        &:focus{
+            border: rem(1) solid white;
+            border-right: none;
+            &::placeholder{
+                opacity: 0;
+            }
+            outline: none;
+        }
+    }
+    // .form-mailing__button
+    &__button {
+        border-top-right-radius: rem(3);
+        border-bottom-right-radius: rem(3);
+        background-color: $mainOrangeColor;
+        color: white;
+        font-size: rem(16);
+        height: rem(50);
+        min-width: rem(50);
+        padding: rem(17) rem(20);
+    }
+    // .form-mailing__agreement
+    &__agreement{
+        display: flex;
+        align-items: first baseline;
+        gap: rem(20);
+
+    }
+    // .form-mailing__agreement-button
+    &__agreement-button {
+        position: relative;
+        top: rem(2);
+        accent-color: $mainOrangeColor;
+        -webkit-appearance: none;
+        appearance: none;
+        background: rgba(255, 255, 255, 0.03);
+        border: rem(1) solid white;
+        width: rem(16);
+        height: rem(16);
+        display: inline-block;
+        cursor: pointer;
+        border-radius: rem(2);
+        flex: 0 0 rem(16);
+        transition: background-color 0.1s ease-in-out;
+        position: relative;
+
+        &:checked{
+            &::after{
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                width: rem(10);
+                height: rem(10);
+                background-color: $mainOrangeColor;
+            }
+        }
+
+    }
+    // .form-mailing__policy
+    &__policy {
+        font-weight: 500;
+        font-size: rem(16);
+        line-height: 1.375;
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.15s ease-in-out;
+        @media (any-hover: hover){
+            &:hover{
+                color: $mainOrangeColor;
+            }
+        }
+    }
+}
+
+
+.body-footer {
+    // .body-footer__footer
+    &__footer {
+    }
+}
+.footer-body-footer {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: rem(14);
+    gap: rem(20);
+    line-height: 1.92857;
+    color: rgba(255, 255, 255, 0.8);
+    // .footer-body-footer__law
+    &__law {
+        max-width: rem(817);
+        width: 100%;
+    }
+    // .footer-body-footer__company
+    &__company {
+        span{
+            white-space: nowrap;
+        }
+    }
+    @media (max-width: $medPhone){
+        flex-direction: column;
+        gap: rem(30);
+        &__company{
+            margin: 0 auto;
+        }
+    }
+}
