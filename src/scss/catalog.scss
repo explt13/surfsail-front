@@ -1,0 +1,203 @@
+.catalog {
+    @include adaptive-value("padding-bottom", 120, 40, 1);
+    // .catalog__container
+    &__container {
+    }
+    // .catalog__body
+    &__body {
+        display: grid;
+        gap: rem(30);
+        @media (min-width: rem(992)){
+            grid-template-columns: rem(375) 1fr;
+        }
+    }
+    // .catalog__filter
+    &__filter {
+        align-self: flex-start;
+        padding: 0 0 rem(20) 0;
+    }
+    // .catalog__content
+    &__content {
+    }
+    // .catalog__control
+    &__control {
+        margin: 0 0 rem(20) 0;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+    // .catalog__products
+    &__products {
+        display: grid;
+        gap: rem(30);
+        grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+        &:not(:last-child){
+            @include adaptive-value("margin-bottom", 60, 30, 1);
+        }
+    }
+}
+
+
+.catalog {
+    // .catalog__footer
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        gap: rem(20);
+        @media (max-width: $tablet){
+            flex-direction: column;
+        }
+    }
+    // .catalog__more
+    &__more {
+        background-color: #fefefe;
+        border: 2px solid $secondaryOrangeColor;
+        box-shadow: none;
+        max-width: rem(326);
+        width: 100%;
+        font-weight: 600;
+        font-size: 20px;
+        color: $mainOrangeColor;
+        transition: all ease-in-out 0.2s;
+        @media (any-hover: hover){
+            &:hover{
+                box-shadow: 0 0 12px $mainOrangeColor;
+            }
+        }
+        @media (max-width: $tablet){
+            max-width: none;
+        }
+    }
+    // .catalog__pagging
+    &__pagging {
+    }
+    // .catalog__filter
+    &__filter {
+    }
+}
+
+
+.filter-catalog {
+    // .filter-catalog__title
+    margin: rem(52) 0 0 0;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fefefe;
+    &__title {
+        font-weight: 700;
+        font-size: 20px;
+        color: #fff;
+        padding: rem(20) rem(30);
+        background-color: $mainBlueColor;
+        width: 100%;
+
+    }
+    // .filter-catalog__items
+    &__items {
+        @media (max-width: $tablet){
+            display: none;
+            &._active{
+                display: block;
+            }
+        }
+       
+    }
+    // .filter-catalog__price
+    &__price {
+   
+    }
+    // .filter-catalog__item
+    &__item {
+    }
+}
+.price-filter {
+    padding: rem(30);
+    // .price-filter__title
+    &__title {
+      
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: rem(20);
+        flex-direction: row-reverse;
+        width: 100%;
+        &::before{
+            transition: transform 0.3s ease-in-out;
+            font-size: rem(8);
+            color: $mainOrangeColor;
+        }
+        &._active{
+            &::before{
+                transform: rotateZ(180deg);     
+            }
+        }
+    }
+    // .price-filter__body
+    &__body {
+        padding: rem(30) 0;
+    }
+    // .price-filter__inputs
+    &__inputs {
+        border: 1px solid #cbcbcb;
+        border-radius: rem(3);
+        overflow: hidden;
+        display: flex;
+        &:not(:last-child){
+            margin-bottom: rem(30);
+        }
+    }
+    // .price-filter__input
+    &__input {
+        font-weight: 500;
+        font-size: 16px;
+        color: $mainBlueColor;
+        height: rem(42);
+        outline: none;
+        text-align: center;
+        padding: 0 rem(15);
+        width: 50%;
+        // flex: 0 1 50%;
+        &:not(:last-child){
+            border-right: 1px solid #cbcbcb;
+        }
+    }
+    // .price-filter__range
+    &__range {
+    }
+}
+
+
+.filter-catalog {
+   
+}
+.item-filter {
+    // .item-filter__title
+    &__title {
+        width: 100%;
+        font-weight: 600;
+        font-size: rem(20);
+        color: #fff;
+        background-color: $mainBlueColor;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(12) rem(30);
+        &::before{
+            font-size: rem(8);
+            color: $mainOrangeColor;
+            transition: transform 0.3s ease-in-out;
+        }
+        &._active{
+            &::before{
+                transform: rotateZ(180deg);     
+            }
+        }
+
+    }
+    // .item-filter__body
+    &__body {
+        padding: rem(20) rem(30);
+    }
+}
+
