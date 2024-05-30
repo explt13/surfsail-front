@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     @@include('html/_head.htm', {
-        "title": "Main Page"
+        "title": "Pages"
     })
 
 <body>
+    <div class="wrapper">
+        <main class="page page_index">
+            <section class="pages">
+                <div class="pages__container container">
+                    <div class="pages__body body-pages">
+                        <div class="body-pages__title">Pages:</div>
+                        <ul class="body-pages__list">
+                            <li class="body-pages__item"><a class="body-pages__link" href="./home.html">Home page</a></li>
+                            <li class="body-pages__item"><a class="body-pages__link" href="./catalog.html">Catalog page</a></li>
+                            <li class="body-pages__item"><a class="body-pages__link" href="./product.html">Product page</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
     <script src="js/app.min.js"></script>
 </body>
 </html>

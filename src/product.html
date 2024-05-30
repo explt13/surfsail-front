@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include('html/_head.htm', {
+        "title": "Catalog"
+    })
+
+<body>
+    <div class="wrapper">
+        @@include('html/_header.htm')
+        <main class="page page_product">
+            <div class="page__header">
+                <div class="page__container container">
+                    <nav class="page__breadcrumbs breadcrumbs">
+                        <ul class="breadcrumbs__list">
+                            <li class="breadcrumbs__item">
+                                <a href="./home.html" class="breadcrumbs__link">Main page</a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                                <a href="./catalog.html" class="breadcrumbs__link">Surfboards</a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                                <span class="breadcrumbs__current">Shortboard</span>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product__container container">
+                    <div class="product__main main-product">
+                        <div class="main-product__images images-product">
+                            <div class="images-product__slider">
+                                <div class="swiper-wrapper">
+                                    <div class="images-product__slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="images-product__slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="images-product__slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="images-product__slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="images-product__slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="images-product__thumbs thumbs-images">
+                                <div class="swiper-wrapper">
+                                    <div class="thumbs-images__slide swiper-slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="thumbs-images__slide swiper-slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="thumbs-images__slide swiper-slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="thumbs-images__slide swiper-slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                    <div class="thumbs-images__slide swiper-slide swiper-slide">
+                                        <img src="@img/home/products/01.jpg" alt="product">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-product__body body-product">
+                            <div class="body-product__header header-product">
+                                <div class="header-product__line">
+                                    <h1 class="header-product__title title">AquaRide Shortboard</h1>
+                                    <div class="header-product-card__actions product-card-actions">
+                                        <span class="_icon-comp product-card-actions__comp"></span>
+                                        <span class="_icon-fav product-card-actions__like"></span>
+                                    </div>
+                                </div>
+                                <div class="header-product__line header-product__line_secondary">
+                                    <div class="body-product__rating rating rating_set">
+                                        <div class="rating__body">
+                                            <div class="rating__active"></div>
+                                            <div class="rating__items">
+                                                <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                <input type="radio" name="product__rating" value="5" class="rating__item">
+                                            </div>
+                                        </div>
+                                        <div hidden class="rating__value" hidden>4.6</div>
+                                    </div>
+                                    <div class="body-product__available _true">In stock</div>
+                                </div>
+                            </div>
+                            <div class="body-product__table table-product">
+                                <div class="table-product__label">Model:</div>
+                                <div class="table-product__value">AquaRide Shortboard</div>
+                                <div class="table-product__label">Length:</div>
+                                <div class="table-product__value">6'2"</div>
+                                <div class="table-product__label">Width:</div>
+                                <div class="table-product__value">19"</div>
+                                <div class="table-product__label">Thickness:</div>
+                                <div class="table-product__value">2.5"</div>
+                                <div class="table-product__label">Weight:</div>
+                                <div class="table-product__value">3.5 kg</div>
+                            </div>
+                            <div class="body-product__options options-product">
+                                <div class="options-product__label">Board Material</div>
+                                <div class="options-product__value">
+                                    <select name="material" class="product">
+                                        <option disabled selected>Select material</option>
+                                        <option value="fiberglass">Fiberglass</option>
+                                        <option value="carbon">Carbon</option>
+                                        <option value="foam">Foam</option>
+                                        <option value="wood">Wood</option>
+                                    </select>
+                                </div>
+                                <div class="options-product__label">Color</div>
+                                <div class="options-product__value">
+                                    <select name="color" class="product">
+                                        <option disabled selected>Select color</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="red">Red</option>
+                                        <option value="yellow">Yellow</option>
+                                        <option value="green">Green</option>
+                                    </select>
+                                </div>
+                                <div class="options-product__label">Deck Surface</div>
+                                <div class="options-product__value">
+                                    <select name="front" class="product">
+                                        <option disabled selected>Select surface</option>
+                                        <option value="slick">Slick</option>
+                                        <option value="matte">Matte</option>
+                                        <option value="glossy">Glossy</option>
+                                    </select>
+                                </div>
+                                <div class="options-product__label">Reaction System</div>
+                                <div class="options-product__value">
+                                    <select name="reaction" class="product">
+                                        <option disabled selected>Select system</option>
+                                        <option value="fcs">FCS</option>
+                                        <option value="future">Future</option>
+                                        <option value="glasson">Glass-on</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="body-product__actions actions-product">
+                                <div class="actions-product__price">960 $</div>
+                                <div class="actions-product__row">
+                                    <div class="actions-product__quantity quantity">
+                                        <button class="quantity__button quantity__button_minus" type="button"></button>
+                                        <div class="quantity__input">
+                                            <input type="text" name="form[]" value="1" autocomplete="off">
+                                        </div>
+                                        <button class="quantity__button quantity__button_plus" type="button"></button>
+                                    </div>
+                                    <div class="actions-product__buttons">
+                                        <a href="" class="actions-product__cart button"><span class="_icon-cart"></span>To cart</a>
+                                        <a href="" class="actions-product__buy button button_black">Buy now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__information information-product">
+                        <div class="information-product__body _tabs">
+                            <div class="information-product__tabs">
+                                <div class="information-product__tab _tabs-item _active">Description</div>
+                                <div class="information-product__tab _tabs-item">Additional Information</div>
+                            </div>
+                            <div class="information-product__blocks">
+                                <div class="information-product__block _tabs-block _active">
+                                    Discover new horizons of free riding with our AquaRide Shortboard! 
+                                    This board embodies power and speed, perfect for those seeking adrenaline on the waves. 
+                                    The combination of lightweight, durability, and maneuverability makes it an ideal choice for both 
+                                    professionals and novice surfers. Immerse yourself in the world of AquaRide and feel the magic of 
+                                    the ocean with every ride!
+                                </div>
+        
+                                <div class="information-product__block _tabs-block">
+                                    <ul>
+                                        <li>Warranty: 2 years</li>
+                                        <li>Manufacturer: AquaSports Inc.</li>
+                                        <li>Country of Origin: USA</li>
+                                        <li>Shipping Weight: 4 kg</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="products products_similar">
+                        @@include('html/_products_slider.htm', {
+                            "title": "You might like",
+                            "more": "none",
+                            "product": "knife"
+                        })
+                    </section>
+                </div>
+            </div>
+        </main>
+        @@include('html/_footer.htm')
+    </div>
+    <script src="js/app.min.js"></script>
+</body>
+</html>
