@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include('html/_head.htm', {
+        "title": "Catalog"
+    })
+
+<body>
+    <div class="wrapper">
+        @@include('html/_header.htm')
+        <main class="page page_catalog">
+            <div class="page__header">
+                <div class="page__container container">
+                    <div class="page__title title">Surfboards</div>
+                    <nav class="page__breadcrumbs breadcrumbs">
+                        <ul class="breadcrumbs__list">
+                            <li class="breadcrumbs__item">
+                                <a href="./home.html" class="breadcrumbs__link">Main Page</a>
+                            </li>
+                            <li class="breadcrumbs__item">
+                                <span href="" class="breadcrumbs__current">Surfboards</span>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <section class="catalog">
+                <div class="catalog__container container">
+                    <div class="catalog__body">
+                        <div class="catalog__filter filter-catalog">
+                            <button type="button" data-spoller class="filter-catalog__title">Filter</button>
+                            <div data-spollers class="filter-catalog__items">
+                                <div class="filter-catalog__price price-filter">
+                                    <button type="button" class="price-filter__title _icon-arrow_sh_d _active" data-spoller>Price</button>
+                                    <div data-range class="price-filter__body">
+                                        <div class="price-filter__inputs">
+                                            <input data-range-from="0" type="text" value="300" autocomplete="off" name="form[]" class="price-filter__input">
+                                            <input data-range-to="5000" type="text" value="2000" autocomplete="off" name="form[]" class="price-filter__input">
+                                        </div>
+                                        <div data-range-item class="price-filter__range"></div>
+                                    </div>
+                                </div>
+                                <div class="filter-catalog__item item-filter">
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoller>Manufacturers</button>
+                                    <div class="item-filter__body">
+                                        <div class="item-filter__checkbox checkbox">
+                                            <input id="c_1" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_1" class="checkbox__label"><span class="checkbox__text">Lost</span><small>(190)</small></label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="c_2" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_2" class="checkbox__label"><span class="checkbox__text">Firewire</span><small>(201)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_3" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_3" class="checkbox__label"><span class="checkbox__text">Channel Islands</span><small>(122)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_4" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_4" class="checkbox__label"><span class="checkbox__text">JS Industries</span><small>(190)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_5" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_5" class="checkbox__label"><span class="checkbox__text">HaydenShapes</span><small>(121)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_6" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_6" class="checkbox__label"><span class="checkbox__text">DHD</span><small>(123)</small></label>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="filter-catalog__item item-filter">
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoller>Board Types</button>
+                                    <div class="item-filter__body">
+                                        <div class="item-filter__checkbox checkbox">
+                                            <input id="c_7" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_7" class="checkbox__label"><span class="checkbox__text">Shortboard</span><small>(120)</small></label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="c_8" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_8" class="checkbox__label"><span class="checkbox__text">Longboard</span><small>(231)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_9" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_9" class="checkbox__label"><span class="checkbox__text">Fish</span><small>(92)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_10" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_10" class="checkbox__label"><span class="checkbox__text">Funboard</span><small>(32)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_11" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_11" class="checkbox__label"><span class="checkbox__text">Gun</span><small>(23)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_12" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_12" class="checkbox__label"><span class="checkbox__text">Hybrid</span><small>(145)</small></label>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="filter-catalog__item item-filter">
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoller>Materials</button>
+                                    <div class="item-filter__body">
+                                        <div class="item-filter__checkbox checkbox">
+                                            <input id="c_13" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_13" class="checkbox__label"><span class="checkbox__text">Polyurethane</span><small>(120)</small></label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="c_14" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_14" class="checkbox__label"><span class="checkbox__text">Epoxy</span><small>(231)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_15" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_15" class="checkbox__label"><span class="checkbox__text">Fiberglass</span><small>(92)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_16" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_16" class="checkbox__label"><span class="checkbox__text">Carbon Fiber</span><small>(32)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_17" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_17" class="checkbox__label"><span class="checkbox__text">Wood</span><small>(23)</small></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter-catalog__item item-filter">
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoller>Sizes</button>
+                                    <div class="item-filter__body">
+                                        <div class="item-filter__checkbox checkbox">
+                                            <input id="c_18" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_18" class="checkbox__label"><span class="checkbox__text">5-6 ft</span><small>(120)</small></label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="c_19" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_19" class="checkbox__label"><span class="checkbox__text">6-7 ft</span><small>(231)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_20" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_20" class="checkbox__label"><span class="checkbox__text">7-8 ft</span><small>(92)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_21" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_21" class="checkbox__label"><span class="checkbox__text">8-9 ft</span><small>(32)</small></label>
+                                        </div> 
+                                        <div class="checkbox">
+                                            <input id="c_22" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_22" class="checkbox__label"><span class="checkbox__text">9-10 ft</span><small>(23)</small></label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input id="c_23" type="checkbox" class="checkbox__input" value="1" name="form[]">
+                                            <label for="c_23" class="checkbox__label"><span class="checkbox__text">10+ ft</span><small>(23)</small></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog__content">
+                            <div class="catalog__control">
+                                <select name="form[]" class="control">
+                                    <option selected value="1">Best Sellers</option>
+                                    <option value="2">Avg. Customer Review</option>
+                                    <option value="3">Newest Arrivals</option>
+                                    <option value="4">Price: Low to High</option>
+                                    <option value="4">Price: High to Low</option>
+                                </select>
+                            </div>
+                            <div class="catalog__products">
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/newproducts/01.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Shortboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">6'2"</div>
+                                            <div class="information-product-card__materials _addit-info">Polyurethane Foam, Fiberglass</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">4.5</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(32)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">550 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/products/02.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Longboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">9'0"</div>
+                                            <div class="information-product-card__materials _addit-info">EPS Foam, Epoxy Resin</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">3.6</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">960 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/newproducts/01.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Shortboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">6'2"</div>
+                                            <div class="information-product-card__materials _addit-info">Polyurethane Foam, Fiberglass</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">4.5</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(32)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">550 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/newproducts/02.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Shortboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">6'2"</div>
+                                            <div class="information-product-card__materials _addit-info">Polyurethane Foam, Fiberglass</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">4.5</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(32)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">550 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/products/01.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Longboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">9'0"</div>
+                                            <div class="information-product-card__materials _addit-info">EPS Foam, Epoxy Resin</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">3.6</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">960 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/newproducts/02.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Shortboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">6'2"</div>
+                                            <div class="information-product-card__materials _addit-info">Polyurethane Foam, Fiberglass</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">4.5</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(32)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">550 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/products/02.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Longboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">9'0"</div>
+                                            <div class="information-product-card__materials _addit-info">EPS Foam, Epoxy Resin</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">3.6</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">960 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/products/01.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Longboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">9'0"</div>
+                                            <div class="information-product-card__materials _addit-info">EPS Foam, Epoxy Resin</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">3.6</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">960 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/newproducts/02.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Shortboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">6'2"</div>
+                                            <div class="information-product-card__materials _addit-info">Polyurethane Foam, Fiberglass</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">4.5</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(32)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">550 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                                <article class="product-card">
+                                    <a href="" class="product-card__image-container">
+                                        <div class="product-card__image">
+                                            <img loading="lazy" src="@img/home/products/01.jpg" alt="product-card-image">
+                                            <!-- <div class="swiper-lazy-preloader"></div> -->
+                                        </div>
+                                    </a>
+                                    <div class="product-card__information information-product-card">
+                                        <h3 class="information-product-card__title">Longboard</h3>
+                                        <div class="information-product-card__features">
+                                            <div class="information-product-card__steel _addit-info">9'0"</div>
+                                            <div class="information-product-card__materials _addit-info">EPS Foam, Epoxy Resin</div>
+                                        </div>
+                                        <div class="information-product-card__review review-information">
+                                            <div class="review-information__rating rating rating_set">
+                                                <div class="rating__body">
+                                                    <div class="rating__active"></div>
+                                                    <div class="rating__items">
+                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                    </div>
+                                                </div>
+                                                <div class="rating__value">3.6</div>
+                                            </div>
+                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                        </div>
+                                        <div class="information-product-card__price price-product-card">
+                                            <div class="price-product-card__price">960 $</div>
+                                            <div class="price-product-card__actions product-card-actions">
+                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                <span class="_icon-fav product-card-actions__like"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-card__buy buy-product-card">
+                                        <a href="" class="buy-product-card__button button">To cart <span class="_icon-cart"></span></a>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="catalog__footer">
+                                <a href="" class="catalog__more button">Show more</a>
+                                <div class="catalog__pagging pagging">
+                                    <button type="button" class="pagging__arrow pagging__arrow_left _icon-arrow_sh_r" disabled></button>
+                                    <ul class="pagging__list">
+                                        <li class="pagging__item"><a href="" class="pagging__link _active">1</a></li>
+                                        <li class="pagging__item"><a href="" class="pagging__link">2</a></li>
+                                        <li class="pagging__item"><a href="" class="pagging__link">3</a></li>
+                                        <li class="pagging__item"><a href="" class="pagging__link">...</a></li>
+                                        <li class="pagging__item"><a href="" class="pagging__link">15</a></li>
+                                    </ul>
+                                    <button type="button" class="pagging__arrow pagging__arrow_right _icon-arrow_sh_r"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        @@include('html/_footer.htm')
+    </div>
+    <script src="js/app.min.js"></script>
+</body>
+</html>
