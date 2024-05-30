@@ -80,16 +80,16 @@
 	}
 
     &_control{
-        max-width: 374px;
+        max-width: rem(374);
         width: 100%;
         .select__title{
-            border-radius: 3px;
+            border-radius: rem(3);
             border: 1px solid rgba(0, 0, 0, 0.3);
         }
         .select__value{
 			padding: 0 rem(15);
             font-weight: 500;
-            font-size: 16px;
+            font-size: rem(16);
             color: rgba(0, 0, 0, 0.5);
             justify-content: space-between;
             &::before {
@@ -155,7 +155,7 @@
                 @extend %ic;
 				position: relative;
 				z-index: 2;
-				color: $mainOrangeColor;
+				color: #fff;
 				font-size: rem(8);
 				width: rem(40);
 				height: rem(40);

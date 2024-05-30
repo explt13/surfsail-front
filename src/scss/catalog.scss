@@ -185,7 +185,7 @@
         padding: rem(12) rem(30);
         &::before{
             font-size: rem(8);
-            color: $mainOrangeColor;
+            color: #fff;
             transition: transform 0.3s ease-in-out;
         }
         &._active{
