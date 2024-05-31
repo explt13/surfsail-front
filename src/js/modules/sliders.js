@@ -184,7 +184,7 @@ const handleNewCatalogSlider = () => {
 handleNewCatalogSlider();
 
 const handleProductSlider = () => {
-    const sliders = document.querySelectorAll('.thumbs-images');
+    const sliders = document.querySelectorAll('.images-product__thumbs');
     if (sliders.length > 0){
         const thumbsSwiper = new Swiper('.images-product__thumbs', {
             init: true,
@@ -203,25 +203,10 @@ const handleProductSlider = () => {
                 }
             }
         });
-        new Swiper('.images-product__slider', {
-            init: true,
-            enabled: true,
-            speed: 1000,
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            initialSlide: 0,
-            spaceBetween: 30,
-            preventInteractionOnTransition: true,
-            watchOverflow: true,
-            observer: true,
-            observeParents: true,
-            thumbs: {
-                swiper:  thumbsSwiper
-            }
-        });
     }
 }
 handleProductSlider();
+
 
 
 // ------------------------------------ BASE ------------------------------------ //
