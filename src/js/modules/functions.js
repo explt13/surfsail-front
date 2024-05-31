@@ -9,10 +9,16 @@ function isIE() {
 if (isIE()) {
 	document.querySelector('html').classList.add('ie');
 }
-if (isMobile.any()) {
-	document.querySelector('html').classList.add('_touch');
-}
 
+function checkMobile() {
+	if (isMobile.any()) {
+		document.querySelector('html').classList.add('_touch');
+	} else{
+		document.querySelector('html').classList.remove('_touch');
+	}
+}
+checkMobile();
+window.addEventListener('resize', checkMobile)
 
 function ibg() {
 	if (isIE()) {

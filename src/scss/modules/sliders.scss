@@ -1,5 +1,6 @@
 @import 'swiper/swiper';
 @import 'swiper/pagination';
+@import 'swiper/zoom';
 
 
 .swiper{
@@ -135,12 +136,22 @@
 
 }
 
-.images-product__slider,
 .images-product__thumbs{
     overflow: hidden;
 }
-.images-product__slider{
-    margin: 0 0 rem(16) 0;
+.images-product__thumbs{
+    // margin: 0 0 rem(16) 0;
+    .swiper-slide{
+        position: relative;
+        img{
+            position: absolute;
+            object-fit: contain;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 
 

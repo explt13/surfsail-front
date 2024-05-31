@@ -173,16 +173,16 @@ html.lock {
   overflow: hidden;
 }
 
-::-webkit-scrollbar {
+html:not(._touch) {
+  /* Track */
+}
+html:not(._touch) ::-webkit-scrollbar {
   width: 8px;
 }
-
-::-webkit-scrollbar-thumb {
+html:not(._touch) ::-webkit-scrollbar-thumb {
   background-color: rgba(93, 138, 136, 0.95);
 }
-
-/* Track */
-::-webkit-scrollbar-track {
+html:not(._touch) ::-webkit-scrollbar-track {
   background-color: rgba(93, 138, 136, 0.45);
 }
 
@@ -946,6 +946,27 @@ button.swiper-pagination-bullet {
   display: none;
 }
 
+.swiper-zoom-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.swiper-zoom-container > img,
+.swiper-zoom-container > svg,
+.swiper-zoom-container > canvas {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.swiper-slide-zoomed {
+  cursor: move;
+  touch-action: none;
+}
+
 .swiper {
   cursor: default;
   width: 100%;
@@ -1061,13 +1082,20 @@ button.swiper-pagination-bullet {
   animation: paginationProgress 3s linear forwards;
 }
 
-.images-product__slider,
 .images-product__thumbs {
   overflow: hidden;
 }
 
-.images-product__slider {
-  margin: 0 0 1rem 0;
+.images-product__thumbs .swiper-slide {
+  position: relative;
+}
+.images-product__thumbs .swiper-slide img {
+  position: absolute;
+  object-fit: contain;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .pagination {
@@ -2629,6 +2657,115 @@ button.swiper-pagination-bullet {
   }
 }
 
+/* Compatibility styles for frameworks like bootstrap, foundation e.t.c */
+.xzoom-source img, .xzoom-preview img, .xzoom-lens img {
+  display: block;
+  max-width: none;
+  max-height: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+/* --------------- */
+/* xZoom Styles below */
+.xzoom-container {
+  display: inline-block;
+}
+
+.xzoom-thumbs {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.xzoom {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.xzoom2, .xzoom3, .xzoom4, .xzoom5 {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Thumbs */
+.xzoom-gallery, .xzoom-gallery2, .xzoom-gallery3, .xzoom-gallery4, .xzoom-gallery5 {
+  border: 1px solid #cecece;
+}
+
+.xzoom-source, .xzoom-hidden {
+  display: block;
+  position: static;
+  float: none;
+  clear: both;
+}
+
+/* Everything out of border is hidden */
+.xzoom-hidden {
+  overflow: hidden;
+}
+
+/* Preview */
+.xzoom-preview {
+  border: 1px solid #888;
+  background: #2f4f4f;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+/* Lens */
+.xzoom-lens {
+  border: 1px solid #555;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  cursor: crosshair;
+}
+.xzoom-lens img {
+  object-fit: contain;
+}
+
+/* Loading */
+.xzoom-loading {
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  opacity: 0.7;
+  background: "../img/etc/xloading.gif";
+  width: 48px;
+  height: 48px;
+}
+
+/* Additional class that applied to thumb when it is active */
+.xactive {
+  border: 2px solid #F6B817;
+}
+
+/* Caption */
+.xzoom-caption {
+  position: absolute;
+  bottom: -43px;
+  left: 0;
+  background: #000;
+  width: 100%;
+  text-align: left;
+}
+.xzoom-caption span {
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: block;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.xzoom-show-image {
+  width: 100% !important;
+  height: 100%;
+  object-fit: contain;
+}
+
 .pages {
   padding: 3.75rem 0;
 }
@@ -3712,16 +3849,18 @@ button.swiper-pagination-bullet {
 .images-product {
   display: grid;
 }
-.images-product__slide {
+.images-product__show-image {
   padding-bottom: 76.525198939%;
+  position: relative;
+  margin: 0 0 1rem 0;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
 }
-.images-product__slide img {
+.images-product__show-image img {
   position: absolute;
   top: 0;
   left: 0;
-  object-fit: contain;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 .thumbs-images__slide {
   padding-bottom: 25.8620689655%;

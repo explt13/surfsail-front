@@ -1,5 +1,3 @@
-import $ from 'jquery'
-window.$ = $;
 import { isWebp } from './modules/isWebp.js';
 
 isWebp();
@@ -10,4 +8,5 @@ import "./modules/forms.js";
 
 import "./modules/sliders.js";
 import "./modules/tippy.js";
+import './modules/xzoom.js';
 import './modules/script.js';

@@ -33,23 +33,28 @@
 .images-product {
     display: grid;
     // .images-product__slider
-    &__slider {
-
-    }
-    // .images-product__slide
-    &__slide {
+    &__show-image{
         padding-bottom: percent(577, 754);
+        // height: rem(577);
+        position: relative;
+        margin: 0 0 rem(16) 0;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
         img{
             position: absolute;
             top: 0;
             left: 0;
-            object-fit: contain;
-            height: 100%;
             width: 100%;
+            height: 100%;
         }
+ 
     }
     // .images-product__thumbs
     &__thumbs {
+        // display: grid;
+        // grid-auto-flow: column;
+        // overflow: auto;
+        // height: 220px;
+        // overflow-y: clip;
     }
 }
 

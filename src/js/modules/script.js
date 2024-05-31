@@ -117,3 +117,59 @@ if (moreNone.length > 0){
         more.remove();
     })
 }
+import $ from 'jquery';
+
+// const imageZoom = () => {
+//     let zoom;
+//     let init = false;
+//     const initZoom = () => {
+//         zoom = $(".xzoom, .xzoom-gallery").xzoom({
+//             Xoffset: 15,
+//         });
+//         init = true;
+//     }
+//     const handleZoom = () => {
+//         if (document.documentElement.classList.contains('_touch') && init){
+//             console.log(12666552);
+//             zoom.destroy();
+//             init = false;
+//         } else if (!document.documentElement.classList.contains('_touch') && !init){
+//             initZoom();
+//         }
+//     }
+//     initZoom();
+//     handleZoom();
+//     window.addEventListener('resize', handleZoom);
+// }
+// imageZoom();
+const imageZoom = () => {
+    let zoom;
+    let init = false;
+    
+    const initZoom = () => {
+        zoom = $(".xzoom, .xzoom-gallery").xzoom({
+            Xoffset: 15,
+        });
+        init = true;
+    }
+    
+    const handleZoom = () => {
+        if (document.documentElement.classList.contains('_touch')) {
+            if (init) {
+                zoom.destroy();
+                $('.xzoom-show-image').css('width', 'unset');
+                $('.xzoom-show-image').removeClass('xzoom');
+                init = false;
+            }
+        } else {
+            if (!init) {
+                $('.xzoom-show-image').addClass('xzoom');
+                initZoom();
+            }
+        }
+    }
+    
+    window.addEventListener('resize', handleZoom);
+    handleZoom(); // Initial check on load
+}
+imageZoom();
