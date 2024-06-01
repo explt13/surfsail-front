@@ -107,7 +107,7 @@
             color: rgba(0, 0, 0, 0.5);
             @media (any-hover: hover){
                 &:hover{
-                    color: rgba(0, 0, 0, 0.8);
+                    color: $mainBlueColor;
                 }
             }
         }
@@ -172,7 +172,7 @@
 			padding: rem(10) rem(15);
 			@media (any-hover: hover){
                 &:hover{
-                    background-color: rgba(0, 0, 0, 1);
+                    background-color: $mainBlueColor;
 					color: #fff;
                 }
             }

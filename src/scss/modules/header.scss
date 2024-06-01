@@ -242,6 +242,29 @@
         font-size: rem(18);
         color: #000;
     }
+    
+
+    &._scrolled{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10000;
+        transform: translateY(-100%);
+    }
+    &._show{
+        transition: transform ease-in-out 0.3s;
+        transform: translateY(0);
+    }
+    &._hide{
+        transform: translateY(-100%);
+        transition: transform ease-in-out 0.3s;
+    }
+    
+}
+@keyframes showHeader {
+    from{height: rem(0);};
+    to{opacity: 1; height: rem(10);}
 }
 
 .search-header{
