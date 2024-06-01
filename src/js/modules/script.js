@@ -147,10 +147,13 @@ const imageZoom = () => {
     let init = false;
     
     const initZoom = () => {
-        zoom = $(".xzoom, .xzoom-gallery").xzoom({
-            Xoffset: 15,
-        });
-        init = true;
+        const zoomElements = $('.xzoom, .xzoom-gallery');
+        if (zoomElements.length > 0){
+            zoom = $(".xzoom, .xzoom-gallery").xzoom({
+                Xoffset: 15,
+            });
+            init = true;
+        }
     }
     
     const handleZoom = () => {
