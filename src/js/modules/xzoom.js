@@ -798,7 +798,7 @@ function detect_old_ie() {
     this.xappend = function(Obj) {
       var link = Obj.parent();
       //Add original image to image gallery
-      imageGallery[index] = link.attr('href');
+      imageGallery[index] = link.attr('data-path');
       link.data('xindex', index);
       if (index == 0 && current.options.activeClass) {active = Obj; active.addClass(current.options.activeClass)}
       if (index == 0 && current.options.title) title = get_title(Obj);
@@ -821,7 +821,7 @@ function detect_old_ie() {
           $(document.body).append(trans);
           trans.fadeOut(200, function() {trans.remove()});
         }
-        var _xorig = link.attr('href');
+        var _xorig = link.attr('data-path');
         var _prev = Obj.attr('xpreview') || Obj.attr('src');
 
         title = get_title(Obj);
