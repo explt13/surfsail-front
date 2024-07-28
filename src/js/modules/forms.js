@@ -517,7 +517,7 @@ const initRange = () => {
 				format: wNumb({
 					decimals: 0, // default is 2
 					thousand: ' ', // thousand delimiter
-					postfix: '$', // gets appended after the number
+					postfix: '$', // appended after the number
 				})
 			});
 			item.noUiSlider.on('update', function (values, handle) {

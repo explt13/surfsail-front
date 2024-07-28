@@ -3,10 +3,10 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.min.css"/>
+    <link rel="stylesheet" href="css/style.min.css?_v=20240728225223"/>
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    <title>Catalog</title>
+    <title>Product</title>
 </head>
 
 <body>
@@ -383,24 +383,47 @@
                 <div class="product__container container">
                     <div class="product__main main-product">
                         <div class="main-product__images images-product">
-                            <div class="images-product__show-image">
-                                <img src="img/products/surfboards/aquaride/01.jpg" class='xzoom xzoom-show-image' xoriginal="img/products/surfboards/aquaride/01.jpg" alt="product">
-                            </div>
-                            <div class="images-product__thumbs thumbs-images xzoom-thumbs">
-                                <div class="swiper-wrapper">
-                                    <span class="swiper-slide thumbs-images__slide" data-path="img/products/surfboards/aquaride/01.jpg">
-                                        <img class="xzoom-gallery" src="img/products/surfboards/aquaride/01.jpg"  xpreview="img/products/surfboards/aquaride/01.jpg">
-                                    </span>
-                                    <span class="swiper-slide thumbs-images__slide" data-path="img/products/surfboards/aquaride/02.jpg">
-                                        <img class="xzoom-gallery" src="img/products/surfboards/aquaride/02.jpg">
-                                    </span>
-                                    <span class="swiper-slide thumbs-images__slide" data-path="img/products/surfboards/aquaride/03.jpg">
-                                        <img class="xzoom-gallery" src="img/products/surfboards/aquaride/03.jpg">
-                                    </span>
-                                    <span class="swiper-slide thumbs-images__slide" data-path="img/products/surfboards/aquaride/04.jpg">
-                                        <img class="xzoom-gallery" src="img/products/surfboards/aquaride/04.jpg">
-                                    </span>
+                            <div class="images-product__show-image show-image">
+                                <div class="show-image__wrapper swiper-wrapper">
+                                    <div class="show-image__slide swiper-slide">
+                                       <picture><source srcset="img/products/surfboards/aquaride/01.webp" type="image/webp"><img src="img/products/surfboards/aquaride/01.jpg" data-zoom="img/products/surfboards/aquaride/01.jpg" alt="product"></picture> 
+                                    </div>
+                                    <div class="show-image__slide swiper-slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/02.webp" type="image/webp"><img src="img/products/surfboards/aquaride/02.jpg" data-zoom="img/products/surfboards/aquaride/02.jpg" alt="product"></picture>
+                                    </div>
+                                    <div class="show-image__slide swiper-slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/03.webp" type="image/webp"><img src="img/products/surfboards/aquaride/03.jpg" data-zoom="img/products/surfboards/aquaride/03.jpg" alt="product"></picture>
+                                    </div>
+                                    <div class="show-image__slide swiper-slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/04.webp" type="image/webp"><img src="img/products/surfboards/aquaride/04.jpg" data-zoom="img/products/surfboards/aquaride/04.jpg" alt="product"></picture>
+                                    </div>
+                                    <div class="show-image__slide swiper-slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/01.webp" type="image/webp"><img src="img/products/surfboards/aquaride/01.jpg" data-zoom="img/products/surfboards/aquaride/01.jpg" alt="product"></picture>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="images-product__thumbs thumbs-images swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide thumbs-images__slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/01.webp" type="image/webp"><img src="img/products/surfboards/aquaride/01.jpg"></picture>
+                                    </div>
+                                    <div class="swiper-slide thumbs-images__slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/02.webp" type="image/webp"><img src="img/products/surfboards/aquaride/02.jpg"></picture>
+                                    </div>
+                                    <div class="swiper-slide thumbs-images__slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/03.webp" type="image/webp"><img src="img/products/surfboards/aquaride/03.jpg"></picture>
+                                    </div>
+                                    <div class="swiper-slide thumbs-images__slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/04.webp" type="image/webp"><img src="img/products/surfboards/aquaride/04.jpg"></picture>
+                                    </div>
+                                    <div class="swiper-slide thumbs-images__slide">
+                                        <picture><source srcset="img/products/surfboards/aquaride/01.webp" type="image/webp"><img src="img/products/surfboards/aquaride/01.jpg"></picture>
+                                    </div>
+                                </div>
+                                <div class="pagination-bullets"></div>  
+                            </div>
+                            <div class="images-product__zoom-pane zoom-pane" hidden>
+                               <div class="zoom-pane__container"></div>
                             </div>
                         </div>
                         <div class="main-product__body body-product">
@@ -540,7 +563,7 @@
                         <article class="product-card">
                             <a href="./product.html" class="product-card__image-container">
                                 <div class="product-card__image">
-                                    <img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image">
+                                    <picture><source srcset="img/home/products/01.webp" type="image/webp"><img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image"></picture>
                                     <!-- <div class="swiper-lazy-preloader"></div> -->
                                 </div>
                             </a>
@@ -583,7 +606,7 @@
                         <article class="product-card">
                             <a href="./product.html" class="product-card__image-container">
                                 <div class="product-card__image">
-                                    <img loading="lazy" src="img/home/products/02.jpg" alt="product-card-image">
+                                    <picture><source srcset="img/home/products/02.webp" type="image/webp"><img loading="lazy" src="img/home/products/02.jpg" alt="product-card-image"></picture>
                                     <!-- <div class="swiper-lazy-preloader"></div> -->
                                 </div>
                             </a>
@@ -626,7 +649,7 @@
                         <article class="product-card">
                             <a href="./product.html" class="product-card__image-container">
                                 <div class="product-card__image">
-                                    <img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image">
+                                    <picture><source srcset="img/home/products/01.webp" type="image/webp"><img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image"></picture>
                                     <!-- <div class="swiper-lazy-preloader"></div> -->
                                 </div>
                             </a>
@@ -669,7 +692,7 @@
                         <article class="product-card">
                             <a href="./product.html" class="product-card__image-container">
                                 <div class="product-card__image">
-                                    <img loading="lazy" src="img/home/products/02.jpg" alt="product-card-image">
+                                    <picture><source srcset="img/home/products/02.webp" type="image/webp"><img loading="lazy" src="img/home/products/02.jpg" alt="product-card-image"></picture>
                                     <!-- <div class="swiper-lazy-preloader"></div> -->
                                 </div>
                             </a>
@@ -712,7 +735,7 @@
                         <article class="product-card">
                             <a href="./product.html" class="product-card__image-container">
                                 <div class="product-card__image">
-                                    <img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image">
+                                    <picture><source srcset="img/home/products/01.webp" type="image/webp"><img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image"></picture>
                                     <!-- <div class="swiper-lazy-preloader"></div> -->
                                 </div>
                             </a>
@@ -755,7 +778,7 @@
                         <article class="product-card">
                             <a href="./product.html" class="product-card__image-container">
                                 <div class="product-card__image">
-                                    <img loading="lazy" src="img/home/products/02.jpg" alt="product-card-image">
+                                    <picture><source srcset="img/home/products/02.webp" type="image/webp"><img loading="lazy" src="img/home/products/02.jpg" alt="product-card-image"></picture>
                                     <!-- <div class="swiper-lazy-preloader"></div> -->
                                 </div>
                             </a>
@@ -798,7 +821,7 @@
                         <article class="product-card">
                             <a href="./product.html" class="product-card__image-container">
                                 <div class="product-card__image">
-                                    <img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image">
+                                    <picture><source srcset="img/home/products/01.webp" type="image/webp"><img loading="lazy" src="img/home/products/01.jpg" alt="product-card-image"></picture>
                                     <!-- <div class="swiper-lazy-preloader"></div> -->
                                 </div>
                             </a>
@@ -1025,6 +1048,6 @@
     </div>
 </footer>
     </div>
-    <script src="js/app.min.js"></script>
+    <script src="js/app.min.js?_v=20240728225223"></script>
 </body>
 </html>

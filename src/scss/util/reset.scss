@@ -1,4 +1,4 @@
-@import './../variables';
+@import 'variables';
 
 *,
 *::before,
@@ -38,9 +38,9 @@ h6{
     font-size: inherit;
 }
 
-html,
+
 body {
-    height: 100%;
+    min-height: 100%;
     line-height: 1;
     color: #000;
 }
