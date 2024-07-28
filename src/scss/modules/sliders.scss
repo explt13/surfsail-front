@@ -1,6 +1,8 @@
 @import 'swiper/swiper';
 @import 'swiper/pagination';
 @import 'swiper/zoom';
+@import 'swiper/effect-fade';
+@import 'swiper/navigation';
 
 
 .swiper{
@@ -136,11 +138,35 @@
 
 }
 
-.images-product__thumbs{
-    overflow: hidden;
-}
-.images-product__thumbs{
-    // margin: 0 0 rem(16) 0;
+.thumbs-images{
+    position: relative;
+    padding-bottom: rem(15);
+    .swiper-button-next,
+    .swiper-button-prev {
+        position: static;
+        height: auto;
+        &::after{
+            font-size: rem(20);
+        }
+    }
+
+    .pagination-bullets{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .swiper-pagination-bullet{
+        height: rem(2);
+        background-color: $mainBlueColor;
+        &-active{
+            background-color: $mainOrangeColor;
+            &::before{
+                content: unset;
+            }
+        }
+    }
+    
     .swiper-slide{
         position: relative;
         img{
@@ -154,6 +180,21 @@
     }
 }
 
+.images-product__show-image{
+    overflow: hidden;
+}
+
+
+.slider-navigation{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    justify-content: space-between;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: rem(20);
+}
 
 .pagination{
     gap: rem(32);

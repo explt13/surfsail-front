@@ -1,6 +1,6 @@
-@import 'fonts';
-@import 'icons';
-@import 'variables';
+@import './util/fonts';
+@import './util/icons';
+@import './util/variables';
 
 @import './util/mixins';
 @import './util/mediaQueries';
@@ -16,7 +16,8 @@
 @import './modules/quantity';
 @import './modules/tippy';
 @import './modules/header';
-@import './modules/xzoom';
+@import './modules/drift-basis';
+@import './modules/gallery';
 
 @import 'index';
 @import 'catalog';

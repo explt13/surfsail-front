@@ -3,8 +3,6 @@ import Swiper from "swiper/bundle"; // 'swiper/bundle' -> import all methods;
 
 const mainSliders = document.querySelectorAll('.slider-main');
 
-
-
 const handleMainScreenSlider = (sliderFractionActive) => {
     const mainScreenSwiper = new Swiper('.slider-main', {
         // ------------------------------------ BASE ------------------------------------ //
@@ -59,10 +57,6 @@ if (mainSliders.length > 0){
         handleMainScreenSlider(sliderFractionActive);
     })
 }
-
-
-
-
 
 
 const handleCatalogSlider = () => {
@@ -184,8 +178,10 @@ const handleNewCatalogSlider = () => {
 handleNewCatalogSlider();
 
 const handleProductSlider = () => {
-    const sliders = document.querySelectorAll('.images-product__thumbs');
-    if (sliders.length > 0){
+    const showSliders = document.querySelectorAll('.images-product__show-image');
+    const thumbsSliders = document.querySelectorAll('.images-product__thumbs');
+
+    if (thumbsSliders.length > 0 && showSliders.length > 0) {
         const thumbsSwiper = new Swiper('.images-product__thumbs', {
             init: true,
             enabled: true,
@@ -197,12 +193,37 @@ const handleProductSlider = () => {
             slidesPerGroup: 1,
             initialSlide: 0,
             spaceBetween: 16,
+            pagination: {
+                enabled: true,
+                el: '.pagination-bullets',
+                type: 'bullets',
+                clickable: true,
+                // dynamicBullets: true,
+            },
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
             breakpoints: {
                 1120: {
                     slidesPerView: 4,
                 }
-            }
+            },
         });
+        const showSwiper = new Swiper(".images-product__show-image", {
+            init: true,
+            enabled: true,
+            watchOverflow: true,
+            observer: true,
+            observeParents: true,
+            speed: 300,
+            initialSlide: 0,
+            effect: 'fade',
+            thumbs: {
+                swiper: thumbsSwiper
+            }
+        })
     }
 }
 handleProductSlider();

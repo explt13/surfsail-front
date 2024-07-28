@@ -1,0 +1,2 @@
+import lightGallery from "lightgallery";
+

@@ -118,43 +118,7 @@ if (moreNone.length > 0){
         more.remove();
     })
 }
-import $ from 'jquery';
 
-
-const imageZoom = () => {
-    let zoom;
-    let init = false;
-    
-    const initZoom = () => {
-        const zoomElements = $('.xzoom, .xzoom-gallery');
-      
-        if (zoomElements.length > 0){
-            zoom = $(".xzoom, .xzoom-gallery").xzoom({
-                Xoffset: 15,
-            });
-            init = true;
-        }
-    }
-    
-    const handleZoom = () => {
-        if (document.documentElement.classList.contains('_touch')) {
-            if (init) {
-                zoom.destroy();
-                $('.xzoom-show-image').css('width', 'unset');
-                init = false;
-            }
-        } else {
-            if (!init) {
-                $('.xzoom-show-image').addClass('xzoom');
-                initZoom();
-            }
-        }
-    }
-    
-    window.addEventListener('resize', handleZoom);
-    handleZoom(); // Initial check on load
-}
-imageZoom();
 
 const handleHeader = () => {
     const mq = window.matchMedia('(min-width: 992px)')
