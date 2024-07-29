@@ -111,9 +111,10 @@
 }
 .price-filter {
     padding: rem(30);
+    cursor: pointer;
     // .price-filter__title
     &__title {
-      
+        cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -183,6 +184,7 @@
         justify-content: space-between;
         align-items: center;
         padding: rem(12) rem(30);
+        cursor: pointer;
         &::before{
             font-size: rem(8);
             color: #fff;

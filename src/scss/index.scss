@@ -1,5 +1,5 @@
 .main-screen {
-    background: url("@img/home/mainscreen/main-screen-bg.jpg") center / cover no-repeat;
+    background: url("@img/home/main-screen-bg.jpg") center / cover no-repeat;
 
     // .main-screen__container
     &__container {
@@ -227,6 +227,7 @@
 .advantages-main {
     display: flex;
     @include adaptive-value('padding-top', 120, 40, 1);
+    @include adaptive-value('padding-bottom', 100, 35, 1);
     @include adaptive-value('column-gap', 180, 30, 1);
     row-gap: rem(30);
     flex-wrap: wrap;
@@ -267,12 +268,147 @@
 }
 
 
+.brands {
+    background-image: url('@img/home/brands-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include adaptive-value('padding-top', 180, 100, 1);
+    @include adaptive-value('padding-bottom', 200, 100, 1);
+    // .brands__container
+    &__container {
+    }
+    // .brands__title
+    &__title {
+        text-align: center;
+        @include adaptive-value('margin-bottom', 100, 40, 1);
+        font-size: rem(40)!important;
+        font-weight: 400!important;
+        letter-spacing: rem(10)!important;
+        color: #fff!important;
+    }
+    // .brands__cards
+    &__cards {
+        
+    }
+}
+
+.cards-brand {
+    display: flex;
+
+    &__item{
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptive-value-between('flex-basis', 300, 200, 1920, 992);
+     
+        overflow: hidden;
+        position: relative;
+        background-image: linear-gradient(225deg, black, $mainBlueColor);
+        box-shadow: 0 0 rem(10) 0 black;
+        transition: transform 0.2s ease-in-out;
+        border-radius: rem(10);
+        background-size: 200% 100%;
+        background-position: 50% 0%;
+      
+        @for $var from 2 to 7 {
+            &:nth-child(#{$var}){
+                left: (rem(-80 * ($var - 1)));
+                z-index: $var;
+            }
+        }
+
+        @media (hover: any-hover){
+            &:hover{
+                z-index: 10;
+                transform: scale(1.1) rotate(5deg);
+                transform-origin: top left;
+            }
+        }
+        
+        &_more{
+            background-image: linear-gradient(to left,black, $mainBlueColor);
+            color: white;
+            background-size: 150% 100%;
+            background-position: 0% 0%;
+            left: rem(-450);
+            flex: 0 0 rem(150)!important;
+            font-size: rem(28);
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: row-reverse;
+            gap: rem(10);
+            z-index: 9;
+            transition: background-position ease-in-out 0.2s;
+            &::before{
+                font-size: rem(18);
+            }
+            @media (hover: any-hover) {
+                &:hover{
+                    transform: unset;
+                    transform-origin: unset;
+                    background-position: 50%;
+                    
+                }
+            }
+            @media (max-width: $tablet) {
+                margin-left: auto;
+                height: rem(80);
+            }
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter:invert(91%) sepia(92%) saturate(27%) hue-rotate(192deg) brightness(107%) contrast(100%);
+        }
+
+        @media (max-width: $tablet) {
+            flex: 0 0 33.333%;
+            left: 0!important;
+            $brands-offset-tb: 0;
+            @for $var from 2 to 4 {
+                
+                &:nth-child(#{$var}){
+                    left: (rem(-25 * ($brands-offset-tb + $var)))!important;
+             
+                }
+            }
+            @for $var from 2 to 4 {
+                $increment: 3;
+                &:nth-child(#{$var + $increment}){
+                    left: (rem(-25 * ($brands-offset-tb + $var)))!important;
+         
+                }
+            }
+        }
+        @media (max-width: $smallPhone) {
+            flex: 0 0 50%;
+            position: static;
+        }
+    }
+    @media (max-width: $tablet) {
+        flex-wrap: wrap;
+    }
+}
+
+
 .categories {
     @include adaptive-value('padding-top', 100, 20, 1);
     @include adaptive-value('padding-bottom', 60, 20, 1);
     // .categories__container
     &__container {
 
+    }
+    // .categories__title
+    &__title {
+        text-align: center;
+        margin: 0 0 rem(28) 0;
+        font-size: rem(40)!important;
+        font-weight: 600!important;
+        letter-spacing: rem(5)!important;
+        color: $mainBlueColor!important;
     }
     // .categories__row
     &__row {
@@ -285,6 +421,7 @@
     &__item {
     }
 }
+
 
 .item-category {
     background-color: #fff;
@@ -480,11 +617,6 @@
     }
     // .block-products__title
     &__title {
-        font-weight: 700;
-        font-size: rem(30);
-        line-height: 1.53333;
-        letter-spacing: 0.05em;
-        color: #141414;
     }
     // .block-products__more
     &__more {
@@ -518,7 +650,7 @@
         }
     }
 }
-.products-row-top {
+.section-row-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -528,12 +660,21 @@
         flex-direction: column;
     }
 }
-.products-row-footer{
+.section-row-footer{
     @media (max-width: $phone){
         display: flex;
         justify-content: center;
     }
 }
+
+.section-title{
+    font-weight: 700;
+    font-size: rem(30);
+    line-height: 1.53333;
+    letter-spacing: 0.05em;
+    color: #141414;
+}
+
 .body-products {
     // .body-products__slider
     &__slider {
@@ -551,7 +692,7 @@
     position: relative;
     padding: rem(35) 0;
     margin: 0 0 rem(45) 0;
-    background: url('@img/home/newproducts/new_bg.jpg') center / cover no-repeat;
+    background: url('@img/home/new_bg.jpg') center / cover no-repeat;
     
     // .new-products__container
     &__container {
@@ -614,11 +755,7 @@
     }
     // .new-products__title
     &__title {
-        font-weight: 700;
-        font-size: 30px;
-        line-height: 1.53333;
-        letter-spacing: 0.05em;
-        color: #fff;
+        color: #fff!important;
         &:not(:last-child){
             margin: 0 0 rem(30) 0;
         }
@@ -670,7 +807,7 @@
     &__container {
     }
     // .articles__body
-    &__body {
+    &__block {
     }
     // .articles__top-row
     &__top-row {
@@ -682,14 +819,10 @@
     }
 }
 
-.top-row-articles {
-    // .top-row-articles__title
+.block-articles {
+    // .block-articles__title
     &__title {
-        font-weight: 700;
-        font-size: rem(30);
-        line-height: 1.53333;
-        letter-spacing: 0.05em;
-        color: $mainBlueColor;
+        color: $mainBlueColor!important;
     }
 }
 .cards-articles {

@@ -63,17 +63,16 @@ html:not(._touch){
     // .page__title
     &__title {
         margin: 0 0 rem(25) 0;
+        font-weight: 700;
+        font-size: rem(24);
+        color: $mainBlueColor;
     }
     // .page__breadcrumbs
     &__breadcrumbs {
     }
 }
 
-.title{
-    font-weight: 700;
-    font-size: rem(24);
-    color: $mainBlueColor;
-}
+
 .breadcrumbs {
     white-space: nowrap;
     overflow: auto;

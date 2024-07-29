@@ -31,7 +31,7 @@ const initPictureZoom = (img) => {
         showWhitespaceAtEdges: false,
         handleTouch: true,
 
-        inlinePane: true,
+        inlinePane: 991,
         containInline: true,
         touchDelay: 150,
     });
@@ -41,9 +41,8 @@ let detach;
 
 const measurePaneSize = () => {
     if (mql.matches) {
-        console.log(1);
         if (document.querySelector('.zoom-pane') !== null) {
-            console.log(2);
+
             document.querySelector(".images-product").removeChild(document.querySelector('.images-product .zoom-pane'));
         }
     }
