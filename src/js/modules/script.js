@@ -96,8 +96,7 @@ const burgerMenu = () =>{
             document.documentElement.classList.remove('menu-open');
             document.documentElement.classList.remove('lock');
             document.documentElement.classList.remove('catalog-open');
-            document.documentElement.classList.remove('sub-menu-open')
-            $('html').removeClass('menu-open lock catalog-open sub-menu-open');
+            document.documentElement.classList.remove('sub-menu-open');
         }
     })
 }
