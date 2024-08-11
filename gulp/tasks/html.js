@@ -1,6 +1,8 @@
 import fileInclude from "gulp-file-include";
 import webpHtmlNoSvg from 'gulp-webp-html-nosvg';
 import versionNumber from 'gulp-version-number';
+import htmlbeautify from "gulp-html-beautify";
+
 
 export const html = () => {
     return app.gulp.src(app.path.src.html)
@@ -15,12 +17,12 @@ export const html = () => {
         .pipe(app.plugins.replace(/@video\//g, 'videos/'))
         .pipe(
             app.plugins.if(
-                app.isBuild || app.isBuildTest,
+                app.isBuild,
                 webpHtmlNoSvg()
         ))
         .pipe(
             app.plugins.if(
-                app.isBuild || app.isBuildTest,
+                app.isBuild,
                 versionNumber({
                     'value': '%DT%',
                     'append': {
@@ -36,6 +38,7 @@ export const html = () => {
                     }
                 })
         ))
+        .pipe(htmlbeautify())
         .pipe(app.gulp.dest(app.path.build.html))
         .pipe(app.plugins.browsersync.stream())
 }

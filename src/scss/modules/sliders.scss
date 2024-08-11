@@ -39,25 +39,25 @@
         font-size: rem(36);
         line-height: 1.27778;
         letter-spacing: 0.03em;
-        color: #fff;
+        color: $white;
         &:not(:last-child){
             margin: 0 0 rem(15) 0;
         }
     }
     // .slide-main-block__sub-title
     &__sub-title {
-        font-weight: 500;
+        font-weight: 400;
         font-size: rem(36);
         line-height: 1.27778;
         letter-spacing: 0.03em;
-        color: #fff;
+        color: $white;
         &:not(:last-child){
             margin: 0 0 rem(30) 0;
         }
     }
     // .slide-main-block__text
     &__text {
-        font-weight: 500;
+        font-weight: 400;
         font-size: rem(20);
         line-height: 1.5;
         letter-spacing: 0.03em;
@@ -76,6 +76,13 @@
 .body-products{
     margin: 0 rem(-15);
 }
+.swiper.animation-stop {
+    .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        &::before{
+            animation-play-state:paused!important;
+        }
+    }
+}
 
 .slider-products{
     padding: rem(15);
@@ -92,7 +99,7 @@
     .swiper-pagination-bullet{
         background-color: #898989;
         &-active{
-            background-color: $mainOrangeColor;
+            background-color: $mainColor;
             &::before{
                 animation: paginationProgress 3s linear forwards;
             }
@@ -112,12 +119,10 @@
 
 
 .slider-new-products{
-
     padding: rem(15);
     &__slide{
         height: unset;
     }
-   
     .pagination{
         justify-content: center;
         height: rem(10);
@@ -127,9 +132,9 @@
         margin: 0 0 rem(30) 0;
     }
     .swiper-pagination-bullet{
-        background-color: #fff;
+        background-color: $white;
         &-active{
-            background-color: $mainOrangeColor;
+            background-color: $mainColor;
             &::before{
                 animation: paginationProgress 3s linear forwards;
             }
@@ -141,15 +146,28 @@
 .thumbs-images{
     position: relative;
     padding-bottom: rem(15);
+    .swiper-button-next{
+        transform: translateX(rem(5));
+    }
+    .swiper-button-prev{
+        transform: translateX(rem(-5));
+    }
     .swiper-button-next,
     .swiper-button-prev {
-        position: static;
-        height: auto;
+        z-index: 50;
+        width: rem(40);
+        height: rem(40);
+        border-radius: 50%;
+        background-color: $secondaryColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &::after{
+            transform: translateX(rem(2));
+            color: $white;
             font-size: rem(20);
         }
     }
-
     .pagination-bullets{
         position: absolute;
         bottom: 0;
@@ -158,9 +176,9 @@
     }
     .swiper-pagination-bullet{
         height: rem(2);
-        background-color: $mainBlueColor;
+        background-color: $secondaryColor;
         &-active{
-            background-color: $mainOrangeColor;
+            background-color: $mainColor;
             &::before{
                 content: unset;
             }
@@ -208,14 +226,14 @@
     align-items: last baseline;
     letter-spacing: 0.1em;
     &__active{
-        font-weight: 600;
+        font-weight: 400;
         font-size: rem(24);
         line-height: 1.91667;
-        color: #e8aa31;
+        color: $mainColor;
     }
     &__total{
         font-size: rem(18);
-        color: #fff;
+        color: $white;
     }
 }
 
@@ -232,14 +250,13 @@
     width: rem(18);
     border-radius: 0;
     height: 1px;
-    background-color: #fff;
+    background-color: $white;
     opacity: 1;
 
     &-active{
         position: relative;
         width: rem(20);
-        background-color: $mainOrangeColor;
-
+        background-color: $mainColor;
         &::before{
             content: '';
             animation: paginationProgress 3s linear forwards;
@@ -250,8 +267,8 @@
             width: 10px;
             height: 10px;
             border-radius: 100%;
-            box-shadow: 0 4px 20px 0 rgba(232, 170, 49, 0.66);
-            background-color: $mainOrangeColor;
+            box-shadow: 0 4px 20px 0 $mainShadowColor;
+            background-color: $mainColor;
         }
     }
 }

@@ -1,10 +1,12 @@
-import Swiper from "swiper/bundle"; // 'swiper/bundle' -> import all methods;
+import Swiper from "swiper"; // 'swiper/bundle' -> import all;
+import { Pagination, Navigation, Autoplay, Thumbs, EffectFade } from "swiper/modules";
 
 
 const mainSliders = document.querySelectorAll('.slider-main');
 
 const handleMainScreenSlider = (sliderFractionActive) => {
     const mainScreenSwiper = new Swiper('.slider-main', {
+        modules: [Pagination, Autoplay],
         // ------------------------------------ BASE ------------------------------------ //
         init: true,
         enabled: true,
@@ -32,7 +34,7 @@ const handleMainScreenSlider = (sliderFractionActive) => {
             waitForTransition: false,
             disableOnInteraction: false,
             reverseDirection: false,
-            pauseOnMouseEnter: true,
+            pauseOnMouseEnter: false,
         },
         on: {
             slideChange: function(){
@@ -58,6 +60,51 @@ if (mainSliders.length > 0){
     })
 }
 
+const handleAutoplay = (slider) => {
+    let timeLeft = 0;
+    let autoplayTimeout;
+    let leaveTime = 0;
+    let elapsedTime = 0;
+
+    slider.on('beforeSlideChangeStart', () => {
+        if (leaveTime) {
+            leaveTime = 0;
+        }
+        if (elapsedTime) {
+            elapsedTime = 0;
+        }
+        timeLeft = 3000;
+    });
+
+    slider.el.addEventListener('mouseenter', function(){
+        slider.el.classList.add('animation-stop');
+        slider.autoplay.stop();
+        timeLeft = slider.autoplay.timeLeft;
+        
+        if (leaveTime) {
+            elapsedTime = Date.now() - leaveTime;
+        }
+        if (autoplayTimeout) {
+            clearTimeout(autoplayTimeout);
+        }
+    });
+    slider.el.addEventListener('mouseleave', function(){
+        slider.el.classList.remove('animation-stop');
+        leaveTime = Date.now();
+        if (elapsedTime) {
+            timeLeft -= elapsedTime;
+        }
+        if (timeLeft > 0) {
+            autoplayTimeout = setTimeout(() => {
+                leaveTime = 0;
+                elapsedTime = 0;
+                slider.slideNext(1000);
+                slider.autoplay.start();
+            }, timeLeft);
+        }
+    });
+}
+
 
 const handleCatalogSlider = () => {
     let productsSlider = null;
@@ -65,6 +112,7 @@ const handleCatalogSlider = () => {
         const sliders = document.querySelectorAll('.slider-products');
         if (sliders.length > 0){
             productsSlider = new Swiper(".slider-products", {
+                modules: [Pagination, Autoplay],
                 init: true,
                 enabled: true,
                 watchOverflow: true,
@@ -78,6 +126,8 @@ const handleCatalogSlider = () => {
                 preventInteractionOnTransition: true,
                 grabCursor: false,
                 slideToClickedSlide: false, // click on slide to move on it
+                lazyPreloadPrevNext: 0,
+                loop: true,
                 pagination: {
                     enabled: true,
                     el: '.pagination-bullets',
@@ -88,9 +138,8 @@ const handleCatalogSlider = () => {
                     stopOnLastSlide: false,
                     waitForTransition: false,
                     disableOnInteraction: false,
-                    pauseOnMouseEnter: false,
+                    pauseOnMouseEnter: true,
                 },
-                lazyPreloadPrevNext: 0,
                 breakpoints: {
                     767: {
                         slidesPerView: 2,
@@ -101,11 +150,19 @@ const handleCatalogSlider = () => {
                     1101: {
                         slidesPerView: 4,
                     },
+                },
+                on: {
+                    afterInit: (slider) => {
+                        if (!document.documentElement.classList.contains('_touch') && slider.slides.length > 4){
+                            handleAutoplay(slider);
+                        }
+                    },
                 }
-            })
+            });
         }
     }
-    const MOBILE = 768 / 16
+
+    const MOBILE = 768 / 16;
     const mq = window.matchMedia(`(min-width: ${MOBILE}rem)`);
     const watchMq = () => {
         if (mq.matches) {
@@ -115,11 +172,11 @@ const handleCatalogSlider = () => {
         } else {
             if (productsSlider && productsSlider.length > 1) {
                 productsSlider.forEach(slider => {
-                    slider.destroy(true, true);
+                    slider.destroy(false, true);
                 })
                 productsSlider = null;
             } else if (productsSlider && productsSlider.length == 1){
-                productsSlider.destroy(true, true);
+                productsSlider.destroy(false, true);
                 productsSlider = null;
             }
           
@@ -130,11 +187,11 @@ const handleCatalogSlider = () => {
 }
 handleCatalogSlider();
 
-
 const handleNewCatalogSlider = () => {
     const sliders = document.querySelectorAll('.slider-new-products');
     if (sliders.length > 0){
         const newProductSlider = new Swiper('.slider-new-products', {
+            modules: [Pagination, Autoplay],
             init: true,
             enabled: true,
             watchOverflow: true,
@@ -159,7 +216,7 @@ const handleNewCatalogSlider = () => {
                 stopOnLastSlide: false,
                 waitForTransition: false,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: false,
+                pauseOnMouseEnter: true,
             },
             breakpoints: {
                 767: {
@@ -171,9 +228,17 @@ const handleNewCatalogSlider = () => {
                 1324: {
                     slidesPerView: 3,
                 }
+            },
+            on: {
+                afterInit: (slider) => {
+                    if (!document.documentElement.classList.contains('_touch')){
+                        handleAutoplay(slider);
+                    }
+                }
             }
-        })
+        });
     }
+    
 }
 handleNewCatalogSlider();
 
@@ -183,6 +248,7 @@ const handleProductSlider = () => {
 
     if (thumbsSliders.length > 0 && showSliders.length > 0) {
         const thumbsSwiper = new Swiper('.images-product__thumbs', {
+            modules: [Navigation, Pagination],
             init: true,
             enabled: true,
             watchOverflow: true,
@@ -212,6 +278,7 @@ const handleProductSlider = () => {
             },
         });
         const showSwiper = new Swiper(".images-product__show-image", {
+            modules: [Thumbs, EffectFade],
             init: true,
             enabled: true,
             watchOverflow: true,

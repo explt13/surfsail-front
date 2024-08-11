@@ -7,8 +7,7 @@ import { plugins } from './gulp/config/plugins.js';
 
 console.log(process.argv)
 global.app = {
-    isBuild: process.argv.includes('--build'),
-    isBuildTest: process.argv.includes('--build-test'),
+    isBuild: process.argv.includes('--build') || process.argv.includes('--build-test'),
     isDev: !process.argv.includes('--build') && !process.argv.includes('--build-test'),
     path: path,
     gulp: gulp,

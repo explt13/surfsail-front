@@ -1,8 +1,8 @@
 import Drift from "drift-zoom";
 
 
-const TABLET = 991 / 16
-const mql = matchMedia(`(max-width: ${TABLET}rem)`)
+const TABLET = 991 / 16;
+const mql = matchMedia(`(max-width: ${TABLET}rem)`);
 
 const imgs = document.querySelectorAll(".images-product__show-image img");
 const pane = document.querySelector('.zoom-pane');
@@ -37,13 +37,15 @@ const initPictureZoom = (img) => {
     });
 }
 
-let detach;
 
 const measurePaneSize = () => {
     if (mql.matches) {
         if (document.querySelector('.zoom-pane') !== null) {
-
             document.querySelector(".images-product").removeChild(document.querySelector('.images-product .zoom-pane'));
+        }
+    } else {
+        if (document.querySelector('.zoom-pane') === null) {
+            document.querySelector(".images-product").appendChild(pane);
         }
     }
     const height = imageContainer.offsetHeight;
@@ -57,7 +59,7 @@ const initZoom = () => {
     if (imgs.length > 0) {
         measurePaneSize();
         imgs.forEach(img => {
-            initPictureZoom(img)
+            initPictureZoom(img);
         });
         window.addEventListener('resize', () => {
             measurePaneSize();

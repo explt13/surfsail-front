@@ -51,17 +51,17 @@
     // .catalog__more
     &__more {
         background-color: #fefefe;
-        border: 2px solid $secondaryOrangeColor;
+        border: 2px solid $mainColor;
         box-shadow: none;
         max-width: rem(326);
         width: 100%;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 20px;
-        color: $mainOrangeColor;
+        color: $mainColor;
         transition: all ease-in-out 0.2s;
         @media (any-hover: hover){
             &:hover{
-                box-shadow: 0 0 12px $mainOrangeColor;
+                box-shadow: 0 0 12px $mainColor;
             }
         }
         @media (max-width: $tablet){
@@ -85,9 +85,9 @@
     &__title {
         font-weight: 700;
         font-size: 20px;
-        color: #fff;
+        color: $white;
         padding: rem(20) rem(30);
-        background-color: $mainBlueColor;
+        background-color: $secondaryColor;
         width: 100%;
 
     }
@@ -118,14 +118,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-weight: 600;
+        font-weight: 400;
         font-size: rem(20);
         flex-direction: row-reverse;
         width: 100%;
         &::before{
             transition: transform 0.3s ease-in-out;
             font-size: rem(8);
-            color: $mainOrangeColor;
+            color: $mainColor;
         }
         &._active{
             &::before{
@@ -149,9 +149,9 @@
     }
     // .price-filter__input
     &__input {
-        font-weight: 500;
+        font-weight: 400;
         font-size: 16px;
-        color: $mainBlueColor;
+        color: $secondaryColor;
         height: rem(42);
         outline: none;
         text-align: center;
@@ -175,10 +175,10 @@
     // .item-filter__title
     &__title {
         width: 100%;
-        font-weight: 600;
+        font-weight: 400;
         font-size: rem(20);
-        color: #fff;
-        background-color: $mainBlueColor;
+        color: $white;
+        background-color: $secondaryColor;
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
@@ -187,7 +187,7 @@
         cursor: pointer;
         &::before{
             font-size: rem(8);
-            color: #fff;
+            color: $white;
             transition: transform 0.3s ease-in-out;
         }
         &._active{

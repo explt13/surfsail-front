@@ -10,7 +10,7 @@
 }
 
 [class*="_icon-"] {
-  &:before {
+  &::before {
     @extend %ic;
     display: block;
     cursor: pointer;
@@ -19,48 +19,48 @@
 
 // append/change icons here
 
-._icon-logo:before {
+._icon-logo::before {
   content: "\e908";
 }
-._icon-clocks:before {
+._icon-clocks::before {
   content: "\e909";
 }
-._icon-arrow_f_d:before {
+._icon-arrow_f_d::before {
   content: "\e90d";
 }
-._icon-arrow_f_r:before {
+._icon-arrow_f_r::before {
   content: "\e90e";
 }
-._icon-arrow_sh_d:before {
+._icon-arrow_sh_d::before {
   content: "\e900";
 }
-._icon-arrow_sh_r:before {
+._icon-arrow_sh_r::before {
   content: "\e901";
 }
-._icon-arrow_up:before {
+._icon-arrow_up::before {
   content: "\e902";
 }
-._icon-call:before {
+._icon-call::before {
   content: "\e903";
 }
-._icon-cart:before {
+._icon-cart::before {
   content: "\e904";
 }
-._icon-comp:before {
+._icon-comp::before {
   content: "\e905";
 }
-._icon-fav:before {
+._icon-fav::before {
   content: "\e906";
 }
-._icon-geo:before {
+._icon-geo::before {
   content: "\e907";
 }
-._icon-search:before {
+._icon-search::before {
   content: "\e90a";
 }
-._icon-user:before {
+._icon-user::before {
   content: "\e90b";
 }
-._icon-back:before {
+._icon-back::before {
   content: "\e90c";
 }

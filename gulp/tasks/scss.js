@@ -22,13 +22,13 @@ export const scss = () => {
     .pipe(app.plugins.replace(/@img\//g, '../img/'))
     .pipe(
         app.plugins.if(
-            app.isBuild || app.isBuildTest,
+            app.isBuild,
             groupCssMediaQueries()
         )
     )
     .pipe(
         app.plugins.if(
-            app.isBuild || app.isBuildTest,
+            app.isBuild,
             webpcss({
                 webpClass: '.webp',
                 noWebpClass: '.no-webp',
@@ -37,9 +37,9 @@ export const scss = () => {
     )
     .pipe(
         app.plugins.if(
-            app.isBuild || app.isBuildTest,
+            app.isBuild,
             autoprefixer({
-                grid: true,
+                // grid: true,
                 overrideBrowserslist: ["last 3 versions"],
                 cascade: true,
             })
@@ -48,7 +48,7 @@ export const scss = () => {
     .pipe(app.gulp.dest(app.path.build.css))
     .pipe(
         app.plugins.if(
-            app.isBuild || app.isBuildTest,
+            app.isBuild,
             cleanCss()
         )
     )
