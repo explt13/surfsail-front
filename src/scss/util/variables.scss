@@ -1,13 +1,26 @@
 
-$font-family: "Montserrat", sans-serif;
+$font-family: "RedHatText", sans-serif;
 
 
-$mainDarkColor: #1F1C21;
-$mainOrangeColor: #F6B817;
-$secondaryOrangeColor: #F6B817;
-$mainBlueColor: #5D8AA8;
+$darkColor: #1F1C21;
+$white: #ffffff;
+:root{
+    --mainColor: #f6b817;
+    --mainShadowColor: rgba(232, 170, 49, 0.43);
+}
+:root.soft{
+    --mainColor: #5d8aa8;
+    --mainShadowColor: rgba(93, 138, 168, 0.43);
+}
+
+$mainColor: var(--mainColor);
+$mainShadowColor: var(--mainShadowColor);
+$secondaryColor: #5d8aa8;
+$fixedOrange: #f6b817;
+
 $lightBlue: #ecf1f2;
 $steelGray: #fefefe;
+$gray: #ababab;
 $greenColor: #24ad53;
 $redColor: #e7401b;
 

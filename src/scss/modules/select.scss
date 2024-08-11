@@ -7,7 +7,6 @@
 	}
 	// .select__title
 	&__title {
-		color: #000;
 		border: 1px solid #d9d9d9;
 		background-color: #fff;
 		cursor: pointer;
@@ -88,7 +87,7 @@
         }
         .select__value{
 			padding: 0 rem(15);
-            font-weight: 500;
+            font-weight: 400;
             font-size: rem(16);
             color: rgba(0, 0, 0, 0.5);
             justify-content: space-between;
@@ -102,12 +101,12 @@
             }
         }
         .select__option{
-            font-weight: 500;
+            font-weight: 400;
             font-size: 16px;
             color: rgba(0, 0, 0, 0.5);
             @media (any-hover: hover){
                 &:hover{
-                    color: $mainBlueColor;
+                    color: $secondaryColor;
                 }
             }
         }
@@ -133,7 +132,7 @@
         }
 		.select__value{
 			padding: 0 0 0 rem(15);
-            font-weight: 500;
+            font-weight: 400;
             font-size: rem(16);
 			height: 100%;
             color: rgba(0, 0, 0, 0.5);
@@ -146,7 +145,7 @@
 				z-index: 1;
 				width: rem(40);
 				height: rem(40);
-				background-color: $mainBlueColor;
+				background-color: $secondaryColor;
 				border-top-right-radius: rem(3);
 				border-bottom-right-radius: rem(3);
             }
@@ -172,7 +171,7 @@
 			padding: rem(10) rem(15);
 			@media (any-hover: hover){
                 &:hover{
-                    background-color: $mainBlueColor;
+                    background-color: $secondaryColor;
 					color: #fff;
                 }
             }

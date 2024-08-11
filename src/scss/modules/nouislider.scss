@@ -85,7 +85,7 @@
    height: rem(1);
  }
  .noUi-horizontal .noUi-handle {
-  background-color: $mainOrangeColor;
+  background-color: $mainColor;
    width: rem(18);
    height: rem(18);
    right: rem(-9);
@@ -108,13 +108,13 @@
   * Giving the connect element a border radius causes issues with using transform: scale
   */
  .noUi-target {
-   background-color: $mainBlueColor;
+   background-color: $secondaryColor;
  }
  .noUi-connects {
    border-radius: 3px;
  }
  .noUi-connect {
-  background-color: $mainOrangeColor;
+  background-color: $mainColor;
  }
  /* Handles and cursors;
   */
@@ -133,7 +133,7 @@
     width: rem(12);
     height: rem(12);
     border-radius: 50%;
-    background: $mainOrangeColor;
+    background: $mainColor;
     z-index: 1;
     top: 50%;
     left: 50%;

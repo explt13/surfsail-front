@@ -97,7 +97,7 @@
     left: 100%;
     z-index: 100;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5);
-    background-color: #fff;
+    background-color: $white;
   
     &__container{
         position: relative;
@@ -138,7 +138,7 @@
     // .body-product__available 
     &__available{
         color: $redColor;
-        font-weight: 500;
+        font-weight: 400;
         font-size: rem(16);
         &._true{
             color: $greenColor;
@@ -176,7 +176,7 @@
     &__title {
         font-weight: 700;
         font-size: rem(24);
-        color: $mainBlueColor;
+        color: $secondaryColor;
     }
 
  
@@ -194,13 +194,13 @@
     gap: rem(20);
     // .table-product__label
     &__label {
-        font-weight: 500;
+        font-weight: 400;
         font-size: rem(18);
         color: #141414;
     }
     // .table-product__value
     &__value {
-        font-weight: 500;
+        font-weight: 400;
         font-size: rem(18);
         color: rgba(20, 20, 20, 0.5);
     }
@@ -215,7 +215,7 @@
     gap: rem(20);
     // .options-product__label
     &__label {
-        font-weight: 500;
+        font-weight: 400;
         font-size: 18px;
         color: #141414;
     }
@@ -237,7 +237,6 @@
         gap: rem(15);
         font-weight: 700;
         font-size: rem(30);
-        color: #000;
         margin: 0 0 rem(30) 0;
     }
     // .actions-product__row
@@ -326,7 +325,7 @@
                 top: calc(100% + rem(19));
                 left: 0;
                 width: 100%;
-                border-bottom: rem(3) solid $mainOrangeColor;
+                border-bottom: rem(3) solid $mainColor;
             }
         }
     }
@@ -349,7 +348,7 @@
 
 }
 ._tabs-item {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 20px;
     color: rgba(20, 20, 20, 0.5);
     &._active{

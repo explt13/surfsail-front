@@ -37,18 +37,20 @@ h6{
     font-weight: inherit;
     font-size: inherit;
 }
-
+input, textarea, select, button{
+    font-family: inherit;
+    color: inherit;
+}
 
 body {
     min-height: 100%;
     line-height: 1;
-    color: #000;
+    color: $darkColor;
 }
 
 button{
     background-color: transparent;
     outline: none;
-    font-family: inherit;
 }
 
 .wrapper{
