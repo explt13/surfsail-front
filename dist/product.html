@@ -430,7 +430,7 @@
                         <div class="main-product__body body-product">
                             <div class="body-product__header header-product">
                                 <div class="header-product__line">
-                                    <h1 class="header-product__title">AquaRide Shortboard</h1>
+                                    <h1 class="header-product__title">AquaRide Shortboard</h1><span class="header-product__new">new</span>
                                     <div class="header-product-card__actions product-card-actions">
                                         <span class="_icon-comp product-card-actions__comp"></span>
                                         <span class="_icon-fav product-card-actions__like"></span>
@@ -448,7 +448,7 @@
                                                 <input type="radio" name="product__rating" value="5" class="rating__item">
                                             </div>
                                         </div>
-                                        <div hidden class="rating__value" hidden>4.6</div>
+                                        <div class="rating__value" hidden>4.6</div>
                                     </div>
                                     <div class="body-product__available _true">In stock</div>
                                 </div>
@@ -506,7 +506,7 @@
                                 </div>
                             </div>
                             <div class="body-product__actions actions-product">
-                                <div class="actions-product__price">960 $</div>
+                                <div class="actions-product__price product-price product-price_big-card"><span class="product-price__actual-price">960 $</span><span class="product-price__old-price">740 $</span></div>
                                 <div class="actions-product__row">
                                     <div class="actions-product__quantity quantity">
                                         <button class="quantity__button quantity__button_minus" type="button"></button>
@@ -523,32 +523,80 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product__information information-product">
+                    <section class="product__information information-product">
                         <div class="information-product__body _tabs">
                             <div class="information-product__tabs">
                                 <div class="information-product__tab _tabs-item _active">Description</div>
                                 <div class="information-product__tab _tabs-item">Additional Information</div>
+                                <div class="information-product__tab _tabs-item">Reviews</div>
                             </div>
                             <div class="information-product__blocks">
-                                <div class="information-product__block _tabs-block _active">
+                                <div class="information-product__block product-block-description _tabs-block _active">
                                     Discover new horizons of free riding with our AquaRide Shortboard!
                                     This board embodies power and speed, perfect for those seeking adrenaline on the waves.
                                     The combination of lightweight, durability, and maneuverability makes it an ideal choice for both
                                     professionals and novice surfers. Immerse yourself in the world of AquaRide and feel the magic of
                                     the ocean with every ride!
                                 </div>
-
-                                <div class="information-product__block _tabs-block">
-                                    <ul>
-                                        <li>Warranty: 2 years</li>
-                                        <li>Manufacturer: AquaSports Inc.</li>
-                                        <li>Country of Origin: USA</li>
-                                        <li>Shipping Weight: 4 kg</li>
+                                <div class="information-product__block product-block-additional-info _tabs-block">
+                                    <ul class="product-block-additional-info__list">
+                                        <li class="product-block-additional-info__item">Warranty: 2 years</li>
+                                        <li class="product-block-additional-info__item">Manufacturer: AquaSports Inc.</li>
+                                        <li class="product-block-additional-info__item">Country of Origin: USA</li>
+                                        <li class="product-block-additional-info__item">Shipping Weight: 4 kg</li>
+                                    </ul>
+                                </div>
+                                <div class="information-product__block product-block-review _tabs-block">
+                                    <ul class="product-block-review__list">
+                                        <li class="product-block-review__item">
+                                            <div class="product-block-review__header">
+                                                <img class="product-block-review__user-image" src="img/user/city.jpg" />
+                                                <div class="product-block-review__user-name">Sam Smith</div>
+                                                <div class="product-block-review__user-rating">
+                                                    <div class="rating">
+                                                        <div class="rating__body">
+                                                            <div class="rating__active"></div>
+                                                            <div class="rating__items">
+                                                                <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                            </div>
+                                                        </div>
+                                                        <div class="rating__value" hidden>4</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-block-review__body">The product quality is consistently outstanding, exceeding my expectations every time.</div>
+                                        </li>
+                                        <li class="product-block-review__item">
+                                            <div class="product-block-review__header">
+                                                <img class="product-block-review__user-image" src="img/user/city.jpg" />
+                                                <div class="product-block-review__user-name">Sam Smith</div>
+                                                <div class="product-block-review__user-rating">
+                                                    <div class="rating">
+                                                        <div class="rating__body">
+                                                            <div class="rating__active"></div>
+                                                            <div class="rating__items">
+                                                                <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                                <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                            </div>
+                                                        </div>
+                                                        <div class="rating__value" hidden>4</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-block-review__body">The product quality is consistently outstanding, exceeding my expectations every time.</div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
                     <section class="products products_similar">
                         <div class="products__container container">
                             <div class="products__block block-products">
@@ -564,7 +612,6 @@
                                                     <a href="./product.html" class="product-card__image-container">
                                                         <div class="product-card__image">
                                                             <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
-                                                            <div class="swiper-lazy-preloader"></div>
                                                         </div>
                                                     </a>
                                                     <div class="product-card__information information-product-card">
@@ -581,13 +628,13 @@
                                                                         <input type="radio" name="product__rating" value="5" class="rating__item">
                                                                     </div>
                                                                 </div>
-                                                                <div class="rating__value">3.6</div>
+                                                                <div class="rating__value">4.7</div>
                                                             </div>
-                                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                                            <div class="review-information__review _addit-info _addit-info_light">(115)</div>
                                                         </div>
-                                                        <div class="information-product-card__price price-product-card">
-                                                            <div class="price-product-card__price">960 $ <span class="price-product-card__old-price">1250 $</span></div>
-                                                            <div class="price-product-card__actions product-card-actions">
+                                                        <div class="information-product-card__price">
+                                                            <div class="product-price"><span class="product-price__actual-price">859.99 $</span><span class="product-price__old-price">930.45 $</span></div>
+                                                            <div class="information-product-card__actions product-card-actions">
                                                                 <span class="_icon-comp product-card-actions__comp"></span>
                                                                 <span class="_icon-fav product-card-actions__like"></span>
                                                             </div>
@@ -601,7 +648,6 @@
                                                     <a href="./product.html" class="product-card__image-container">
                                                         <div class="product-card__image">
                                                             <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
-                                                            <div class="swiper-lazy-preloader"></div>
                                                         </div>
                                                     </a>
                                                     <div class="product-card__information information-product-card">
@@ -618,13 +664,13 @@
                                                                         <input type="radio" name="product__rating" value="5" class="rating__item">
                                                                     </div>
                                                                 </div>
-                                                                <div class="rating__value">3.6</div>
+                                                                <div class="rating__value">4.7</div>
                                                             </div>
-                                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                                            <div class="review-information__review _addit-info _addit-info_light">(115)</div>
                                                         </div>
-                                                        <div class="information-product-card__price price-product-card">
-                                                            <div class="price-product-card__price">960 $ <span class="price-product-card__old-price">1250 $</span></div>
-                                                            <div class="price-product-card__actions product-card-actions">
+                                                        <div class="information-product-card__price">
+                                                            <div class="product-price"><span class="product-price__actual-price">859.99 $</span><span class="product-price__old-price">930.45 $</span></div>
+                                                            <div class="information-product-card__actions product-card-actions">
                                                                 <span class="_icon-comp product-card-actions__comp"></span>
                                                                 <span class="_icon-fav product-card-actions__like"></span>
                                                             </div>
@@ -637,8 +683,7 @@
                                                 <article class="product-card">
                                                     <a href="./product.html" class="product-card__image-container">
                                                         <div class="product-card__image">
-                                                            <img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
-                                                            <div class="swiper-lazy-preloader"></div>
+                                                            <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
                                                         </div>
                                                     </a>
                                                     <div class="product-card__information information-product-card">
@@ -655,50 +700,13 @@
                                                                         <input type="radio" name="product__rating" value="5" class="rating__item">
                                                                     </div>
                                                                 </div>
-                                                                <div class="rating__value">3.6</div>
+                                                                <div class="rating__value">4.7</div>
                                                             </div>
-                                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                                            <div class="review-information__review _addit-info _addit-info_light">(115)</div>
                                                         </div>
-                                                        <div class="information-product-card__price price-product-card">
-                                                            <div class="price-product-card__price">960 $ <span class="price-product-card__old-price">1250 $</span></div>
-                                                            <div class="price-product-card__actions product-card-actions">
-                                                                <span class="_icon-comp product-card-actions__comp"></span>
-                                                                <span class="_icon-fav product-card-actions__like"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="./product.html" class="product-card__button button">To cart<span class="_icon-cart"></span></a>
-                                                </article>
-                                            </div>
-                                            <div class="slider-products__slide slide-product-card swiper-slide">
-                                                <article class="product-card">
-                                                    <a href="./product.html" class="product-card__image-container">
-                                                        <div class="product-card__image">
-                                                            <img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
-                                                            <div class="swiper-lazy-preloader"></div>
-                                                        </div>
-                                                    </a>
-                                                    <div class="product-card__information information-product-card">
-                                                        <h3 class="information-product-card__title">Longboard</h3>
-                                                        <div class="information-product-card__review review-information">
-                                                            <div class="review-information__rating rating rating_set">
-                                                                <div class="rating__body">
-                                                                    <div class="rating__active"></div>
-                                                                    <div class="rating__items">
-                                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
-                                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
-                                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
-                                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
-                                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="rating__value">3.6</div>
-                                                            </div>
-                                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
-                                                        </div>
-                                                        <div class="information-product-card__price price-product-card">
-                                                            <div class="price-product-card__price">960 $ <span class="price-product-card__old-price">1250 $</span></div>
-                                                            <div class="price-product-card__actions product-card-actions">
+                                                        <div class="information-product-card__price">
+                                                            <div class="product-price"><span class="product-price__actual-price">859.99 $</span><span class="product-price__old-price">930.45 $</span></div>
+                                                            <div class="information-product-card__actions product-card-actions">
                                                                 <span class="_icon-comp product-card-actions__comp"></span>
                                                                 <span class="_icon-fav product-card-actions__like"></span>
                                                             </div>
@@ -712,7 +720,6 @@
                                                     <a href="./product.html" class="product-card__image-container">
                                                         <div class="product-card__image">
                                                             <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
-                                                            <div class="swiper-lazy-preloader"></div>
                                                         </div>
                                                     </a>
                                                     <div class="product-card__information information-product-card">
@@ -729,13 +736,13 @@
                                                                         <input type="radio" name="product__rating" value="5" class="rating__item">
                                                                     </div>
                                                                 </div>
-                                                                <div class="rating__value">3.6</div>
+                                                                <div class="rating__value">4.7</div>
                                                             </div>
-                                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                                            <div class="review-information__review _addit-info _addit-info_light">(115)</div>
                                                         </div>
-                                                        <div class="information-product-card__price price-product-card">
-                                                            <div class="price-product-card__price">960 $ <span class="price-product-card__old-price">1250 $</span></div>
-                                                            <div class="price-product-card__actions product-card-actions">
+                                                        <div class="information-product-card__price">
+                                                            <div class="product-price"><span class="product-price__actual-price">859.99 $</span><span class="product-price__old-price">930.45 $</span></div>
+                                                            <div class="information-product-card__actions product-card-actions">
                                                                 <span class="_icon-comp product-card-actions__comp"></span>
                                                                 <span class="_icon-fav product-card-actions__like"></span>
                                                             </div>
@@ -748,8 +755,7 @@
                                                 <article class="product-card">
                                                     <a href="./product.html" class="product-card__image-container">
                                                         <div class="product-card__image">
-                                                            <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
-                                                            <div class="swiper-lazy-preloader"></div>
+                                                            <img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
                                                         </div>
                                                     </a>
                                                     <div class="product-card__information information-product-card">
@@ -766,13 +772,49 @@
                                                                         <input type="radio" name="product__rating" value="5" class="rating__item">
                                                                     </div>
                                                                 </div>
-                                                                <div class="rating__value">3.6</div>
+                                                                <div class="rating__value">4.7</div>
                                                             </div>
-                                                            <div class="review-information__review _addit-info _addit-info_light">(173)</div>
+                                                            <div class="review-information__review _addit-info _addit-info_light">(115)</div>
                                                         </div>
-                                                        <div class="information-product-card__price price-product-card">
-                                                            <div class="price-product-card__price">960 $ <span class="price-product-card__old-price">1250 $</span></div>
-                                                            <div class="price-product-card__actions product-card-actions">
+                                                        <div class="information-product-card__price">
+                                                            <div class="product-price"><span class="product-price__actual-price">859.99 $</span><span class="product-price__old-price">930.45 $</span></div>
+                                                            <div class="information-product-card__actions product-card-actions">
+                                                                <span class="_icon-comp product-card-actions__comp"></span>
+                                                                <span class="_icon-fav product-card-actions__like"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="./product.html" class="product-card__button button">To cart<span class="_icon-cart"></span></a>
+                                                </article>
+                                            </div>
+                                            <div class="slider-products__slide slide-product-card swiper-slide">
+                                                <article class="product-card">
+                                                    <a href="./product.html" class="product-card__image-container">
+                                                        <div class="product-card__image">
+                                                            <img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
+                                                        </div>
+                                                    </a>
+                                                    <div class="product-card__information information-product-card">
+                                                        <h3 class="information-product-card__title">Longboard</h3>
+                                                        <div class="information-product-card__review review-information">
+                                                            <div class="review-information__rating rating rating_set">
+                                                                <div class="rating__body">
+                                                                    <div class="rating__active"></div>
+                                                                    <div class="rating__items">
+                                                                        <input type="radio" name="product__rating" value="1" class="rating__item">
+                                                                        <input type="radio" name="product__rating" value="2" class="rating__item">
+                                                                        <input type="radio" name="product__rating" value="3" class="rating__item">
+                                                                        <input type="radio" name="product__rating" value="4" class="rating__item">
+                                                                        <input type="radio" name="product__rating" value="5" class="rating__item">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="rating__value">4.7</div>
+                                                            </div>
+                                                            <div class="review-information__review _addit-info _addit-info_light">(115)</div>
+                                                        </div>
+                                                        <div class="information-product-card__price">
+                                                            <div class="product-price"><span class="product-price__actual-price">859.99 $</span><span class="product-price__old-price">930.45 $</span></div>
+                                                            <div class="information-product-card__actions product-card-actions">
                                                                 <span class="_icon-comp product-card-actions__comp"></span>
                                                                 <span class="_icon-fav product-card-actions__like"></span>
                                                             </div>
