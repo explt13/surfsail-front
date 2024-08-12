@@ -82,7 +82,9 @@ html:not(._touch){
     }
     // .breadcrumbs__item
     &__item {
-
+        span{
+            cursor: default;
+        }
     }
     // .breadcrumbs__link
     &__link {
@@ -170,7 +172,6 @@ html:not(._touch){
     }
 }
 
-
 .product-card {
     cursor: pointer;
     padding: rem(30) rem(20);
@@ -182,26 +183,38 @@ html:not(._touch){
     transition: all ease-in-out 0.3s;
     position: relative;
     height: 100%;
-    &_bestseller{
-        
-    }
-    &_new{
-    }
-
-   
-    &__sale{
+    overflow: hidden;
+    &__band{
         position: absolute;
-        top: rem(20);
-        left: 0;
-        background-color: $mainColor;   
-        font-weight: 400;
-        font-size: rem(18);
         color: $white;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
+        font-weight: 600;
         z-index: 5;
-        padding: rem(6) rem(22);
-        pointer-events: none;
+        width: rem(114);
+        height: rem(48);
+        clip-path: polygon(0 100%, 25% 40%, 75% 40%, 100% 100%);
+        overflow: hidden;
+        transform: translateX(rem(-40)) translateY(rem(0)) rotate(-45deg);
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        span {
+            text-transform: capitalize;
+            display: block;
+            position: relative;
+            z-index: 6;
+            bottom: rem(8);
+            left: rem(4)
+        }
+
+        &_discount {
+            background-color: $mainColor;
+        }
+        &_new {
+            background-color: $greenColor;
+        }
     }
 
     // .product-card__image-container
@@ -279,8 +292,11 @@ html:not(._touch){
     }
     // .information-product-card__price
     &__price {
-        margin: 0 0 rem(6) 0;
-
+        display: flex;
+        justify-content: space-between;
+    }
+    &__actions{
+        gap: rem(15);
     }
 }
 .review-information {
@@ -295,25 +311,33 @@ html:not(._touch){
     }
 }
 
-.price-product-card {
+.product-price {
     display: flex;
-    justify-content: space-between;
+    align-items: last baseline;
     // .price-product-card__price
-    &__price {
+    &__actual-price {
         font-weight: 600;
         font-size: rem(20);
         line-height: 1.7;
-        color: #141414;
+        color: $darkColor;
     }
     &__old-price{
+        font-weight: 600;
         font-size: rem(16);
         text-decoration: line-through;
         color: $gray;
         margin: 0 0 0 rem(8);
     }
-    // .price-product-card__actions
-    &__actions {
-      gap: rem(15);
+    &_big-card{
+        .product-price__actual-price {
+            font-size: rem(28);
+            font-weight: 800;
+        }
+        .product-price__old-price{
+            font-size: rem(22);
+            margin: 0 0 0 rem(12);
+            font-weight: 600;
+        }
     }
 }
 
