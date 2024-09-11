@@ -185,32 +185,34 @@ html:not(._touch){
     height: 100%;
     overflow: hidden;
     &__band{
-        position: absolute;
-        color: $white;
-        font-weight: 600;
-        z-index: 5;
-        width: rem(114);
-        height: rem(48);
-        clip-path: polygon(0 100%, 25% 40%, 75% 40%, 100% 100%);
-        overflow: hidden;
-        transform: translateX(rem(-40)) translateY(rem(0)) rotate(-45deg);
-        left: 0;
-        top: 0;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
+        position:absolute;
+        color:#fff;
+        font-weight:600;
+        z-index:5;
+        width:7.125rem;
+        height:3rem;
+        clip-path:polygon(0 100%,25% 40%,75% 40%,100% 100%);
+        overflow:hidden;
+        transform:translateX(-2.5rem) translateY(0) rotate(-45deg);
+        left:0;
+        top:0;
+        display:-webkit-box;
+        display:-ms-flexbox;
+        display:flex;
+        justify-content:center;
+        align-items:flex-end;
 
         span {
             text-transform: capitalize;
             display: block;
             position: relative;
             z-index: 6;
-            bottom: rem(8);
-            left: rem(4)
+            bottom:.5rem;
+            left:.25rem;
         }
 
         &_discount {
-            background-color: $mainColor;
+            background-color: #f6b817;
         }
         &_new {
             background-color: $greenColor;

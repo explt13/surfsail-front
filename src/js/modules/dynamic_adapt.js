@@ -8,7 +8,7 @@ function DynamicAdapt(type) {
 DynamicAdapt.prototype.init = function () {
 	const _this = this;
 
-	this.оbjects = [];
+	this.objects = [];
 	this.daClassname = "_dynamic_adapt_";
 
 	this.nodes = document.querySelectorAll("[data-da]");
@@ -18,19 +18,19 @@ DynamicAdapt.prototype.init = function () {
 		const node = this.nodes[i];
 		const data = node.dataset.da.trim();
 		const dataArray = data.split(",");
-		const оbject = {};
-		оbject.element = node;
-		оbject.parent = node.parentNode;
-		оbject.destination = document.querySelector(dataArray[0].trim());
-		оbject.breakpoint = dataArray[1] ? dataArray[1].trim() : "767";
-		оbject.place = dataArray[2] ? dataArray[2].trim() : "last";
-		оbject.index = this.indexInParent(оbject.parent, оbject.element);
-		this.оbjects.push(оbject);
+		const object = {};
+		object.element = node;
+		object.parent = node.parentNode;
+		object.destination = document.querySelector(dataArray[0].trim());
+		object.breakpoint = dataArray[1] ? dataArray[1].trim() : "767";
+		object.place = dataArray[2] ? dataArray[2].trim() : "last";
+		object.index = this.indexInParent(object.parent, object.element);
+		this.objects.push(object);
 	}
 
-	this.arraySort(this.оbjects);
+	this.arraySort(this.objects);
 
-	this.mediaQueries = Array.prototype.map.call(this.оbjects, function (item) {
+	this.mediaQueries = Array.prototype.map.call(this.objects, function (item) {
 		return '(' + this.type + "-width: " + item.breakpoint / 16 + "rem)," + item.breakpoint; // | / 16 |  rem
 	}, this);
 	this.mediaQueries = Array.prototype.filter.call(this.mediaQueries, function (item, index, self) {
@@ -44,28 +44,28 @@ DynamicAdapt.prototype.init = function () {
 		const mediaBreakpoint = mediaSplit[1];
 
 
-		const оbjectsFilter = Array.prototype.filter.call(this.оbjects, function (item) {
+		const objectsFilter = Array.prototype.filter.call(this.objects, function (item) {
 			return item.breakpoint === mediaBreakpoint;
 		});
 		matchMedia.addListener(function () {
-			_this.mediaHandler(matchMedia, оbjectsFilter);
+			_this.mediaHandler(matchMedia, objectsFilter);
 		});
-		this.mediaHandler(matchMedia, оbjectsFilter);
+		this.mediaHandler(matchMedia, objectsFilter);
 	}
 };
 
-DynamicAdapt.prototype.mediaHandler = function (matchMedia, оbjects) {
+DynamicAdapt.prototype.mediaHandler = function (matchMedia, objects) {
 	if (matchMedia.matches) {
-		for (let i = 0; i < оbjects.length; i++) {
-			const оbject = оbjects[i];
-			оbject.index = this.indexInParent(оbject.parent, оbject.element);
-			this.moveTo(оbject.place, оbject.element, оbject.destination);
+		for (let i = 0; i < objects.length; i++) {
+			const object = objects[i];
+			object.index = this.indexInParent(object.parent, object.element);
+			this.moveTo(object.place, object.element, object.destination);
 		}
 	} else {
-		for (let i = 0; i < оbjects.length; i++) {
-			const оbject = оbjects[i];
-			if (оbject.element.classList.contains(this.daClassname)) {
-				this.moveBack(оbject.parent, оbject.element, оbject.index);
+		for (let i = 0; i < objects.length; i++) {
+			const object = objects[i];
+			if (object.element.classList.contains(this.daClassname)) {
+				this.moveBack(object.parent, object.element, object.index);
 			}
 		}
 	}

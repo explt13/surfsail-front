@@ -57,7 +57,7 @@ function documentActions(e){
 
 
 const burgerMenu = () =>{
-    const TABLET = 991 / 16
+    const TABLET = 992 / 16
     const mql = matchMedia(`(max-width: ${TABLET}rem)`)
     const button = document.querySelector('.icon-menu');
 
@@ -196,3 +196,14 @@ const handleSubMenuMore = () => {
     }
 }
 
+
+const handleCartHeight = () => {
+    const cartWrapper = document.querySelector('.cart');
+    if (cartWrapper) {
+        const header = document.querySelector(".header");
+        const headerHeight = header.scrollHeight;
+        const windowHeight = window.innerHeight;
+        cartWrapper.style.height = windowHeight - headerHeight + 'px';   
+    }
+}
+handleCartHeight();

@@ -355,16 +355,18 @@ html:not(._touch) ::-webkit-scrollbar-track {
 }
 .product-card__band {
   position: absolute;
-  color: #ffffff;
+  color: #fff;
   font-weight: 600;
   z-index: 5;
   width: 7.125rem;
   height: 3rem;
   clip-path: polygon(0 100%, 25% 40%, 75% 40%, 100% 100%);
   overflow: hidden;
-  transform: translateX(-2.5rem) translateY(0rem) rotate(-45deg);
+  transform: translateX(-2.5rem) translateY(0) rotate(-45deg);
   left: 0;
   top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -378,7 +380,7 @@ html:not(._touch) ::-webkit-scrollbar-track {
   left: 0.25rem;
 }
 .product-card__band_discount {
-  background-color: var(--mainColor);
+  background-color: #f6b817;
 }
 .product-card__band_new {
   background-color: #228B22;
@@ -3695,39 +3697,39 @@ button.swiper-pagination-bullet {
   width: 100%;
   object-fit: cover;
 }
-.item-category__image_first img {
+.item-category__image_1 img {
   top: 0;
   right: 0;
 }
-.item-category__image_second {
+.item-category__image_2 {
   width: 70%;
   transform: translateX(25%);
 }
-.item-category__image_second img {
+.item-category__image_2 img {
   height: 100%;
   bottom: -3.125rem;
   right: 0;
 }
-.item-category__image_third img {
+.item-category__image_3 img {
   height: 100%;
   transform: rotateY(180deg);
   bottom: -3.125rem;
 }
-.item-category__image_fourth img {
+.item-category__image_4 img {
   bottom: -5%;
 }
-.item-category__image_fifth {
+.item-category__image_5 {
   transform: rotateY(180deg);
   width: 70%;
 }
-.item-category__image_fifth img {
+.item-category__image_5 img {
   bottom: -2.1875rem;
   right: 4.375rem;
 }
-.item-category__image_sixth {
+.item-category__image_6 {
   width: 70%;
 }
-.item-category__image_sixth img {
+.item-category__image_6 img {
   bottom: 0;
 }
 @media (max-width: 92.5rem) {
@@ -4395,14 +4397,23 @@ button.swiper-pagination-bullet {
   font-size: 1.5rem;
   color: #5d8aa8;
 }
+.header-product__mods {
+  margin: 0 auto 0 0;
+  display: flex;
+  gap: 1rem;
+}
 .header-product__new {
+  background-image: linear-gradient(135deg, #228B22 35%, #65aa65 45%, #228B22 50%, #228B22 65%);
+}
+.header-product__discount {
+  background-image: linear-gradient(135deg, #f6b817 35%, #f7d681 45%, #f6b817 50%, #f6b817 65%);
+}
+.header-product__new, .header-product__discount {
   text-transform: capitalize;
   margin: 0 auto 0 0;
-  background-color: #228B22;
   padding: 0.25rem 0.625rem;
   color: #ffffff;
   border-radius: 0.25rem;
-  background-image: linear-gradient(135deg, #228B22 35%, #65aa65 45%, #228B22 50%, #228B22 65%);
   background-size: 200% 100%;
   background-position: 150% 100%;
   animation: glow 2s ease-in-out infinite;
@@ -4619,6 +4630,78 @@ button.swiper-pagination-bullet {
   }
 }
 
+.cart {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+@media (max-width: 1620px) {
+  .cart {
+    padding-top: calc(30px + 30 * (100vw - 320px) / 1300);
+  }
+}
+@media (max-width: 1620px) {
+  .cart {
+    padding-bottom: calc(30px + 30 * (100vw - 320px) / 1300);
+  }
+}
+
+.cart-item {
+  padding: 1rem;
+  border: 0.125rem solid #5d8aa8;
+  border-radius: 0.3125rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.cart-item:not(:last-child) {
+  margin: 0 0 1.25rem 0;
+}
+.cart-item__about {
+  display: flex;
+  gap: 1.25rem;
+}
+.cart-item__image {
+  max-width: 5.75rem;
+}
+.cart-item__image img {
+  max-width: 100%;
+}
+.cart-item__title {
+  font-size: 1.5rem;
+}
+.cart-item__description {
+  font-size: 1.125rem;
+  margin-top: auto;
+}
+.cart-item__qty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  align-items: center;
+}
+.cart-item__price {
+  font-size: 1.25rem;
+}
+.cart-item__quantity {
+  width: 7.5rem;
+  height: 2.5rem;
+}
+.cart-item__quantity button {
+  flex: 0 0 2.5rem;
+}
+
+.footer-cart {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem;
+  background-color: #ababab;
+}
+.footer-cart__buy {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .top-row-footer {
   background: url("../img/footer/footer_bg.jpg") 100% 30%/cover no-repeat;
   position: relative;
@@ -4767,10 +4850,10 @@ button.swiper-pagination-bullet {
 .column-item__title:not(:last-child) {
   margin: 0 0 1.875rem 0;
 }
-.column-item__title._not-spoller {
+.column-item__title._not-spoiler {
   justify-content: flex-start;
 }
-.column-item__title._not-spoller::after {
+.column-item__title._not-spoiler::after {
   display: none;
 }
 @media (max-width: 37.5rem) {

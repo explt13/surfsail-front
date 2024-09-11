@@ -484,13 +484,13 @@
             object-fit: cover;
             // object-position: 100% 0;
         }
-        &_first{
+        &_1{
             img{
                 top: 0;
                 right: 0;
             }
         }
-        &_second{
+        &_2{
             width: 70%;
             transform: translateX(25%);
             img{
@@ -499,20 +499,20 @@
                 right: 0;
             }
         }
-        &_third{
+        &_3{
             img{
                 height: 100%;
                 transform: rotateY(180deg);
                 bottom: rem(-50);
             }
         }
-        &_fourth{
+        &_4{
             img{
                 bottom: -5%;
             }
     
         }
-        &_fifth{
+        &_5{
             transform: rotateY(180deg);
             width: 70%;
             img{
@@ -520,7 +520,7 @@
                 right: rem(70);
             }
         }
-        &_sixth{
+        &_6{
             width: 70%;
             img{
                 bottom: 0;

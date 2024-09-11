@@ -190,12 +190,12 @@ function selects_close(e) {
 }
 function select_init(select) {
 	const select_parent = select.parentElement;
-	const select_modifikator = select.getAttribute('class');
+	const select_modificator = select.getAttribute('class');
 	const select_selected_option = select.querySelector('option:checked');
 	select.setAttribute('data-default', select_selected_option.value);
 	select.style.display = 'none';
 
-	select_parent.insertAdjacentHTML('beforeend', '<div class="select select_' + select_modifikator + '"></div>');
+	select_parent.insertAdjacentHTML('beforeend', '<div class="select select_' + select_modificator + '"></div>');
 
 	let new_select = select.parentElement.querySelector('.select');
 	new_select.appendChild(select);

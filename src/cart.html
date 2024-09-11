@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include('html/_head.htm', {
+        "title": "Catalog"
+    })
+
+<body>
+    <div class="wrapper">
+        @@include('html/_header.htm')
+        <main class="page page_cart">
+            <div class="container">
+                <div class="cart">
+                    <div class="cart-item">
+                        <div class="cart-item__about">
+                            <div class="cart-item__image">
+                                <img src="@img/products/surfboards/01.jpg" alt="cart-item-image">
+                            </div>
+                            <div class="cart-item__information">
+                                <div class="cart-item__title">Surfboard N1</div>
+                                <div class="cart-item__description">Some desc</div>
+                            </div>
+                        </div>
+                        <div class="cart-item__qty">
+                            <div class="cart-item__price">$ 799</div>
+                            <div class="cart-item__quantity quantity">
+                                <button class="quantity__button quantity__button_minus" type="button"></button>
+                                <div class="quantity__input">
+                                    <input type="text" name="form[]" value="1" autocomplete="off">
+                                </div>
+                                <button class="quantity__button quantity__button_plus" type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item">
+                        <div class="cart-item__about">
+                            <div class="cart-item__image">
+                                <img src="@img/products/surfboards/01.jpg" alt="cart-item-image">
+                            </div>
+                            <div class="cart-item__information">
+                                <div class="cart-item__title">Surfboard N1</div>
+                                <div class="cart-item__description">Some desc</div>
+                            </div>
+                        </div>
+                        <div class="cart-item__qty">
+                            <div class="cart-item__price">$ 799</div>
+                            <div class="cart-item__quantity quantity">
+                                <button class="quantity__button quantity__button_minus" type="button"></button>
+                                <div class="quantity__input">
+                                    <input type="text" name="form[]" value="1" autocomplete="off">
+                                </div>
+                                <button class="quantity__button quantity__button_plus" type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__footer footer-cart">
+                    <div class="footer-cart__sum">$ 7999</div>
+                    <div class="footer-cart__buy _icon-arrow_f_r">Buy</div>
+                </div>
+            </div>
+        </main>
+        @@include('html/_footer.htm')
+    </div>
+    <script src="js/app.min.js"></script>
+</body>
