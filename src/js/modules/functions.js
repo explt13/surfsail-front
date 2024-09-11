@@ -157,28 +157,28 @@ function initRatings() {
 }
 
 
-// SPOLLERS
-const spollersArray = document.querySelectorAll('[data-spollers]');
-if (spollersArray.length > 0) {
-	// Getting Spollers
-	const spollersRegular = Array.from(spollersArray).filter(function (item, index, self) {
-		return !item.dataset.spollers.split(",")[0];
+// SPOILERS
+const spoilersArray = document.querySelectorAll('[data-spoilers]');
+if (spoilersArray.length > 0) {
+	// Getting Spoilers
+	const spoilersRegular = Array.from(spoilersArray).filter(function (item, index, self) {
+		return !item.dataset.spoilers.split(",")[0];
 	});
-	// Init spollers
-	if (spollersRegular.length > 0) {
-		initSpollers(spollersRegular);
+	// Init spoilers
+	if (spoilersRegular.length > 0) {
+		initSpoilers(spoilersRegular);
 	}
 
-	// Getting MQ Spollers
-	const spollersMedia = Array.from(spollersArray).filter(function (item, index, self) {
-		return item.dataset.spollers.split(",")[0];
+	// Getting MQ Spoilers
+	const spoilersMedia = Array.from(spoilersArray).filter(function (item, index, self) {
+		return item.dataset.spoilers.split(",")[0];
 	});
 
-	// Init MQ spollers
-	if (spollersMedia.length > 0) {
+	// Init MQ spoilers
+	if (spoilersMedia.length > 0) {
 		const breakpointsArray = [];
-		spollersMedia.forEach(item => {
-			const params = item.dataset.spollers;
+		spoilersMedia.forEach(item => {
+			const params = item.dataset.spoilers;
 			const breakpoint = {};
 			const paramsArray = params.split(",");
 			breakpoint.value = paramsArray[0];
@@ -203,71 +203,71 @@ if (spollersArray.length > 0) {
 			const matchMedia = window.matchMedia(paramsArray[0]);
 
 			// Objects
-			const spollersArray = breakpointsArray.filter(function (item) {
+			const spoilersArray = breakpointsArray.filter(function (item) {
 				if (item.value === mediaBreakpoint && item.type === mediaType) {
 					return true;
 				}
 			});
 			// Event
 			matchMedia.addListener(function () {
-				initSpollers(spollersArray, matchMedia);
+				initSpoilers(spoilersArray, matchMedia);
 			});
-			initSpollers(spollersArray, matchMedia);
+			initSpoilers(spoilersArray, matchMedia);
 		});
 	}
 	// Initialization
-	function initSpollers(spollersArray, matchMedia = false) {
-		spollersArray.forEach(spollersBlock => {
-			spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
+	function initSpoilers(spoilersArray, matchMedia = false) {
+		spoilersArray.forEach(spoilersBlock => {
+			spoilersBlock = matchMedia ? spoilersBlock.item : spoilersBlock;
 			if (matchMedia.matches || !matchMedia) {
-				spollersBlock.classList.add('_init');
-				initSpollerBody(spollersBlock);
-				spollersBlock.addEventListener("click", setSpollerAction);
+				spoilersBlock.classList.add('_init');
+				initSpoilerBody(spoilersBlock);
+				spoilersBlock.addEventListener("click", setSpoilerAction);
 			} else {
-				spollersBlock.classList.remove('_init');
-				initSpollerBody(spollersBlock, false);
-				spollersBlock.removeEventListener("click", setSpollerAction);
+				spoilersBlock.classList.remove('_init');
+				initSpoilerBody(spoilersBlock, false);
+				spoilersBlock.removeEventListener("click", setSpoilerAction);
 			}
 		});
 	}
 	// Work with content
-	function initSpollerBody(spollersBlock, hideSpollerBody = true) {
-		const spollerTitles = spollersBlock.querySelectorAll('[data-spoller]');
-		if (spollerTitles.length > 0) {
-			spollerTitles.forEach(spollerTitle => {
-				if (hideSpollerBody) {
-					spollerTitle.removeAttribute('tabindex');
-					if (!spollerTitle.classList.contains('_active')) {
-						spollerTitle.nextElementSibling.hidden = true;
+	function initSpoilerBody(spoilersBlock, hideSpoilerBody = true) {
+		const spoilerTitles = spoilersBlock.querySelectorAll('[data-spoiler]');
+		if (spoilerTitles.length > 0) {
+			spoilerTitles.forEach(spoilerTitle => {
+				if (hideSpoilerBody) {
+					spoilerTitle.removeAttribute('tabindex');
+					if (!spoilerTitle.classList.contains('_active')) {
+						spoilerTitle.nextElementSibling.hidden = true;
 					}
 				} else {
-					spollerTitle.setAttribute('tabindex', '-1');
-					spollerTitle.nextElementSibling.hidden = false;
+					spoilerTitle.setAttribute('tabindex', '-1');
+					spoilerTitle.nextElementSibling.hidden = false;
 				}
 			});
 		}
 	}
-	function setSpollerAction(e) {
+	function setSpoilerAction(e) {
 		const el = e.target;
-		if (el.hasAttribute('data-spoller') || el.closest('[data-spoller]')) {
-			const spollerTitle = el.hasAttribute('data-spoller') ? el : el.closest('[data-spoller]');
-			const spollersBlock = spollerTitle.closest('[data-spollers]');
-			const oneSpoller = spollersBlock.hasAttribute('data-one-spoller') ? true : false;
-			if (!spollersBlock.querySelectorAll('._slide').length) {
-				if (oneSpoller && !spollerTitle.classList.contains('_active')) {
-					hideSpollersBody(spollersBlock);
+		if (el.hasAttribute('data-spoiler') || el.closest('[data-spoiler]')) {
+			const spoilerTitle = el.hasAttribute('data-spoiler') ? el : el.closest('[data-spoiler]');
+			const spoilersBlock = spoilerTitle.closest('[data-spoilers]');
+			const oneSpoiler = spoilersBlock.hasAttribute('data-one-spoiler') ? true : false;
+			if (!spoilersBlock.querySelectorAll('._slide').length) {
+				if (oneSpoiler && !spoilerTitle.classList.contains('_active')) {
+					hideSpoilersBody(spoilersBlock);
 				}
-				spollerTitle.classList.toggle('_active');
-				_slideToggle(spollerTitle.nextElementSibling, 500);
+				spoilerTitle.classList.toggle('_active');
+				_slideToggle(spoilerTitle.nextElementSibling, 500);
 			}
 			e.preventDefault();
 		}
 	}
-	function hideSpollersBody(spollersBlock) {
-		const spollerActiveTitle = spollersBlock.querySelector('[data-spoller]._active');
-		if (spollerActiveTitle) {
-			spollerActiveTitle.classList.remove('_active');
-			_slideUp(spollerActiveTitle.nextElementSibling, 500);
+	function hideSpoilersBody(spoilersBlock) {
+		const spoilerActiveTitle = spoilersBlock.querySelector('[data-spoiler]._active');
+		if (spoilerActiveTitle) {
+			spoilerActiveTitle.classList.remove('_active');
+			_slideUp(spoilerActiveTitle.nextElementSibling, 500);
 		}
 	}
 }

@@ -66,7 +66,7 @@ const handleAutoplay = (slider) => {
     let leaveTime = 0;
     let elapsedTime = 0;
 
-    slider.on('beforeSlideChangeStart', () => {
+    slider.on('beforeTransitionStart', () => {
         if (leaveTime) {
             leaveTime = 0;
         }
@@ -88,12 +88,15 @@ const handleAutoplay = (slider) => {
             clearTimeout(autoplayTimeout);
         }
     });
+
     slider.el.addEventListener('mouseleave', function(){
         slider.el.classList.remove('animation-stop');
         leaveTime = Date.now();
+        
         if (elapsedTime) {
             timeLeft -= elapsedTime;
         }
+
         if (timeLeft > 0) {
             autoplayTimeout = setTimeout(() => {
                 leaveTime = 0;
@@ -141,7 +144,7 @@ const handleCatalogSlider = () => {
                     pauseOnMouseEnter: true,
                 },
                 breakpoints: {
-                    767: {
+                    768: {
                         slidesPerView: 2,
                     },
                     992: {
@@ -152,8 +155,15 @@ const handleCatalogSlider = () => {
                     },
                 },
                 on: {
+                    unlock: (slider) => {
+                        slider.params.loop = true;
+                        handleAutoplay(slider);
+                    },
+                    lock: (slider) => {
+                        slider.params.loop = false;
+                    },
                     afterInit: (slider) => {
-                        if (!document.documentElement.classList.contains('_touch') && slider.slides.length > 4){
+                        if (!document.documentElement.classList.contains('_touch') && !slider.isLocked){
                             handleAutoplay(slider);
                         }
                     },
@@ -161,7 +171,7 @@ const handleCatalogSlider = () => {
             });
         }
     }
-
+    enableSwiper();
     const MOBILE = 768 / 16;
     const mq = window.matchMedia(`(min-width: ${MOBILE}rem)`);
     const watchMq = () => {
@@ -230,8 +240,15 @@ const handleNewCatalogSlider = () => {
                 }
             },
             on: {
+                unlock: (slider) => {
+                    slider.params.loop = true;
+                    handleAutoplay(slider);
+                },
+                lock: (slider) => {
+                    slider.params.loop = false;
+                },
                 afterInit: (slider) => {
-                    if (!document.documentElement.classList.contains('_touch')){
+                    if (!document.documentElement.classList.contains('_touch') && !slider.isLocked){
                         handleAutoplay(slider);
                     }
                 }
