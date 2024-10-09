@@ -113,6 +113,7 @@ const handleCatalogSlider = () => {
     let productsSlider = null;
     const enableSwiper = () => {
         const sliders = document.querySelectorAll('.slider-products');
+    
         if (sliders.length > 0){
             productsSlider = new Swiper(".slider-products", {
                 modules: [Pagination, Autoplay],
@@ -185,7 +186,7 @@ const handleCatalogSlider = () => {
                     slider.destroy(false, true);
                 })
                 productsSlider = null;
-            } else if (productsSlider && productsSlider.length == 1){
+            } else if (productsSlider){
                 productsSlider.destroy(false, true);
                 productsSlider = null;
             }

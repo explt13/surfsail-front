@@ -23,7 +23,6 @@ export const path = {
         images: `${srcFolder}/img/**/*.{jpg,jpeg,png,ico,gif,webp}`,
         videos: `${srcFolder}/videos/*.mp4`,
         svg: `${srcFolder}/img/**/*.svg`,
-        svgicons: `${srcFolder}/svgicons/*.svg`,
         files: `${srcFolder}/files/**/*.*`,
     },
     watch: {

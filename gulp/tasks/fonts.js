@@ -76,7 +76,7 @@ export const fontsStyle = () => {
                     }
                 }
             } else {
-                console.log("File scss/fonts.scss already exists. You must delete it in order to update.")
+                console.log("File scss/util/fonts.scss already exists. You must delete it in order to update.")
             }
         }
     });

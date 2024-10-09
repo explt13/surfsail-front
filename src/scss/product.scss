@@ -334,8 +334,9 @@
         padding: 0 0 rem(20) 0;
         margin: 0 0 rem(24) 0;
         border-bottom: rem(1) solid rgba(20, 20, 20, 0.15);
-        overflow-x: scroll;
+        overflow-x: auto;
         overflow-y: clip;
+        
     }
     // .information-product__tab
     &__tab {
@@ -360,7 +361,6 @@
     }
    
 }
-
 .information {
     // .information__product
     &__product {
@@ -371,6 +371,7 @@
 
 }
 ._tabs-item {
+    flex: 0 0 auto;
     font-weight: 400;
     font-size: 20px;
     color: rgba(20, 20, 20, 0.5);

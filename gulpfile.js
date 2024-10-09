@@ -24,7 +24,6 @@ import { js } from './gulp/tasks/js.js';
 import { images } from './gulp/tasks/images.js';
 import { videos } from './gulp/tasks/videos.js';
 import { otfToTtf, ttfToWoff, fontsStyle } from './gulp/tasks/fonts.js';
-import { svgSprites } from './gulp/tasks/svgSprites.js';
 import { zip } from './gulp/tasks/zip.js';
 import { ftp } from './gulp/tasks/ftp.js';
 
@@ -36,7 +35,7 @@ function watcher(){
     gulp.watch(path.watch.images, images);
     gulp.watch(path.watch.videos, videos);
 }
-export { svgSprites }
+
 
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle)
 const mainTasks = gulp.series(fonts, gulp.parallel(files, html, scss, js, images, videos));

@@ -64,3 +64,12 @@
 ._icon-back::before {
   content: "\e90c";
 }
+._icon-notif_failure::before {
+  content: "\e90f";
+}
+._icon-notif_success::before {
+  content: "\e910";
+}
+._icon-notif_alert::before {
+  content: "\e911";
+}
