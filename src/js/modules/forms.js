@@ -1,16 +1,24 @@
 //let btn = document.querySelectorAll('button[type="submit"],input[type="submit"]');
 import {_slideToggle, _slideUp, _slideDown} from './functions.js'
-let forms = document.querySelectorAll('form');
+let forms = document.querySelectorAll('_form_val');
 if (forms.length > 0) {
 	for (let index = 0; index < forms.length; index++) {
 		const el = forms[index];
 		el.addEventListener('submit', form_submit);
 	}
 }
+function email_test(input) {
+	return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+}
+function _is_hidden(el) {
+	return (el.offsetParent === null)
+}
+
 async function form_submit(e) {
 	let btn = e.target;
 	let form = btn.closest('form');
 	let error = form_validate(form);
+	console.log(error);
 	if (error == 0) {
 		let formAction = form.getAttribute('action') ? form.getAttribute('action').trim() : '#';
 		let formMethod = form.getAttribute('method') ? form.getAttribute('method').trim() : 'GET';
@@ -517,7 +525,7 @@ const initRange = () => {
 				format: wNumb({
 					decimals: 0, // default is 2
 					thousand: ' ', // thousand delimiter
-					postfix: '$', // appended after the number
+					prefix: '$ ', // appended after the number
 				})
 			});
 			item.noUiSlider.on('update', function (values, handle) {

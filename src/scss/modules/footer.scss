@@ -279,35 +279,9 @@
     }
     // .form-mailing__agreement-button
     &__agreement-button {
-        position: relative;
         top: rem(2);
-        accent-color: $fixedOrange;
-        -webkit-appearance: none;
-        appearance: none;
-        background: rgba(255, 255, 255, 0.03);
         border: rem(1) solid $white;
-        width: rem(16);
-        height: rem(16);
-        display: inline-block;
-        cursor: pointer;
-        border-radius: rem(2);
         flex: 0 0 rem(16);
-        transition: background-color 0.1s ease-in-out;
-        position: relative;
-
-        &:checked{
-            &::after{
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
-                width: rem(10);
-                height: rem(10);
-                background-color: $fixedOrange;
-            }
-        }
-
     }
     // .form-mailing__policy
     &__policy {

@@ -15,15 +15,15 @@
 @font-face{
 	font-family: RedHatText;
 	font-display: swap;
-	src: url("../fonts/RedHatText-Medium.woff2") format("woff2"), url("../fonts/RedHatText-Medium.woff") format("woff");
-	font-weight: 500;
+	src: url("../fonts/RedHatText-Light.woff2") format("woff2"), url("../fonts/RedHatText-Light.woff") format("woff");
+	font-weight: 300;
 	font-style: normal;
 }
 @font-face{
 	font-family: RedHatText;
 	font-display: swap;
-	src: url("../fonts/RedHatText-Regular.woff2") format("woff2"), url("../fonts/RedHatText-Regular.woff") format("woff");
-	font-weight: 400;
+	src: url("../fonts/RedHatText-Medium.woff2") format("woff2"), url("../fonts/RedHatText-Medium.woff") format("woff");
+	font-weight: 500;
 	font-style: normal;
 }
 @font-face{
@@ -36,7 +36,7 @@
 @font-face{
 	font-family: RedHatText;
 	font-display: swap;
-	src: url("../fonts/RedHatText-Light.woff2") format("woff2"), url("../fonts/RedHatText-Light.woff") format("woff");
-	font-weight: 300;
+	src: url("../fonts/RedHatText-Regular.woff2") format("woff2"), url("../fonts/RedHatText-Regular.woff") format("woff");
+	font-weight: 400;
 	font-style: normal;
 }

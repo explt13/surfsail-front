@@ -21,7 +21,6 @@
 	// .checkbox__text
 	&__text {
 		display: inline-flex;
-		align-items: center;
 		position: relative;
 		color: $secondaryColor;
 		cursor: pointer;
@@ -34,6 +33,7 @@
 		display: flex;
 		align-items: center;
 		color: $mainColor;
+		align-items: flex-end;
 		&::before {
 			content: "";
 			align-self: flex-start;
@@ -47,6 +47,7 @@
 		}
 		&::after{
 			content: '';
+			align-self: center;
 			position: absolute;
 			left: rem(3);
 			width: rem(12);
@@ -54,6 +55,7 @@
 			border-radius: rem(1);
 			background-color: $mainColor;
 			transform: scale(0);
+			transition: 0.1s ease-in-out transform;
 		}
 	}
 	&._error {

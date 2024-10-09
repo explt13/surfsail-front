@@ -1,4 +1,3 @@
-
 document.addEventListener("click", documentActions);
 
 
@@ -60,44 +59,45 @@ const burgerMenu = () =>{
     const TABLET = 992 / 16
     const mql = matchMedia(`(max-width: ${TABLET}rem)`)
     const button = document.querySelector('.icon-menu');
-
-    const menu = () => {
-        document.documentElement.classList.remove('menu-hidden');
-        document.querySelector('.icon-menu').classList.toggle('active');
-        if (document.documentElement.classList.contains('catalog-open')){
-            document.documentElement.classList.remove('catalog-open');
+    if (button) {
+        const menu = () => {
+            document.documentElement.classList.remove('menu-hidden');
+            document.querySelector('.icon-menu').classList.toggle('active');
+            if (document.documentElement.classList.contains('catalog-open')){
+                document.documentElement.classList.remove('catalog-open');
+            }
+            if (document.documentElement.classList.contains('sub-menu-open')){
+                document.documentElement.classList.remove('sub-menu-open');
+                document.querySelector('.menu-catalog__link').classList.remove('_active-link');
+                document.querySelector('.sub-menu-catalog__block').classList.remove("_active-sub-menu");
+                
+            }
+    
+            document.documentElement.classList.toggle('menu-open');
+            document.documentElement.classList.toggle('lock');
         }
-        if (document.documentElement.classList.contains('sub-menu-open')){
-            document.documentElement.classList.remove('sub-menu-open');
-            document.querySelector('.menu-catalog__link').classList.remove('_active-link');
-            document.querySelector('.sub-menu-catalog__block').classList.remove("_active-sub-menu");
-            
+    
+        const handleBM = () => {
+            document.documentElement.classList.add('menu-hidden');
+            button.addEventListener('click', menu);
         }
-
-        document.documentElement.classList.toggle('menu-open');
-        document.documentElement.classList.toggle('lock');
-    }
-
-    const handleBM = () => {
-        document.documentElement.classList.add('menu-hidden');
-        button.addEventListener('click', menu);
-    }
-
-    if (mql.matches){
-        handleBM();
-    }
-    mql.addEventListener('change', function(){
+    
         if (mql.matches){
             handleBM();
-        } else {
-            document.querySelector('.icon-menu').removeEventListener('click', menu);
-            document.querySelector('.icon-menu').classList.remove('active');
-            document.documentElement.classList.remove('menu-open');
-            document.documentElement.classList.remove('lock');
-            document.documentElement.classList.remove('catalog-open');
-            document.documentElement.classList.remove('sub-menu-open');
         }
-    })
+        mql.addEventListener('change', function(){
+            if (mql.matches){
+                handleBM();
+            } else {
+                document.querySelector('.icon-menu').removeEventListener('click', menu);
+                document.querySelector('.icon-menu').classList.remove('active');
+                document.documentElement.classList.remove('menu-open');
+                document.documentElement.classList.remove('lock');
+                document.documentElement.classList.remove('catalog-open');
+                document.documentElement.classList.remove('sub-menu-open');
+            }
+        })
+    }  
 }
 burgerMenu();
 
@@ -118,57 +118,76 @@ if (moreNone.length > 0){
 }
 
 const handleHeader = () => {
-    const mq = window.matchMedia('(min-width: 992px)')
     const topHeader = document.querySelector('.top-header');
     const bodyHeader = document.querySelector('.body-header');
     const catalogHeader = document.querySelector('.catalog-header');
-    const topHeaderHeight = topHeader.scrollHeight
-    const bodyHeaderHeight = bodyHeader.scrollHeight;
-    const catalogHeaderHeight = catalogHeader.scrollHeight;
-  
-    let scrollYLast = 0;
 
-    const watchHeader = () => {
-        const scrollY = window.scrollY;
-
-        
-        if (scrollY > topHeaderHeight + bodyHeaderHeight){
-            bodyHeader.classList.add('_scrolled');
-            topHeader.style.marginBottom = bodyHeaderHeight + "px";
-        } else if (scrollY <= topHeaderHeight + bodyHeaderHeight){
-            bodyHeader.classList.remove('_scrolled');
-            bodyHeader.classList.remove('_hide');
-            topHeader.style.marginBottom = 0;
+    if (topHeader){
+        const mq = window.matchMedia('(min-width: 992px)')
+        const topHeaderHeight = topHeader.scrollHeight
+        const bodyHeaderHeight = bodyHeader.scrollHeight;
+        const catalogHeaderHeight = catalogHeader.scrollHeight;
+        let scrollYLast = 0;
+        const watchHeader = () => {
+            const scrollY = window.scrollY;
+            if (scrollY > topHeaderHeight + bodyHeaderHeight){
+                if (!bodyHeader.classList.contains('_scrolled')){
+                    bodyHeader.classList.add('_scrolled');
+                }
+                if (topHeader.style.marginBottom === '0px'){
+                    topHeader.style.marginBottom = bodyHeaderHeight + "px";
+                }
+                
+            } else if (scrollY <= topHeaderHeight + bodyHeaderHeight){
+                if (bodyHeader.classList.contains('_scrolled')){
+                    bodyHeader.classList.remove('_scrolled');
+                }
+                if (bodyHeader.classList.contains('_hide')){
+                    bodyHeader.classList.remove('_hide');
+                }
+                topHeader.style.marginBottom = 0;
+            }
+            if (scrollY > topHeaderHeight + bodyHeaderHeight + catalogHeaderHeight){
+                if (!bodyHeader.classList.contains('_show')){
+                    bodyHeader.classList.add('_show');
+                }
+                if (bodyHeader.classList.contains('_hide')){
+                    bodyHeader.classList.remove('_hide');
+                }
+            } else if (scrollY <= topHeaderHeight + bodyHeaderHeight + catalogHeaderHeight){
+                if (bodyHeader.classList.contains('_show')){
+                    bodyHeader.classList.remove('_show');
+                }
+            }
+            if ((scrollY <= topHeaderHeight + bodyHeaderHeight + catalogHeaderHeight) && (scrollY > topHeaderHeight + bodyHeaderHeight) && (scrollYLast > scrollY)){
+                if (!bodyHeader.classList.contains('_hide')){
+                    bodyHeader.classList.add('_hide');
+                }
+            }
+            scrollYLast = scrollY;
         }
-        if (scrollY > topHeaderHeight + bodyHeaderHeight + catalogHeaderHeight){
-            bodyHeader.classList.add('_show');
-        } else if (scrollY <= topHeaderHeight + bodyHeaderHeight + catalogHeaderHeight){
-            bodyHeader.classList.remove('_show');   
+        mq.addEventListener('change', function(){
+            initHeader();
+        })
+    
+        const initHeader = () => {
+            if (mq.matches){
+                window.addEventListener("scroll", watchHeader);
+            } else{
+                if (bodyHeader.classList.contains('_scrolled')){
+                    bodyHeader.classList.remove('_scrolled');
+                }
+                if (bodyHeader.classList.contains('_hide')){
+                    bodyHeader.classList.remove('_hide');
+                }
+                topHeader.style.marginBottom = 0;
+                window.removeEventListener("scroll", watchHeader);
+            }
         }
-        if ((scrollY <= topHeaderHeight + bodyHeaderHeight + catalogHeaderHeight) && (scrollY > topHeaderHeight + bodyHeaderHeight) && (scrollYLast > scrollY)){
-            bodyHeader.classList.add('_hide');
-        }
-        scrollYLast = scrollY;
-    }
-    mq.addEventListener('change', function(){
         initHeader();
-    })
-
-    const initHeader = () => {
-        if (mq.matches){
-            window.addEventListener("scroll", watchHeader);
-        } else{
-            if (bodyHeader.classList.contains('_scrolled')){
-                bodyHeader.classList.remove('_scrolled');
-            }
-            if (bodyHeader.classList.contains('_hide')){
-                bodyHeader.classList.remove('_hide');
-            }
-            topHeader.style.marginBottom = 0;
-            window.removeEventListener("scroll", watchHeader);
-        }
     }
-    initHeader();
+
+    
 }
 handleHeader();
 
@@ -198,12 +217,105 @@ const handleSubMenuMore = () => {
 
 
 const handleCartHeight = () => {
-    const cartWrapper = document.querySelector('.cart');
-    if (cartWrapper) {
-        const header = document.querySelector(".header");
-        const headerHeight = header.scrollHeight;
-        const windowHeight = window.innerHeight;
-        cartWrapper.style.height = windowHeight - headerHeight + 'px';   
+    const mq = window.matchMedia("(min-width: 992px)");
+    if (mq.matches){
+        const cartContainer = document.querySelector('.cart__container');
+        if (cartContainer) {
+            const headerHeight = document.querySelector(".header")?.scrollHeight;
+            const footerHeight = document.querySelector('.footer-cart')?.scrollHeight;
+            const windowHeight = window.innerHeight;
+            const cartContainerHeight = windowHeight - (headerHeight + footerHeight);
+            cartContainer.style.height = cartContainerHeight + 'px';
+        }
     }
 }
 handleCartHeight();
+import { _slideDown, _slideUp } from "./functions.js";
+
+const handleAuth = () => {
+    const changeButton = document.querySelector('.auth__change-method');
+
+    if (changeButton) {
+        const mq = window.matchMedia('(min-width: 1024px)');
+        const changeText = changeButton.previousElementSibling;
+        const authPage = document.querySelector('.page_auth');
+        const authContainer = changeButton.closest('.auth__container');
+        const authForm = authContainer.querySelector('.form-auth');
+        const authButton = authForm.querySelector('.form-auth__submit span');
+        const password = authForm.querySelector('.form-auth__password');
+        const rememberMe = authForm.querySelector('.form-auth__remember');
+        const confirmPassword = authForm.querySelector('.form-auth__password-confirm');
+        const spaceHeight = parseInt(window.getComputedStyle(rememberMe).marginBottom) + confirmPassword.scrollHeight + parseInt(window.getComputedStyle(authForm).gap);
+        document.addEventListener('DOMContentLoaded', function(){
+            const height = authContainer.scrollHeight;
+            if (mq.matches){
+                authContainer.style.height = '100%';
+                authContainer.style.minHeight = height + 'px';
+            }
+            window.addEventListener('resize', function() {
+                if (mq.matches){
+                    authContainer.style.height = '100%';
+                    authContainer.style.minHeight = height + 'px';
+                } else {
+                    authContainer.style.height = "";
+                    authContainer.style.minHeight = "";
+                }
+            })
+           
+        })
+        
+       
+
+        changeButton.addEventListener('click', function() {
+            if (authContainer.classList.contains('_login')){
+                password.insertAdjacentElement('afterend', confirmPassword);
+                _slideDown(confirmPassword, 250);
+                authContainer.classList.remove('_login');
+                rememberMe.style.marginBottom = "";
+         
+                [changeButton, changeText, authButton].forEach(el => {
+                    el.classList.add('_fade_out');
+                })
+                setTimeout(() => {
+                    [changeButton, changeText, authButton].forEach(el => {
+                        el.classList.remove('_fade_out');
+                        el.classList.add('_fade_in');
+                    })
+                    changeButton.textContent = 'Log in';
+                    changeText.textContent = 'Already have an account?';
+                    authButton.textContent = 'Register';
+                }, 250)
+                setTimeout(() => {
+                    [changeButton, changeText, authButton].forEach(el => {
+                        el.classList.remove('_fade_in');
+                    })
+                },500)
+            } else {
+                _slideUp(confirmPassword, 250);
+                authContainer.classList.add('_login');
+                rememberMe.style.marginBottom = spaceHeight + 'px';
+                [changeButton, changeText, authButton].forEach(el => {
+                    el.classList.add('_fade_out');
+                })
+                setTimeout(() => {
+                    [changeButton, changeText, authButton].forEach(el => {
+                        el.classList.remove('_fade_out');
+                        el.classList.add('_fade_in');
+                    })
+                    changeButton.textContent = 'Register';
+                    changeText.textContent = 'Don\'t have an account?';
+                    authButton.textContent = 'Log in';
+                    confirmPassword.remove();
+
+                }, 250)
+                setTimeout(() => {
+                    [changeButton, changeText, authButton].forEach(el => {
+                        el.classList.remove('_fade_in');
+                    })
+                },500)
+            }
+        })
+    }
+}
+
+handleAuth();

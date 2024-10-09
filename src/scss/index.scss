@@ -227,7 +227,7 @@
 .advantages-main {
     display: flex;
     @include adaptive-value('padding-top', 120, 40, 1);
-    @include adaptive-value('padding-bottom', 100, 35, 1);
+    @include adaptive-value('padding-bottom', 70, 35, 1);
     @include adaptive-value('column-gap', 180, 30, 1);
     row-gap: rem(30);
     flex-wrap: wrap;
@@ -269,126 +269,103 @@
 
 
 .brands {
-    background-image: url('@img/home/brands-bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    @include adaptive-value('padding-top', 180, 100, 1);
-    @include adaptive-value('padding-bottom', 200, 100, 1);
+    @include adaptive-value('padding-top', 80, 50, 1);
+    @include adaptive-value('padding-bottom', 100, 60, 1);
     // .brands__container
     &__container {
     }
     // .brands__title
     &__title {
         text-align: center;
-        @include adaptive-value('margin-bottom', 100, 40, 1);
+        @include adaptive-value('margin-bottom', 80, 40, 1);
         font-size: rem(40)!important;
         letter-spacing: rem(10)!important;
-        color: $white!important;
     }
     // .brands__cards
     &__cards {
-        
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(20);
+    }
+    // .brands__item
+    &__item {
+
+    }
+    // .brands__more
+    &__more {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: rem(16);
+        align-self: center;
+        font-size: rem(18);
+        padding: rem(10);
+        align-items: center;
+        &::before{
+            font-size: rem(14);
+            position: relative;
+            left: rem(0);
+            transition: left ease-in-out 0.1s;
+        }
+        &:hover{
+            &::before{
+                left: rem(4);
+            }
+        }
     }
 }
 
-.cards-brand {
+.item-brand {
+    max-height: rem(92);
+    max-width: calc(25% - rem(20) * 3 / 4);
+    padding: rem(10);
+    border: 1px solid $gray;
+    border-radius: rem(5);
+    flex: 0 0 calc(25% - rem(20) * 3 / 4);
+    align-items: center;
     display: flex;
-
-    &__item{
-        flex-grow: 0;
-        flex-shrink: 0;
-        @include adaptive-value-between('flex-basis', 300, 200, 1920, 992);
-     
-        overflow: hidden;
-        position: relative;
-        background-image: linear-gradient(225deg, $darkColor, $secondaryColor);
-        box-shadow: 0 0 rem(10) 0 $darkColor;
-        transition: transform 0.2s ease-in-out;
-        border-radius: rem(10);
-        background-size: 200% 100%;
-        background-position: 50% 0%;
-      
-        @for $var from 2 to 7 {
-            &:nth-child(#{$var}){
-                left: (rem(-80 * ($var - 1)));
-                z-index: $var;
-            }
-        }
-
-        @media (any-hover: hover){
-            &:hover{
-                z-index: 10;
-                transform: scale(1.1) rotate(5deg);
-                transform-origin: top left;
-            }
-        }
-        
-        &_more{
-            background-image: linear-gradient(to left,$darkColor, $secondaryColor);
-            color: $white;
-            background-size: 150% 100%;
-            background-position: 0% 0%;
-            left: rem(-450);
-            flex: 0 0 rem(150)!important;
-            font-size: rem(28);
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            flex-direction: row-reverse;
-            gap: rem(10);
-            z-index: 9;
-            transition: background-position ease-in-out 0.2s;
+    gap: rem(16);
+    &:hover{
+        .item-brand__text{
             &::before{
-                font-size: rem(18);
+                right: 0;
             }
-            @media (any-hover: hover) {
-                &:hover{
-                    transform: unset;
-                    transform-origin: unset;
-                    background-position: 50%;
-                    
-                }
-            }
-            @media (max-width: $tablet) {
-                margin-left: auto;
-                height: rem(80);
-            }
-        }
-
-        img{
-            width: 100%;
+       }
+    }
+    &__image {
+        flex: 0 0 rem(92);
+        padding: rem(10);
+        display: flex;
+        img {
             height: 100%;
-            object-fit: contain;
-            filter:invert(91%) sepia(92%) saturate(27%) hue-rotate(192deg) brightness(107%) contrast(100%);
-        }
-
-        @media (max-width: $tablet) {
-            flex: 0 0 33.333%;
-            left: 0!important;
-            $brands-offset-tb: 0;
-            @for $var from 2 to 4 {
-                
-                &:nth-child(#{$var}){
-                    left: (rem(-25 * ($brands-offset-tb + $var)))!important;
-             
-                }
-            }
-            @for $var from 2 to 4 {
-                $increment: 3;
-                &:nth-child(#{$var + $increment}){
-                    left: (rem(-25 * ($brands-offset-tb + $var)))!important;
-         
-                }
-            }
-        }
-        @media (max-width: $smallPhone) {
-            flex: 0 0 50%;
-            position: static;
+            width: 100%;
         }
     }
-    @media (max-width: $tablet) {
-        flex-wrap: wrap;
+    &__text {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: rem(18);
+        align-items: center;
+        justify-content: flex-end;
+        
+        &::before{
+            margin-left: auto;
+            position: relative;
+            right: rem(16);
+            font-size: rem(14);
+            transition: right ease-in-out 0.2s;
+        }    
+        &::after{
+            content: '';
+            display: block;
+            margin-right: rem(16);
+            width: 1px;
+            height: rem(60);
+            background-color: $gray;
+        }
     }
 }
 
