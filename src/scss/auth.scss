@@ -199,18 +199,10 @@
         padding: rem(16);
         border: 1px solid #d2d2d2;
         border-radius: rem(6);
-        &::placeholder{
-            font-weight: 400;
-            font-size: 16px;
-            color: #2e2e2e;
-            transition: opacity ease-in-out 0.2s;
-        }
-        outline: none;
+        
+
         &:focus{
             outline: 1px solid #b0b0b0;
-            &::placeholder{
-                opacity: 0;
-            }
         }
     }
     &:not(:last-child){

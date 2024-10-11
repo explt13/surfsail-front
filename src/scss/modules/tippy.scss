@@ -71,3 +71,15 @@
 	padding: 5px 9px;
 	z-index: 1;
 }
+[data-theme="error"]{
+	.tippy-arrow {
+		color: #FFC300!important;
+	}
+	&{
+		background-color: #FFC300!important;
+	}
+	.tippy-content{
+		font-weight: 600;
+		font-size: rem(16);
+	}
+}
