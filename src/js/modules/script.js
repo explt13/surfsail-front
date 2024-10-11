@@ -240,12 +240,14 @@ const handleAuth = () => {
         const changeText = changeButton.previousElementSibling;
         const authPage = document.querySelector('.page_auth');
         const authContainer = changeButton.closest('.auth__container');
-        const authForm = authContainer.querySelector('.form-auth');
-        const authButton = authForm.querySelector('.form-auth__submit span');
-        const password = authForm.querySelector('.form-auth__password');
-        const rememberMe = authForm.querySelector('.form-auth__remember');
-        const confirmPassword = authForm.querySelector('.form-auth__password-confirm');
-        const spaceHeight = parseInt(window.getComputedStyle(rememberMe).marginBottom) + confirmPassword.scrollHeight + parseInt(window.getComputedStyle(authForm).gap);
+        const authForm = authContainer.querySelector('.form');
+        const authButton = authForm.querySelector('.form__submit span');
+        const password = authForm.querySelector('.form__password');
+        const passwordParent = password.parentElement;
+        const rememberMe = authForm.querySelector('.form__remember');
+        const confirmPassword = authForm.querySelector('.form__password-confirm');
+        const confirmPasswordParent = confirmPassword.parentElement;
+        const spaceHeight = parseInt(window.getComputedStyle(rememberMe).marginBottom) + confirmPasswordParent.scrollHeight + parseInt(window.getComputedStyle(authForm).gap);
         document.addEventListener('DOMContentLoaded', function(){
             const height = authContainer.scrollHeight;
             if (mq.matches){
@@ -268,8 +270,8 @@ const handleAuth = () => {
 
         changeButton.addEventListener('click', function() {
             if (authContainer.classList.contains('_login')){
-                password.insertAdjacentElement('afterend', confirmPassword);
-                _slideDown(confirmPassword, 250);
+                passwordParent.insertAdjacentElement('afterend', confirmPasswordParent);
+                _slideDown(confirmPasswordParent, 250);
                 authContainer.classList.remove('_login');
                 rememberMe.style.marginBottom = "";
          
@@ -291,7 +293,7 @@ const handleAuth = () => {
                     })
                 },500)
             } else {
-                _slideUp(confirmPassword, 250);
+                _slideUp(confirmPasswordParent, 250);
                 authContainer.classList.add('_login');
                 rememberMe.style.marginBottom = spaceHeight + 'px';
                 [changeButton, changeText, authButton].forEach(el => {
@@ -305,7 +307,7 @@ const handleAuth = () => {
                     changeButton.textContent = 'Register';
                     changeText.textContent = 'Don\'t have an account?';
                     authButton.textContent = 'Log in';
-                    confirmPassword.remove();
+                    confirmPasswordParent.remove();
 
                 }, 250)
                 setTimeout(() => {

@@ -129,6 +129,47 @@ html:not(._touch){
     }
 }
 
+.form{
+    input:not([type="checkbox"]){
+        width: 100%;
+        font-size: rem(16);
+        &::placeholder{
+            font-weight: 400;
+            font-size: rem(16);
+            color: #2e2e2e;
+            transition: opacity ease-in-out 0.2s;
+        }
+        outline: none;
+        &:focus{
+            &::placeholder{
+                opacity: 0;
+            }
+        }
+    }
+    // .form__field
+    &__field{
+        position: relative;
+    }
+    &__field-result{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: rem(10);
+
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+        &._show-up{
+            opacity: 1;
+        }
+        &_success{
+            font-size: rem(18);
+            color: $greenColor;
+        }
+        &_error{
+            color: $fixedOrange;
+        }
+    }
+}
 
 ._fade_anim{
     left: 0px;

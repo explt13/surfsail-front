@@ -341,6 +341,42 @@ html:not(._touch) ::-webkit-scrollbar-track {
     width: 0%;
   }
 }
+.form input:not([type=checkbox]) {
+  width: 100%;
+  font-size: 1rem;
+  outline: none;
+}
+.form input:not([type=checkbox])::placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #2e2e2e;
+  transition: opacity ease-in-out 0.2s;
+}
+.form input:not([type=checkbox]):focus::placeholder {
+  opacity: 0;
+}
+.form__field {
+  position: relative;
+}
+.form__field-result {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.625rem;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+.form__field-result._show-up {
+  opacity: 1;
+}
+.form__field-result_success {
+  font-size: 1.125rem;
+  color: #228B22;
+}
+.form__field-result_error {
+  color: #f6b817;
+}
+
 ._fade_anim {
   left: 0px;
   opacity: 1;
@@ -2229,6 +2265,17 @@ button.swiper-pagination-bullet {
   position: relative;
   padding: 5px 9px;
   z-index: 1;
+}
+
+[data-theme=error] .tippy-arrow {
+  color: #FFC300 !important;
+}
+[data-theme=error] {
+  background-color: #FFC300 !important;
+}
+[data-theme=error] .tippy-content {
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .header__brand {
@@ -5025,19 +5072,9 @@ button.swiper-pagination-bullet {
   padding: 1rem;
   border: 1px solid #d2d2d2;
   border-radius: 0.375rem;
-  outline: none;
-}
-.form-auth input:not([type=checkbox])::placeholder {
-  font-weight: 400;
-  font-size: 16px;
-  color: #2e2e2e;
-  transition: opacity ease-in-out 0.2s;
 }
 .form-auth input:not([type=checkbox]):focus {
   outline: 1px solid #b0b0b0;
-}
-.form-auth input:not([type=checkbox]):focus::placeholder {
-  opacity: 0;
 }
 .form-auth:not(:last-child) {
   margin: 0 0 2.5rem 0;
