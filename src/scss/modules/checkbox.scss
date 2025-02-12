@@ -14,30 +14,32 @@
 		height: 0;
 		opacity: 0;
 		visibility: hidden;
-		&:checked + .checkbox__label::after {
+		&:checked + .checkbox__label > .checkbox__box::after {
 			transform: scale(1);
 		}
 	}
 	// .checkbox__text
 	&__text {
-		display: inline-flex;
 		position: relative;
 		color: $secondaryColor;
 		cursor: pointer;
+		white-space: wrap;
+		&_terms {
+			color: $white;
+		}
 		
 	}
-	&__label{
-		white-space: nowrap;
-		font-size: rem(16);
-		gap: rem(14);
+	// .checkbox__text
+	&__box {
 		display: flex;
+		position: relative;
+		align-self: flex-start;
 		align-items: center;
-		color: $mainColor;
-		align-items: flex-end;
+		height: em(19.2, 16);
 		&::before {
 			content: "";
-			align-self: flex-start;
-			// margin: 0px 14px 0px 0px;
+			align-self: center;
+			display: block;
 			flex: 0 0 rem(18);
 			width: rem(18);
 			height: rem(18);
@@ -45,10 +47,12 @@
 			border: rem(1) solid #e8aa31;
 			border-radius: rem(2);
 		}
+		
 		&::after{
 			content: '';
-			align-self: center;
 			position: absolute;
+			align-self: center;
+			top: calc(em(9.6, 16) - rem(6));
 			left: rem(3);
 			width: rem(12);
 			height: rem(12);
@@ -56,6 +60,41 @@
 			background-color: $mainColor;
 			transform: scale(0);
 			transition: 0.1s ease-in-out transform;
+		}
+
+		&_terms {
+			height: em(30, 20);
+			&::before{
+				flex: 0 0 rem(16);
+				width: rem(16);
+				height: rem(16);
+				border: none;
+			}
+			&::after{
+				left: rem(2);
+				top: calc(em(15, 20) - rem(6));
+				width: rem(12);
+				height: rem(12);
+			}
+		}
+	}
+	// .checkbox__label
+	&__label{
+		line-height: 1.2;
+		white-space: nowrap;
+		font-size: rem(16);
+		gap: rem(14);
+		display: flex;
+		align-items: center;
+		color: $mainColor;
+		align-items: flex-end;
+		cursor: pointer;
+		
+		
+		&_terms{
+			line-height: 1.5;
+			// font-size: 20px;
+			color: $white;
 		}
 	}
 	&._error {

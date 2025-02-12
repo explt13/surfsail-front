@@ -4,5 +4,5 @@ import "./modules/forms.js";
 import "./modules/sliders.js";
 import "./modules/tippy.js";
 import "./modules/driftzoom.js";
-import './modules/script.js';
 import './modules/validate.js'
+import './modules/script.js';

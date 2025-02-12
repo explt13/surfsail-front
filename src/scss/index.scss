@@ -8,7 +8,7 @@
         @include adaptive-value("padding-top", 44, 20, 1);
         padding-bottom: rem(20);
         position: relative;
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             &::before{
                 width: 100%!important;
             }
@@ -45,7 +45,7 @@
     &__advantages {
 
     }
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         &__body{
             flex-direction: column;
         }
@@ -101,7 +101,7 @@
         max-width: rem(228);
         width: 100%;
     }
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         &__title, &__sub-title {
             @include adaptive-value('font-size', 36, 22, 1);
         }
@@ -138,7 +138,7 @@
         &_2{
             transform: rotateZ(20deg);
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             height: 100vw;
             bottom: 0;
         }
@@ -158,7 +158,7 @@
         &::before,
         &::after{
             content: "";
-            z-index: 1;
+            z-index: 2;
             border-radius: 50%;
             background-color: $mainColor;
             position: absolute;
@@ -174,7 +174,7 @@
         }
         span{
             position: relative;
-            z-index: 2;
+            z-index: 3;
             color: $white;
             font-weight: 400;
             font-size: rem(20);
@@ -218,7 +218,7 @@
             }
         }
     }
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         &__image{
             @include adaptive-value-between("padding-bottom", 500, 290, 991, 540);
         }
@@ -252,14 +252,14 @@
         text-align: center;
         color: $secondaryColor;
     }
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         @include adaptive-value('column-gap', 180, 30, 1);
         &__item{
             flex: 1 0 calc(50% - rem(180) * 2 / 3);
         }
         
     }
-    @media (max-width: $phone){
+    @media (max-width: $lrp){
         justify-content: center;
         &__item{
             flex: 0 0 rem(295);
@@ -413,8 +413,6 @@
 
     // .item-category__information
     &__information {
-        position: relative;
-        z-index: 1;
     }
     // .item-category__title
     &__title {
@@ -507,7 +505,7 @@
     @media (max-width: rem(1480)){
         flex: 0 1 calc(50% - rem(15));
     }
-    @media (max-width: $phone){
+    @media (max-width: $lrp){
         min-height: rem(338);
         min-width: rem(290);
         flex: 0 1 100%;
@@ -592,10 +590,10 @@
     // .block-products__body
     &__body {
     }
-    @media (max-width: $phone){
+    @media (max-width: $lrp){
         &__top-row{
             margin: 0 0 rem(30) 0;
-            @media (max-width: $phone){
+            @media (max-width: $lrp){
                 margin: 0 0 rem(10) 0;
             }
         }
@@ -606,7 +604,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: $phone){
+    @media (max-width: $lrp){
         align-items: flex-start;
         flex-direction: column;
     }
@@ -650,14 +648,15 @@
         left: 0;
         width: rem(900);
         height: 100%;
-        z-index: 1;
         top: rem(-44);
         img{
             height: 100%;
             width: 100%;
+            object-position: 100% 70%;
+            object-fit: cover;
         }
 
-        @media (max-width: $phone){
+        @media (max-width: $lrp){
             display: none;
         }
     }
@@ -665,10 +664,10 @@
     // .new-products__body
     &__body{
         position: relative;
-        z-index: 2;
+        z-index: 1;
         display: flex;
         @include adaptive-value('gap', 60, 20, 1);
-        @media (max-width: $phone){
+        @media (max-width: $lrp){
             flex-direction: column;
         }
     }
@@ -680,6 +679,7 @@
         position: relative;
         &::before{
             content: "";
+            border-radius: rem(4);
             z-index: -1;
             position: absolute;
             width: 100%;
@@ -691,7 +691,7 @@
             background-color: rgba(27, 27, 27, 0.5);
             backdrop-filter: blur(3px);
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             max-width: none;
             &::before{
                 top: rem(-35);
@@ -702,6 +702,8 @@
     // .new-products__title
     &__title {
         color: $white!important;
+        letter-spacing: rem(6);
+        word-spacing: rem(10);
         &:not(:last-child){
             margin: 0 0 rem(30) 0;
         }
@@ -853,7 +855,7 @@
     display: grid;
     gap: 48px;
     grid-template-columns: repeat(auto-fit, minmax(rem(560), 1fr));
-    @media (max-width: $medPhone){
+    @media (max-width: $mdp){
         grid-template-columns: repeat(1, 1fr);
     }
     // .cards-recommend__card
@@ -907,7 +909,7 @@
         
 
     }
-    @media (max-width: $medPhone){
+    @media (max-width: $mdp){
         flex-direction: column;
     }
    

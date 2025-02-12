@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="footer__body body-footer">
-        <div data-spoilers="600" class="body-footer__container container">
+        <div data-spoilers="767" data-one-spoiler class="body-footer__container container">
             <div  class="body-footer__row footer-body-row footer-body-row_top">
                 <div class="footer-body-row__column column-item">
                     <div class="column-item__spoiler spoiler-item-footer">
@@ -148,17 +148,20 @@
                         </nav>
                     </div>
                 </div>
-                <div class="footer-body-row__column column-item column-item_mailing">
+                <div class="footer-body-row__column column-item column-item_newsletter">
                     <button class="column-item__title _not-spoiler">NEWSLETTER</button>
-                    <form action="#" class="column-item__form form-mailing">
-                        <label for="form-mailing__input" class="form-mailing__label">Subscribe</label>
-                        <div class="form-mailing__input-container">
-                            <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-mailing__input" id="form-mailing__input">
-                            <button type="submit" class="form-mailing__button _icon-arrow_sh_r"></button>
+                    <form action="#" class="column-item__form form-newsletter">
+                        <label for="form-newsletter__input" class="form-newsletter__label">Subscribe</label>
+                        <div class="form-newsletter__input-container">
+                            <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-newsletter__input" id="form-newsletter__input">
+                            <button type="submit" class="form-newsletter__button _icon-arrow_sh_r"></button>
                         </div>
-                        <div class="form-mailing__agreement">
-                            <input type="checkbox" class="checkbox-csm form-mailing__agreement-button">
-                            <a href="" class="form-mailing__policy">I have read and agree to the Terms and Conditions.</a>
+                        <div class="form-newsletter__agreement checkbox">
+                            <input id="newsletter-aggreement" type="checkbox" class="checkbox__input form-newsletter__agreement-button">
+                            <label for="newsletter-aggreement" class="checkbox__label checkbox__label_terms form-newsletter__label-aggrement">
+                                <span class="checkbox__box checkbox__box_terms"></span>
+                                <span class="checkbox__text checkbox__text_terms">I have read and agree to the <a href="" class="form-newsletter__policy">Terms and Conditions.</a></span>
+                            </label>
                         </div>
                     </form>
                 </div>

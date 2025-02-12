@@ -27,21 +27,18 @@
                                 <button class="auth__oauth">Continue With Google</button>
                                 <div class="auth__or">Or</div>
                                 <form class="auth__form form-auth form" action="#" method="get">
-                                    <div class="form__field">
+                                    <div class="form__field _req">
                                         <input placeholder="Email" data-name="Email" type="text" name="auth[email]" class="form__email" />
                                     </div>
-                                    <div class="form__field">
-                                        <input data-minlen="10" data-maxlen="20" data-name="Username" placeholder="Username" type="text" name="auth[username]" class="form__text" />
-                                    </div>
-                                    <div class="form__field">
+                                    <div class="form__field _req">
                                         <input data-minlen="8" id="p1" data-name="Password" placeholder="Password" type="password" name="auth[password]" class="form__password" />
                                     </div>
-                                    <div class="form__field">
-                                        <input data-minlen="8" data-for="p1" data-name="Password" placeholder="Confirm password" type="password" name="auth[password-confirm]" class="form__password-confirm" />
+                                    <div class="form__field _req">
+                                        <input data-minlen="8" data-for="p1" data-name="Password" placeholder="Confirm password" type="password" pswd_confirm name="auth[password-confirm]" class="form__password-confirm" />
                                     </div>
                                     <div class="form__field">
                                         <div class="form__remember">
-                                            <input id="remember-me" type="checkbox" class="checkbox-csm"></input>
+                                            <input id="remember-me" name="auth[remember]" type="checkbox" class="checkbox-csm _req"></input>
                                             <label for="remember-me" class="checkbox-csm__label"><span class="checkbox-csm__text">Remember me</span></label>
                                         </div>
                                     </div>

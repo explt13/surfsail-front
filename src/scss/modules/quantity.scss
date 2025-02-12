@@ -20,7 +20,7 @@
 			width: 9px;
 			height: 1px;
 		}
-		@media (min-width: $tablet) {
+		@media (min-width: $tbl) {
 			&:hover {
 				&::before,
 				&::after {

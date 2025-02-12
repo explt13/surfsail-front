@@ -17,6 +17,7 @@
                 <div class="top-header__container container">
                     <nav class="top-header__menu menu-top-header">
                         <ul data-da=".menu__body, 991.98" class="menu-top-header__list">
+                            <li class="menu-top-header__item menu-top-header__item_account"></li>
                             <li class="menu-top-header__item menu-top-header__item_catalog"><a data-catalog href="#" class="menu-top-header__link menu-top-header__link_catalog _icon-arrow_sh_d">Product catalog</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">About us</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Shipping</a></li>
@@ -24,7 +25,7 @@
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Contacts</a></li>
                         </ul>
                     </nav>
-                    <a class="top-header__user link-user _icon-user"><span>Account</span></a>
+                    <a class="top-header__user link-user _icon-user" data-da=".menu-top-header__item_account,991.98"><span>Account</span></a>
                     <nav class="menu">
                         <button class="menu__icon icon-menu">
                             <span></span>
@@ -41,18 +42,18 @@
                     <a href="./index.html" class="body-header__logo _icon-logo"></a>
                     <div data-da=".catalog-header__container, 479.98" class="body-header__search search-header">
                         <form action="#" class="search-header__form">
-                            <button type="submit" class="search-header__button _icon-search"></button>
+                            <button type="submit" tabindex="-1" class="search-header__button _icon-search"></button>
                             <input type="text" placeholder="Search.." name="form[]" autocomplete="off" data-error="Error" class="search-header__search">
                         </form>
                     </div>
                     <div class="body-header__information information">
                         <div class="information__details">
-                            <div class="information__city _icon-geo">Los Angeles</div>
-                            <div data-da=".top-header__container, 991.98, first" class="information__number number">
+                            <div tabindex="0" class="information__city _icon-geo">Los Angeles</div>
+                            <div class="information__number number">
                                 <div data-spoilers class="number__numbers">
                                     <a class="number__num" href="tel:11234567890">+1 (123) 456-7890</a>
                                     <span class="arrow_num _icon-arrow_sh_d" data-spoiler></span>
-                                    <ul class="number__list">
+                                    <ul class="number__list" data-da=".top-header__container, 991.98">
                                         <li><a href="tel:11234567891">+1 (123) 456-7891</a></li>
                                         <li><a href="tel:11234567892">+1 (123) 456-7892</a></li>
                                         <li><a href="tel:11234567893">+1 (123) 456-7893</a></li>
@@ -61,8 +62,8 @@
                                 <a class="number__order" href="tel:11234567890">Order a call</a>
                             </div>
                         </div>
-                        <a data-da=".top-header__container, 991.98, 2" href="#" class="information__fav _icon-fav"></a>
-                        <a data-da=".top-header__container, 991.98, 2" href="" class="information__shop shop">
+                        <a data-da=".top-header__container, 991.98" href="#" class="information__fav _icon-fav"></a>
+                        <a data-da=".top-header__container, 991.98" href="" class="information__shop shop">
                             <div href="#" class="shop__cart _icon-cart"></div>
                             <div class="shop__details">
                                 <div class="shop__sum">0 $</div>
@@ -390,15 +391,6 @@
                                     <div class="show-image__slide swiper-slide">
                                         <img src="img/products/surfboards/02.jpg" data-zoom="img/products/surfboards/02.jpg" alt="product">
                                     </div>
-                                    <div class="show-image__slide swiper-slide">
-                                        <img src="img/products/surfboards/03.jpg" data-zoom="img/products/surfboards/03.jpg" alt="product">
-                                    </div>
-                                    <div class="show-image__slide swiper-slide">
-                                        <img src="img/products/surfboards/04.jpg" data-zoom="img/products/surfboards/04.jpg" alt="product">
-                                    </div>
-                                    <div class="show-image__slide swiper-slide">
-                                        <img src="img/products/surfboards/01.jpg" data-zoom="img/products/surfboards/01.jpg" alt="product">
-                                    </div>
                                 </div>
                             </div>
                             <div class="images-product__thumbs thumbs-images swiper">
@@ -408,15 +400,6 @@
                                     </div>
                                     <div class="swiper-slide thumbs-images__slide">
                                         <img src="img/products/surfboards/02.jpg">
-                                    </div>
-                                    <div class="swiper-slide thumbs-images__slide">
-                                        <img src="img/products/surfboards/03.jpg">
-                                    </div>
-                                    <div class="swiper-slide thumbs-images__slide">
-                                        <img src="img/products/surfboards/04.jpg">
-                                    </div>
-                                    <div class="swiper-slide thumbs-images__slide">
-                                        <img src="img/products/surfboards/01.jpg">
                                     </div>
                                 </div>
                                 <div class="pagination-bullets"></div>
@@ -857,7 +840,7 @@
                 </div>
             </div>
             <div class="footer__body body-footer">
-                <div data-spoilers="600" class="body-footer__container container">
+                <div data-spoilers="767" data-one-spoiler class="body-footer__container container">
                     <div class="body-footer__row footer-body-row footer-body-row_top">
                         <div class="footer-body-row__column column-item">
                             <div class="column-item__spoiler spoiler-item-footer">
@@ -991,17 +974,20 @@
                                 </nav>
                             </div>
                         </div>
-                        <div class="footer-body-row__column column-item column-item_mailing">
+                        <div class="footer-body-row__column column-item column-item_newsletter">
                             <button class="column-item__title _not-spoiler">NEWSLETTER</button>
-                            <form action="#" class="column-item__form form-mailing">
-                                <label for="form-mailing__input" class="form-mailing__label">Subscribe</label>
-                                <div class="form-mailing__input-container">
-                                    <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-mailing__input" id="form-mailing__input">
-                                    <button type="submit" class="form-mailing__button _icon-arrow_sh_r"></button>
+                            <form action="#" class="column-item__form form-newsletter">
+                                <label for="form-newsletter__input" class="form-newsletter__label">Subscribe</label>
+                                <div class="form-newsletter__input-container">
+                                    <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-newsletter__input" id="form-newsletter__input">
+                                    <button type="submit" class="form-newsletter__button _icon-arrow_sh_r"></button>
                                 </div>
-                                <div class="form-mailing__agreement">
-                                    <input type="checkbox" class="checkbox-csm form-mailing__agreement-button">
-                                    <a href="" class="form-mailing__policy">I have read and agree to the Terms and Conditions.</a>
+                                <div class="form-newsletter__agreement checkbox">
+                                    <input id="newsletter-aggreement" type="checkbox" class="checkbox__input form-newsletter__agreement-button">
+                                    <label for="newsletter-aggreement" class="checkbox__label checkbox__label_terms form-newsletter__label-aggrement">
+                                        <span class="checkbox__box checkbox__box_terms"></span>
+                                        <span class="checkbox__text checkbox__text_terms">I have read and agree to the <a href="" class="form-newsletter__policy">Terms and Conditions.</a></span>
+                                    </label>
                                 </div>
                             </form>
                         </div>
