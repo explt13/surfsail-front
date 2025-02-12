@@ -5,10 +5,8 @@ import { path } from './gulp/config/path.js';
 // plugins import
 import { plugins } from './gulp/config/plugins.js';
 
-console.log(process.argv)
 global.app = {
-    isBuild: process.argv.includes('--build') || process.argv.includes('--build-test'),
-    isDev: !process.argv.includes('--build') && !process.argv.includes('--build-test'),
+    isBuild: process.argv.includes('--build'),
     path: path,
     gulp: gulp,
     plugins: plugins,
@@ -39,16 +37,19 @@ function watcher(){
 
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle)
 const mainTasks = gulp.series(fonts, gulp.parallel(files, html, scss, js, images, videos));
+const mainTasksNoImgs = gulp.series(fonts, gulp.parallel(files, html, scss, js, videos));
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
-const buildTEST = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
+const test = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
 const build = gulp.series(reset, mainTasks);
+const buildNoImgs = gulp.series(reset, mainTasksNoImgs);
 const deployZIP = gulp.series(reset, mainTasks, zip);
 const deployFTP = gulp.series(reset, mainTasks, ftp);
 
 export { dev }
-export { buildTEST }
+export { test }
 export { build }
+export { buildNoImgs }
 export { deployZIP }
 export { deployFTP }
 

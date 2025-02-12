@@ -17,6 +17,7 @@
                 <div class="top-header__container container">
                     <nav class="top-header__menu menu-top-header">
                         <ul data-da=".menu__body, 991.98" class="menu-top-header__list">
+                            <li class="menu-top-header__item menu-top-header__item_account"></li>
                             <li class="menu-top-header__item menu-top-header__item_catalog"><a data-catalog href="#" class="menu-top-header__link menu-top-header__link_catalog _icon-arrow_sh_d">Product catalog</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">About us</a></li>
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Shipping</a></li>
@@ -24,7 +25,7 @@
                             <li class="menu-top-header__item"><a href="#" class="menu-top-header__link">Contacts</a></li>
                         </ul>
                     </nav>
-                    <a class="top-header__user link-user _icon-user"><span>Account</span></a>
+                    <a class="top-header__user link-user _icon-user" data-da=".menu-top-header__item_account,991.98"><span>Account</span></a>
                     <nav class="menu">
                         <button class="menu__icon icon-menu">
                             <span></span>
@@ -41,18 +42,18 @@
                     <a href="./index.html" class="body-header__logo _icon-logo"></a>
                     <div data-da=".catalog-header__container, 479.98" class="body-header__search search-header">
                         <form action="#" class="search-header__form">
-                            <button type="submit" class="search-header__button _icon-search"></button>
+                            <button type="submit" tabindex="-1" class="search-header__button _icon-search"></button>
                             <input type="text" placeholder="Search.." name="form[]" autocomplete="off" data-error="Error" class="search-header__search">
                         </form>
                     </div>
                     <div class="body-header__information information">
                         <div class="information__details">
-                            <div class="information__city _icon-geo">Los Angeles</div>
-                            <div data-da=".top-header__container, 991.98, first" class="information__number number">
+                            <div tabindex="0" class="information__city _icon-geo">Los Angeles</div>
+                            <div class="information__number number">
                                 <div data-spoilers class="number__numbers">
                                     <a class="number__num" href="tel:11234567890">+1 (123) 456-7890</a>
                                     <span class="arrow_num _icon-arrow_sh_d" data-spoiler></span>
-                                    <ul class="number__list">
+                                    <ul class="number__list" data-da=".top-header__container, 991.98">
                                         <li><a href="tel:11234567891">+1 (123) 456-7891</a></li>
                                         <li><a href="tel:11234567892">+1 (123) 456-7892</a></li>
                                         <li><a href="tel:11234567893">+1 (123) 456-7893</a></li>
@@ -61,8 +62,8 @@
                                 <a class="number__order" href="tel:11234567890">Order a call</a>
                             </div>
                         </div>
-                        <a data-da=".top-header__container, 991.98, 2" href="#" class="information__fav _icon-fav"></a>
-                        <a data-da=".top-header__container, 991.98, 2" href="" class="information__shop shop">
+                        <a data-da=".top-header__container, 991.98" href="#" class="information__fav _icon-fav"></a>
+                        <a data-da=".top-header__container, 991.98" href="" class="information__shop shop">
                             <div href="#" class="shop__cart _icon-cart"></div>
                             <div class="shop__details">
                                 <div class="shop__sum">0 $</div>
@@ -379,136 +380,139 @@
             <section class="catalog">
                 <div class="catalog__container container">
                     <div class="catalog__body">
-                        <div class="catalog__filter filter-catalog">
-                            <button type="button" data-spoiler class="filter-catalog__title">Filter</button>
-                            <div data-spoilers class="filter-catalog__items">
-                                <div class="filter-catalog__price price-filter">
-                                    <button type="button" class="price-filter__title _icon-arrow_sh_d _active" data-spoiler>Price</button>
-                                    <div data-range class="price-filter__body">
-                                        <div class="price-filter__inputs">
-                                            <input data-range-from="0" type="text" value="300" autocomplete="off" name="form[]" class="price-filter__input">
-                                            <input data-range-to="5000" type="text" value="2000" autocomplete="off" name="form[]" class="price-filter__input">
+                        <div class="catalog__filter filter-catalog" data-spoilers data-spoiler-opened="1045,min">
+                            <button type="button" data-spoiler data-spoiler-time="1000" class="filter-catalog__title">Filter</button>
+                            <div class="filter-catalog__items" data-spoilers>
+                                <div class="item-filter item-filter_price">
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d" data-spoiler>Price</button>
+                                    <div data-range class="item-filter__body range-item">
+                                        <div class="range-item__inputs">
+                                            <input data-range-from="0" type="text" value="300" autocomplete="off" name="form[]" class="range-item__input">
+                                            <input data-range-to="5000" type="text" value="2000" autocomplete="off" name="form[]" class="range-item__input">
                                         </div>
-                                        <div data-range-item class="price-filter__range"></div>
+                                        <div data-range-item class="range-item__slider"></div>
                                     </div>
                                 </div>
                                 <div class="filter-catalog__item item-filter">
-                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Brand</button>
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d" data-spoiler>Brand</button>
                                     <div class="item-filter__body">
                                         <div class="checkbox">
                                             <input id="c_1" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_1" class="checkbox__label"><span class="checkbox__text">Lost</span><small>(190)</small></label>
+                                            <label for="c_1" class="checkbox__label">
+                                                <span class="checkbox__box"></span>
+                                                <span class="checkbox__text">Lost</span><small>(190)</small>
+                                            </label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_2" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_2" class="checkbox__label"><span class="checkbox__text">Firewire</span><small>(201)</small></label>
+                                            <label for="c_2" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Firewire</span><small>(201)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_3" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_3" class="checkbox__label"><span class="checkbox__text">Channel Islands</span><small>(122)</small></label>
+                                            <label for="c_3" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Channel Islands</span><small>(122)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_4" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_4" class="checkbox__label"><span class="checkbox__text">JS Industries</span><small>(190)</small></label>
+                                            <label for="c_4" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">JS Industries</span><small>(190)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_5" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_5" class="checkbox__label"><span class="checkbox__text">HaydenShapes</span><small>(121)</small></label>
+                                            <label for="c_5" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">HaydenShapes</span><small>(121)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_6" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_6" class="checkbox__label"><span class="checkbox__text">DHD</span><small>(123)</small></label>
+                                            <label for="c_6" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">DHD</span><small>(123)</small></label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="filter-catalog__item item-filter">
-                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Board Types</button>
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d" data-spoiler>Board Types</button>
                                     <div class="item-filter__body">
                                         <div class="checkbox">
                                             <input id="c_7" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_7" class="checkbox__label"><span class="checkbox__text">Shortboard</span><small>(120)</small></label>
+                                            <label for="c_7" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Shortboard</span><small>(120)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_8" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_8" class="checkbox__label"><span class="checkbox__text">Longboard</span><small>(231)</small></label>
+                                            <label for="c_8" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Longboard</span><small>(231)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_9" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_9" class="checkbox__label"><span class="checkbox__text">Fish</span><small>(92)</small></label>
+                                            <label for="c_9" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Fish</span><small>(92)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_10" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_10" class="checkbox__label"><span class="checkbox__text">Funboard</span><small>(32)</small></label>
+                                            <label for="c_10" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Funboard</span><small>(32)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_11" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_11" class="checkbox__label"><span class="checkbox__text">Gun</span><small>(23)</small></label>
+                                            <label for="c_11" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Gun</span><small>(23)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_12" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_12" class="checkbox__label"><span class="checkbox__text">Hybrid</span><small>(145)</small></label>
+                                            <label for="c_12" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Hybrid</span><small>(145)</small></label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="filter-catalog__item item-filter">
-                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Materials</button>
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d" data-spoiler>Materials</button>
                                     <div class="item-filter__body">
                                         <div class="checkbox">
                                             <input id="c_13" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_13" class="checkbox__label"><span class="checkbox__text">Polyurethane</span><small>(120)</small></label>
+                                            <label for="c_13" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Polyurethane</span><small>(120)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_14" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_14" class="checkbox__label"><span class="checkbox__text">Epoxy</span><small>(231)</small></label>
+                                            <label for="c_14" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Epoxy</span><small>(231)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_15" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_15" class="checkbox__label"><span class="checkbox__text">Fiberglass</span><small>(92)</small></label>
+                                            <label for="c_15" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Fiberglass</span><small>(92)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_16" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_16" class="checkbox__label"><span class="checkbox__text">Carbon Fiber</span><small>(32)</small></label>
+                                            <label for="c_16" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Carbon Fiber</span><small>(32)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_17" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_17" class="checkbox__label"><span class="checkbox__text">Wood</span><small>(23)</small></label>
+                                            <label for="c_17" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">Wood</span><small>(23)</small></label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="filter-catalog__item item-filter">
-                                    <button type="button" class="item-filter__title _icon-arrow_sh_d _active" data-spoiler>Sizes</button>
+                                    <button type="button" class="item-filter__title _icon-arrow_sh_d" data-spoiler>Sizes</button>
                                     <div class="item-filter__body">
                                         <div class="checkbox">
                                             <input id="c_18" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_18" class="checkbox__label"><span class="checkbox__text">5-6 ft</span><small>(120)</small></label>
+                                            <label for="c_18" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">5-6 ft</span><small>(120)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_19" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_19" class="checkbox__label"><span class="checkbox__text">6-7 ft</span><small>(231)</small></label>
+                                            <label for="c_19" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">6-7 ft</span><small>(231)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_20" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_20" class="checkbox__label"><span class="checkbox__text">7-8 ft</span><small>(92)</small></label>
+                                            <label for="c_20" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">7-8 ft</span><small>(92)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_21" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_21" class="checkbox__label"><span class="checkbox__text">8-9 ft</span><small>(32)</small></label>
+                                            <label for="c_21" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">8-9 ft</span><small>(32)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_22" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_22" class="checkbox__label"><span class="checkbox__text">9-10 ft</span><small>(23)</small></label>
+                                            <label for="c_22" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">9-10 ft</span><small>(23)</small></label>
                                         </div>
                                         <div class="checkbox">
                                             <input id="c_23" type="checkbox" class="checkbox__input" value="1" name="form[]">
-                                            <label for="c_23" class="checkbox__label"><span class="checkbox__text">10+ ft</span><small>(23)</small></label>
+                                            <label for="c_23" class="checkbox__label"><span class="checkbox__box"></span><span class="checkbox__text">10+ ft</span><small>(23)</small></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="catalog__content">
-                            <div class="catalog__control">
-                                <select name="form[]" class="control">
+                            <div class="catalog__sort">
+                                <select name="form[]" class="sort">
                                     <option selected value="1">Best Sellers</option>
                                     <option value="2">Avg. Customer Review</option>
                                     <option value="3">Newest Arrivals</option>
@@ -935,7 +939,7 @@
                 </div>
             </div>
             <div class="footer__body body-footer">
-                <div data-spoilers="600" class="body-footer__container container">
+                <div data-spoilers="767" data-one-spoiler class="body-footer__container container">
                     <div class="body-footer__row footer-body-row footer-body-row_top">
                         <div class="footer-body-row__column column-item">
                             <div class="column-item__spoiler spoiler-item-footer">
@@ -1069,17 +1073,20 @@
                                 </nav>
                             </div>
                         </div>
-                        <div class="footer-body-row__column column-item column-item_mailing">
+                        <div class="footer-body-row__column column-item column-item_newsletter">
                             <button class="column-item__title _not-spoiler">NEWSLETTER</button>
-                            <form action="#" class="column-item__form form-mailing">
-                                <label for="form-mailing__input" class="form-mailing__label">Subscribe</label>
-                                <div class="form-mailing__input-container">
-                                    <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-mailing__input" id="form-mailing__input">
-                                    <button type="submit" class="form-mailing__button _icon-arrow_sh_r"></button>
+                            <form action="#" class="column-item__form form-newsletter">
+                                <label for="form-newsletter__input" class="form-newsletter__label">Subscribe</label>
+                                <div class="form-newsletter__input-container">
+                                    <input autocomplete="off" name="form[]" type="text" data-error="Error" data-required="email" placeholder="example@gmail.com" class="form-newsletter__input" id="form-newsletter__input">
+                                    <button type="submit" class="form-newsletter__button _icon-arrow_sh_r"></button>
                                 </div>
-                                <div class="form-mailing__agreement">
-                                    <input type="checkbox" class="checkbox-csm form-mailing__agreement-button">
-                                    <a href="" class="form-mailing__policy">I have read and agree to the Terms and Conditions.</a>
+                                <div class="form-newsletter__agreement checkbox">
+                                    <input id="newsletter-aggreement" type="checkbox" class="checkbox__input form-newsletter__agreement-button">
+                                    <label for="newsletter-aggreement" class="checkbox__label checkbox__label_terms form-newsletter__label-aggrement">
+                                        <span class="checkbox__box checkbox__box_terms"></span>
+                                        <span class="checkbox__text checkbox__text_terms">I have read and agree to the <a href="" class="form-newsletter__policy">Terms and Conditions.</a></span>
+                                    </label>
                                 </div>
                             </form>
                         </div>

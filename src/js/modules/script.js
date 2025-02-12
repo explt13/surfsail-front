@@ -1,5 +1,5 @@
+import { _slideDown, _slideUp } from "./functions.js";
 document.addEventListener("click", documentActions);
-
 
 const menuBlocks = document.querySelectorAll(".sub-menu-catalog__block");
 if (menuBlocks.length > 0){
@@ -101,21 +101,6 @@ const burgerMenu = () =>{
 }
 burgerMenu();
 
-
-if (document.querySelector(".filter-catalog__title")){
-    document.querySelector(".filter-catalog__title").addEventListener('click', function(){
-        if (window.innerWidth < 992){
-            document.querySelector(".filter-catalog__items").classList.toggle('_active');
-        }
-    })
-}
-
-const moreNone = document.querySelectorAll('[data-none]');
-if (moreNone.length > 0){
-    moreNone.forEach(more => {
-        more.remove();
-    })
-}
 
 const handleHeader = () => {
     const topHeader = document.querySelector('.top-header');
@@ -230,13 +215,33 @@ const handleCartHeight = () => {
     }
 }
 handleCartHeight();
-import { _slideDown, _slideUp } from "./functions.js";
+
+const setAuthContainerHeight = (authContainer) => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    document.addEventListener('DOMContentLoaded', function(){
+        const height = authContainer.scrollHeight;
+        if (mq.matches){
+            authContainer.style.height = '100%';
+            authContainer.style.minHeight = height + 'px';
+        }
+        window.addEventListener('resize', function() {
+            if (mq.matches){
+                authContainer.style.height = '100%';
+                authContainer.style.minHeight = height + 'px';
+            } else {
+                authContainer.style.height = "";
+                authContainer.style.minHeight = "";
+            }
+        })
+       
+    })
+}
 
 const handleAuth = () => {
     const changeButton = document.querySelector('.auth__change-method');
 
     if (changeButton) {
-        const mq = window.matchMedia('(min-width: 1024px)');
+       
         const changeText = changeButton.previousElementSibling;
         const authPage = document.querySelector('.page_auth');
         const authContainer = changeButton.closest('.auth__container');
@@ -248,26 +253,10 @@ const handleAuth = () => {
         const confirmPassword = authForm.querySelector('.form__password-confirm');
         const confirmPasswordParent = confirmPassword.parentElement;
         const spaceHeight = parseInt(window.getComputedStyle(rememberMe).marginBottom) + confirmPasswordParent.scrollHeight + parseInt(window.getComputedStyle(authForm).gap);
-        document.addEventListener('DOMContentLoaded', function(){
-            const height = authContainer.scrollHeight;
-            if (mq.matches){
-                authContainer.style.height = '100%';
-                authContainer.style.minHeight = height + 'px';
-            }
-            window.addEventListener('resize', function() {
-                if (mq.matches){
-                    authContainer.style.height = '100%';
-                    authContainer.style.minHeight = height + 'px';
-                } else {
-                    authContainer.style.height = "";
-                    authContainer.style.minHeight = "";
-                }
-            })
-           
-        })
         
-       
+        setAuthContainerHeight(authContainer);
 
+        const event = new CustomEvent('revalidate');
         changeButton.addEventListener('click', function() {
             if (authContainer.classList.contains('_login')){
                 passwordParent.insertAdjacentElement('afterend', confirmPasswordParent);
@@ -286,6 +275,7 @@ const handleAuth = () => {
                     changeButton.textContent = 'Log in';
                     changeText.textContent = 'Already have an account?';
                     authButton.textContent = 'Register';
+                    document.dispatchEvent(event);
                 }, 250)
                 setTimeout(() => {
                     [changeButton, changeText, authButton].forEach(el => {
@@ -308,7 +298,7 @@ const handleAuth = () => {
                     changeText.textContent = 'Don\'t have an account?';
                     authButton.textContent = 'Log in';
                     confirmPasswordParent.remove();
-
+                    document.dispatchEvent(event);
                 }, 250)
                 setTimeout(() => {
                     [changeButton, changeText, authButton].forEach(el => {

@@ -7,7 +7,7 @@
     &__body {
         display: grid;
         gap: rem(30);
-        @media (min-width: rem(992)){
+        @media (min-width: rem(1045)){
             grid-template-columns: rem(375) 1fr;
         }
     }
@@ -19,8 +19,8 @@
     // .catalog__content
     &__content {
     }
-    // .catalog__control
-    &__control {
+    // .catalog__sort
+    &__sort {
         margin: 0 0 rem(20) 0;
         display: flex;
         justify-content: flex-end;
@@ -30,10 +30,13 @@
     &__products {
         display: grid;
         gap: rem(30);
-        grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(rem(290), auto));
         &:not(:last-child){
             @include adaptive-value("margin-bottom", 60, 30, 1);
         }
+        // @media (min-width: rem()) {
+
+        // }
     }
 }
 
@@ -44,7 +47,7 @@
         display: flex;
         justify-content: space-between;
         gap: rem(20);
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             flex-direction: column;
         }
     }
@@ -64,7 +67,7 @@
                 box-shadow: 0 0 12px $mainColor;
             }
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             max-width: none;
         }
     }
@@ -93,27 +96,16 @@
     }
     // .filter-catalog__items
     &__items {
-        @media (max-width: $tablet){
-            display: none;
-            &._active{
-                display: block;
-            }
-        }
-       
-    }
-    // .filter-catalog__price
-    &__price {
-   
     }
     // .filter-catalog__item
     &__item {
     }
 }
-.price-filter {
+.item-filter_price {
     padding: rem(30);
     cursor: pointer;
-    // .price-filter__title
-    &__title {
+    // .item-filter__title
+    .item-filter__title {
         cursor: pointer;
         display: flex;
         justify-content: space-between;
@@ -133,11 +125,13 @@
             }
         }
     }
-    // .price-filter__body
-    &__body {
+    // .item-filter__body
+    .item-filter__body {
         padding: rem(30) 0;
     }
-    // .price-filter__inputs
+}
+.range-item {
+    // .range-item__inputs
     &__inputs {
         border: 1px solid #cbcbcb;
         border-radius: rem(3);
@@ -147,7 +141,8 @@
             margin-bottom: rem(30);
         }
     }
-    // .price-filter__input
+
+    // .range-item__input
     &__input {
         font-weight: 400;
         font-size: 16px;
@@ -162,11 +157,7 @@
             border-right: 1px solid #cbcbcb;
         }
     }
-    // .price-filter__range
-    &__range {
-    }
 }
-
 
 .filter-catalog {
    

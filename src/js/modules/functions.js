@@ -1,12 +1,12 @@
-let ua = window.navigator.userAgent;
-let msie = ua.indexOf("MSIE ");
-let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
+
 
 function isIE() {
+	let ua = window.navigator.userAgent;
 	ua = navigator.userAgent;
 	let is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
 	return is_ie;
 }
+
 if (isIE()) {
 	document.querySelector('html').classList.add('ie');
 }
@@ -30,16 +30,21 @@ function isWebp() {
 }
 isWebp();
 
-
-function checkMobile() {
+function setIsMobile(isMobile) {
 	if (isMobile.any()) {
 		document.querySelector('html').classList.add('_touch');
 	} else{
 		document.querySelector('html').classList.remove('_touch');
 	}
 }
+
+function checkMobile() {
+	let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
+
+	setIsMobile(isMobile);
+	window.addEventListener('resize', () => setIsMobile(isMobile));
+}
 checkMobile();
-window.addEventListener('resize', checkMobile)
 
 function ibg() {
 	if (isIE()) {
@@ -54,108 +59,64 @@ function ibg() {
 }
 ibg();
 
-
-const ratings = document.querySelectorAll('.rating');
-if (ratings.length > 0) {
-	initRatings();
-}
 // Main function
 function initRatings() {
-	let ratingActive, ratingValue;
+	const ratings = document.querySelectorAll('.rating');
+	if (ratings.length === 0) return;
+
 
 	for (let index = 0; index < ratings.length; index++) {
 		const rating = ratings[index];
 		initRating(rating);
 	}
 
-	// Инициализируем конкретный рейтинг
+	// Init specific rating
 	function initRating(rating) {
-		initRatinglets(rating);
+		const ratingActive = rating.querySelector('.rating__active');
+		const ratingValue = rating.querySelector('.rating__value');
+		// initRatingVars(rating);
 
-		setRatingActiveWidth();
+		setRatingActiveWidth(ratingActive, ratingValue.innerHTML);
 
 		if (rating.classList.contains('rating_set')) {
-			setRating(rating);
+			setRating(rating, ratingActive, ratingValue);
 		}
 	}
 
-	// Init
-	function initRatinglets(rating) {
-		ratingActive = rating.querySelector('.rating__active');
-		ratingValue = rating.querySelector('.rating__value');
-	}
-	// Change width active stars
-	function setRatingActiveWidth(index = ratingValue.innerHTML) {
-		const ratingActiveWidth = index / 0.05;
+	// Change width of active stars
+	function setRatingActiveWidth(ratingActive, value) {
+		const ratingActiveWidth = value / 0.05;
 		ratingActive.style.width = `${ratingActiveWidth}%`;
 	}
+	
 	// Set rating
-	function setRating(rating) {
+	function setRating(rating, ratingActive, ratingValue) {
 		const ratingItems = rating.querySelectorAll('.rating__item');
 		for (let index = 0; index < ratingItems.length; index++) {
 			const ratingItem = ratingItems[index];
 			ratingItem.addEventListener("mouseenter", function (e) {
-				// Update lets
-				initRatinglets(rating);
-				// Update active stars
-				setRatingActiveWidth(ratingItem.value);
+				setRatingActiveWidth(ratingActive, ratingItem.value);
 			});
 			ratingItem.addEventListener("mouseleave", function (e) {
-				// Update active stars
-				setRatingActiveWidth();
+				setRatingActiveWidth(ratingActive, ratingValue.innerHTML);
 			});
 			ratingItem.addEventListener("click", function (e) {
-				// Update lets
-				initRatinglets(rating);
-
-				if (rating.dataset.ajax) {
-					// Send to the server
-					setRatingValue(ratingItem.value, rating);
-				} else {
-					// Display rating
-					ratingValue.innerHTML = index + 1;
-					setRatingActiveWidth();
-				}
+				rating.classList.add('rating_sending');
+				const ratingSetEvent = new CustomEvent('ratingSet', {detail: {ratingValue: ratingItem.value, addEventTo: rating, eventName: 'successfulySet'}});
+				document.dispatchEvent(ratingSetEvent);
 			});
-		}
-	}
 
-	async function setRatingValue(value, rating) {
-		if (!rating.classList.contains('rating_sending')) {
-			rating.classList.add('rating_sending');
-
-			let response = await fetch('', {
-				method: 'POST',
-				body: JSON.stringify({
-					userRating: value
-				}),
-				headers: {
-					'content-type': 'application/json'
-				}
-
-			});
-			if (response.ok) {
-				const result = await response.json();
-
-				// Get new rating
-				const newRating = result.newRating;
-
-				// Set new rating
+			rating.addEventListener('successfulySet', function(e) {
+				const newRating = e.ratingValue;
 				ratingValue.innerHTML = newRating;
-
-				// Update active stars
 				setRatingActiveWidth();
-
 				rating.classList.remove('rating_sending');
-			} else {
-				alert("Error");
 
-				rating.classList.remove('rating_sending');
-			}
+			})
 		}
 	}
 }
-
+initRatings();
 
 // SPOILERS
 const spoilersArray = document.querySelectorAll('[data-spoilers]');
@@ -209,7 +170,7 @@ if (spoilersArray.length > 0) {
 				}
 			});
 			// Event
-			matchMedia.addListener(function () {
+			matchMedia.addEventListener('change', function () {
 				initSpoilers(spoilersArray, matchMedia);
 			});
 			initSpoilers(spoilersArray, matchMedia);
@@ -233,13 +194,54 @@ if (spoilersArray.length > 0) {
 	// Work with content
 	function initSpoilerBody(spoilersBlock, hideSpoilerBody = true) {
 		const spoilerTitles = spoilersBlock.querySelectorAll('[data-spoiler]');
+		
+		if (spoilersBlock.dataset.spoilerOpened) {
+			const spoilerOpts = spoilersBlock.dataset.spoilerOpened.split(',');
+			// empty value
+			if (!spoilerOpts[0]) {
+				spoilerTitles.forEach((spoilerTitle) => {
+					if (!spoilerTitle.classList.contains('_active')) {
+						spoilerTitle.classList.add('_active');	
+					}
+				});
+			} else {
+				const type = spoilerOpts[1] ? spoilerOpts[1] : 'max';
+				const width = spoilerOpts[0];
+				const matchMedia = window.matchMedia(`(${type}-width: ${width}px)`);
+				if (matchMedia.matches) {
+					spoilerTitles.forEach((spoilerTitle) => {
+						if (!spoilerTitle.classList.contains('_active')) {
+							spoilerTitle.classList.add('_active');
+							spoilerTitle.nextElementSibling.hidden = false;
+						}
+					});
+				}
+
+				matchMedia.addEventListener('change', function () {
+					if (matchMedia.matches) {
+						spoilerTitles.forEach((spoilerTitle) => {
+							if (!spoilerTitle.classList.contains('_active')) {
+								spoilerTitle.classList.add('_active');
+								spoilerTitle.nextElementSibling.hidden = false;
+							}
+						});
+					} else {
+						spoilerTitles.forEach((spoilerTitle) => {
+							if (spoilerTitle.classList.contains('_active')) {
+								spoilerTitle.classList.remove('_active');
+								spoilerTitle.nextElementSibling.hidden = true;
+							}
+						});
+					}
+				})
+			}
+		}
+
 		if (spoilerTitles.length > 0) {
 			spoilerTitles.forEach(spoilerTitle => {
-				if (hideSpoilerBody) {
+				if (hideSpoilerBody && !spoilerTitle.classList.contains('_active')) {
 					spoilerTitle.removeAttribute('tabindex');
-					if (!spoilerTitle.classList.contains('_active')) {
-						spoilerTitle.nextElementSibling.hidden = true;
-					}
+					spoilerTitle.nextElementSibling.hidden = true;
 				} else {
 					spoilerTitle.setAttribute('tabindex', '-1');
 					spoilerTitle.nextElementSibling.hidden = false;
@@ -248,36 +250,37 @@ if (spoilersArray.length > 0) {
 		}
 	}
 	function setSpoilerAction(e) {
+		// spoilerBlock
 		const el = e.target;
 		if (el.hasAttribute('data-spoiler') || el.closest('[data-spoiler]')) {
 			const spoilerTitle = el.hasAttribute('data-spoiler') ? el : el.closest('[data-spoiler]');
 			const spoilersBlock = spoilerTitle.closest('[data-spoilers]');
+			let time = spoilersBlock.dataset.spoilerTime ? parseInt(spoilersBlock.dataset.spoilerTime) : 500;
+			time = spoilerTitle.dataset.spoilerTime ? parseInt(spoilerTitle.dataset.spoilerTime) : time;
 			const oneSpoiler = spoilersBlock.hasAttribute('data-one-spoiler') ? true : false;
 			if (!spoilersBlock.querySelectorAll('._slide').length) {
 				if (oneSpoiler && !spoilerTitle.classList.contains('_active')) {
-					hideSpoilersBody(spoilersBlock);
+					hideSpoilersBody(spoilersBlock, time);
 				}
 				spoilerTitle.classList.toggle('_active');
-				_slideToggle(spoilerTitle.nextElementSibling, 500);
+				_slideToggle(spoilerTitle.nextElementSibling, time);
 			}
 			e.preventDefault();
 		}
 	}
-	function hideSpoilersBody(spoilersBlock) {
+	function hideSpoilersBody(spoilersBlock, time) {
 		const spoilerActiveTitle = spoilersBlock.querySelector('[data-spoiler]._active');
 		if (spoilerActiveTitle) {
 			spoilerActiveTitle.classList.remove('_active');
-			_slideUp(spoilerActiveTitle.nextElementSibling, 500);
+			_slideUp(spoilerActiveTitle.nextElementSibling, time);
 		}
 	}
 }
 
-
-
 export const _slideUp = (target, duration = 500) => {
 	if (!target.classList.contains('_slide')) {
 		target.classList.add('_slide');
-		target.style.transitionProperty = 'height, margin, padding';
+		target.style.transitionProperty = 'height, margin, padding' ;
 		target.style.transitionDuration = duration + 'ms';
 		target.style.height = target.offsetHeight + 'px';
 		target.offsetHeight;
@@ -301,6 +304,7 @@ export const _slideUp = (target, duration = 500) => {
 		}, duration);
 	}
 }
+
 export const _slideDown = (target, duration = 500) => {
 	if (!target.classList.contains('_slide')) {
 		target.classList.add('_slide');
@@ -332,7 +336,6 @@ export const _slideDown = (target, duration = 500) => {
 	}
 }
 
-
 export const _slideToggle = (target, duration = 500) => {
 	if (target.hidden) {
 		return _slideDown(target, duration);
@@ -341,22 +344,25 @@ export const _slideToggle = (target, duration = 500) => {
 	}
 }
 
-let tabs = document.querySelectorAll("._tabs");
-for (let index = 0, tabs_length = tabs.length; index < tabs_length; index++) {
-	let tab = tabs[index];
-	let tabs_items = tab.querySelectorAll("._tabs-item");
-	let tabs_blocks = tab.querySelectorAll("._tabs-block");
-	for (let index = 0, tabs_item_length = tabs_items.length; index < tabs_item_length; index++) {
-		let tabs_item = tabs_items[index];
-		tabs_item.addEventListener("click", function (e) {
-			for (let index = 0, opened_tabs_length = tabs_items.length; index < opened_tabs_length; index++) {
-				let tabs_item = tabs_items[index];
-				tabs_item.classList.remove('_active');
-				tabs_blocks[index].classList.remove('_active');
-			}
-			tabs_item.classList.add('_active');
-			tabs_blocks[index].classList.add('_active');
-			e.preventDefault();
-		});
+function tabs() {
+	let tabs = document.querySelectorAll("._tabs");
+	for (let index = 0, tabs_length = tabs.length; index < tabs_length; index++) {
+		let tab = tabs[index];
+		let tabs_items = tab.querySelectorAll("._tabs-item");
+		let tabs_blocks = tab.querySelectorAll("._tabs-block");
+		for (let index = 0, tabs_item_length = tabs_items.length; index < tabs_item_length; index++) {
+			let tabs_item = tabs_items[index];
+			tabs_item.addEventListener("click", function (e) {
+				for (let index = 0, opened_tabs_length = tabs_items.length; index < opened_tabs_length; index++) {
+					let tabs_item = tabs_items[index];
+					tabs_item.classList.remove('_active');
+					tabs_blocks[index].classList.remove('_active');
+				}
+				tabs_item.classList.add('_active');
+				tabs_blocks[index].classList.add('_active');
+				e.preventDefault();
+			});
+		}
 	}
 }
+tabs();

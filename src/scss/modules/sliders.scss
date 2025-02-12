@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import 'swiper/swiper';
 @import 'swiper/pagination';
 @import 'swiper/zoom';
@@ -94,6 +95,26 @@
     }
     .swiper-wrapper{
         margin: 0 0 rem(30) 0;
+        @media (max-width: $lrp){
+            &{
+                margin: 0 0 rem(30) 0;
+                flex-direction: row;
+                gap: rem(16);
+                flex-wrap: wrap;
+                > * {
+                    flex: 0 1 calc(50% - rem(16) * 1 / 2);
+                }
+            }
+        }
+        @media (max-width: rem(520)) {
+            & {
+                row-gap: rem(24);
+                column-gap: 0;
+            }
+            & > * {
+                flex: 0 1 100%;
+            }
+        }
    
     }
     .swiper-pagination-bullet{
@@ -105,14 +126,11 @@
             }
         }
     }
-    @media (max-width: $phone){
+    @media (max-width: $lrp){
         .pagination{
             display: none;
         }
-        .swiper-wrapper{
-            margin: 0 0 rem(30) 0;
-            flex-direction: column;
-        }
+        
     }
     
 }
@@ -154,7 +172,7 @@
     }
     .swiper-button-next,
     .swiper-button-prev {
-        z-index: 50;
+        z-index: 5;
         width: rem(40);
         height: rem(40);
         border-radius: 50%;

@@ -1,4 +1,6 @@
 .header{
+    position: relative;
+    z-index: 3;
     &__brand{
         cursor: pointer;
     }
@@ -26,11 +28,10 @@
             }
         }
     }
-    @media screen and (max-width: $tablet){
+    @media screen and (max-width: $tbl){
         display: block;
         position: relative;
         bottom: 0;
-        z-index: 10;
         span{
             background-color: $white;
             transition: all 0.4s;
@@ -44,8 +45,12 @@
     }
 }
 .menu{
+    @media (max-width: $tbl) {
+        order: 3;
+    }
+    // .menu__body
     &__body{
-        @media (max-width: $tablet) {
+        @media (max-width: $tbl) {
             display: block;
             position: fixed;
             width: 100%;
@@ -54,33 +59,20 @@
             left: -100%;
             overflow: auto;
             background-color: $secondaryColor;
-            padding: rem(90) rem(15) rem(50);
+            padding: rem(40) rem(15) rem(50);
             transition: left 0.3s ease-in-out;
-            z-index: 3;
+            z-index: 4;
             .menu-open & {
                 left: 0;
             }
-
-            &::before{
-                content: '';
-                display: block;
-                position: fixed;
-                z-index: 1;
-                width: 100%;
-                height: rem(70);
-                top: 0;
-                left: -100%;
-                background-color: $secondaryColor;
-                transition: left 0.3s ease-in-out;
-                .menu-open & {
-                    left: 0;
-                }
-            }
         }
     }
-    
+    // .menu__icon
+    &__icon {
+        z-index: 10;
+    }
  
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         flex: 1 1 auto;
         display: flex;
         justify-content: flex-end;
@@ -90,44 +82,39 @@
 .top-header{
     box-shadow: 0 4px 20px 0 rgba(169, 169, 169, 0.18);
     background: $secondaryColor;
+
+    // .top-header__container
     &__container{
         display: flex;
         align-items: center;
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             gap: rem(25);
         }
     }
+    // .top-header__user
     &__user{
-        z-index: 4;
         font-size: rem(18);
         color: $white;
         margin-left: auto;
         position: relative;
         cursor: pointer;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         &::before{
             font-size: rem(28);
             margin-right: rem(10);
-            @media (max-width: $tablet){
-                margin: 0;
-                font-size: rem(30);
-            }
         }
         @media (any-hover: hover){
             &:hover{
                 color: $mainColor;
             }
         }
-        @media (max-width: $tablet){
-            margin: 0;
-            span{
-                display: none;
-            }
+        @media (max-width: $tbl) {
+            margin-left: 0;
+            font-size: rem(24);
         }
-        
     }
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         padding: rem(15) 0;
     }
 }
@@ -139,19 +126,25 @@
         display: flex;
         row-gap: rem(5);
         @include adaptive-value('gap', 60, 20, 1);
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             flex-direction: column;
             row-gap: rem(25);
         }
     }
     &__item{
         &_catalog{
-            @media (min-width: $tabletMF){
+            @media (min-width: $tbl-mf){
+                display: none;
+            }
+        }
+        // .menu-top-header__item_account
+        &_account {
+            @media (min-width: $tbl-mf){
                 display: none;
             }
         }
 
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             font-size: rem(22);
         }
     }
@@ -179,7 +172,7 @@
             }
         }
     }
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         display: none;
     }
 }
@@ -194,10 +187,10 @@
         align-items: center;
         display: flex;
 
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             justify-content: space-between;
         }
-        @media (max-width: $smallPhone) {
+        @media (max-width: $smp) {
             justify-content: center;
         }
 
@@ -217,13 +210,13 @@
         background-color: #E5EAEB;
         border: 2px solid $secondaryColor;;
         @include adaptive-value-between("margin-left", 158, 30, 1380, 992);
-        @media (max-width: $smallPhone){
+        @media (max-width: $smp){
             margin-left: 0;
             border-radius: 0;
             border: none;
             background-color: $white;
         }
-        @media (max-width: $tablet){
+        @media (max-width: $smp){
             max-width: none;
         }
         
@@ -242,7 +235,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 10000;
+        z-index: 15;
         transform: translateY(-100%);
     }
     &._show{
@@ -304,14 +297,13 @@
     display: flex;
     justify-content: flex-end;
     column-gap: rem(30);
-    align-items: center;
+    align-items: flex-start;
 
     // .information__number
     &__number {
     }
     // .information__fav
     &__fav {
-        z-index: 4;
         font-size: rem(27);
         transition: 0.1s ease-in-out color;
         color: $secondaryColor;
@@ -338,12 +330,12 @@
             font-size: rem(25);
             cursor: default;
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             display: none;
         }
     }
 
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         display: none;
         &__fav{
             color: $white;
@@ -355,39 +347,25 @@
     display: flex;
     flex-direction: column;
     row-gap: rem(5);
-    // .number__text
+    @media (max-width: $tbl){
+        display: none;
+    }
+    // .number__numbers
     &__numbers {
+        z-index: 1;
         font-size: rem(18);
         column-gap: rem(10);
         position: relative;
         display: flex;
         align-items: center;
-        &::before{
-            font-size: rem(30);
-            display: none;
-            z-index: 4;
-            @extend %ic;
-            @extend ._icon-call;
-        }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             color: $white;
             font-size: rem(24);
         }
-        @media (max-width: rem(524)){
-            &::before{
-                display: block;
-            }
-        }
     }
+    // .number__num
     &__num{
-        z-index: 4;
         color: $secondaryColor;
-        @media (max-width: rem(524)){
-            display: none;
-        }
-        @media (max-width: $tablet){
-            color: $white;
-        }
     }
     &__list{
         position: absolute;
@@ -395,7 +373,6 @@
         width: 100%;
         left: 0;
         background-color: $mainColor;
-        z-index: 5;
         color: $white;
         border-radius: 15px;
         padding: rem(10);
@@ -413,7 +390,7 @@
         color: $mainColor;
         @include hoverDecor(underline, rem(3));
 
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             display: none;
         }
         
@@ -431,7 +408,7 @@
         &._active{
             transform: rotateZ(180deg);
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             display: none;
         }
     }
@@ -446,7 +423,6 @@
         position: relative;
         transition: 0.1s ease-in-out color;
         font-size: rem(34);
-        z-index: 4;
         &::after{
             content: '0';
             display: flex;
@@ -467,7 +443,7 @@
         &:hover{
             color: $mainColor;
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             margin: 0;
             font-size: rem(30);
             color: $white;
@@ -508,7 +484,7 @@
     padding: 0;
     background-color: $secondaryColor;
     &__container{
-        @media (max-width: $smallPhone){
+        @media (max-width: $smp){
             padding: rem(15)!important;
         }
     }
@@ -523,7 +499,7 @@
         display: flex;
         column-gap: rem(10);
         justify-content: space-between;
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             flex-direction: column;
             justify-content: unset;
             row-gap: rem(25);
@@ -531,7 +507,7 @@
     }
     // .menu-catalog__item
     &__item {
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             // display: flex;
             // justify-content: space-between;
         }
@@ -552,7 +528,10 @@
         &:hover{
             color: $mainColor;
         }
-        @media (min-width: $tabletMF){
+        &:focus {
+            color: $mainColor
+        }
+        @media (min-width: $tbl-mf){
             justify-content: center;
             min-height: rem(70);
             font-size: rem(18);
@@ -582,19 +561,19 @@
             @extend %ic;
             @extend ._icon-arrow_sh_d;
             display: none;
-            @media (max-width: $tablet){
+            @media (max-width: $tbl){
                 font-size: rem(10);
                 display: block;
                 transform: rotate(-90deg);
             }
         }
         &[data-parent]{
-            @media (max-width: $tablet){
+            @media (max-width: $tbl){
                 justify-content: space-between;
                 flex-direction: row-reverse;
             }
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
 
         }
     }
@@ -604,17 +583,17 @@
         background-color: $secondaryColor;
     }
     &__back{
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             &:not(:last-child){
                 margin: 0 0 rem(37) 0;
             }
         }
     }
-    @media (min-width: $tabletMF){
+    @media (min-width: $tbl-mf){
         position: relative;
     }
 
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         position: fixed;
         top: 0;
         left: -100%;
@@ -624,7 +603,7 @@
         background-color: $secondaryColor;
         transition: left 0.3s ease-in-out;
         padding: rem(25) rem(15) rem(50);
-        z-index: 9;
+        z-index: 5;
         .menu-hidden &{
             display: none;
         }
@@ -635,9 +614,7 @@
 }
 
 .sub-menu-catalog {
-    
-
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         position: fixed;
         top: 0;
         left: -100%;
@@ -651,15 +628,14 @@
         .sub-menu-open &{
             display: block;
             left: 0;
-            z-index: 6;
         }
     }
 
-    @media (min-width: $tabletMF){
+    @media (min-width: $tbl-mf){
         position: absolute;
         left: 0;
         top: 100%;
-        z-index: 100;
+        z-index: 4;
         width: 100%;
     }
 
@@ -677,11 +653,11 @@
         }
         &._active-sub-menu{
             display: grid;
-            @media (max-width: $tablet){
+            @media (max-width: $tbl){
                 display: block;
             }
         }
-        @media (min-width: $tabletMF){
+        @media (min-width: $tbl-mf){
             padding: rem(20);
         }
     }
@@ -692,11 +668,11 @@
         text-align: center;
         font-size: rem(16);
         color: $white;
-        @media (min-width: $tabletMF){
+        @media (min-width: $tbl-mf){
             padding: rem(30) rem(15) rem(30) 0;
             font-weight: 700;
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             &:not(:last-child){
                 margin: 0 0 rem(25) 0;
             }
@@ -711,7 +687,7 @@
         flex: 1 1 auto;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
 
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             display: none;
         }
     }
@@ -726,7 +702,7 @@
         }
         @include hoverDecor(underline, rem(5));
 
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             font-size: rem(22);
         }
     }
@@ -743,9 +719,10 @@
     &__footer{
         border-top: 1px solid rgba(255, 255, 255, 0.3);
         padding: rem(30) rem(15) rem(30) 0;
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             padding: 0;
             height: 0;
+            display: none;
         }
     }
     &__all {
@@ -755,14 +732,14 @@
         &:hover{
             color: $white
         }
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             display: none;
         }
     }
     &__item{
     }
     &__back{
-        @media (max-width: $tablet){
+        @media (max-width: $tbl){
             &:not(:last-child){
                 margin: 0 0 rem(37) 0;
             }
@@ -776,7 +753,7 @@
     color: $white;
     gap: rem(10);
     font-size: rem(22);
-    @media (max-width: $tablet){
+    @media (max-width: $tbl){
         align-items: center;
         display: inline-flex;
     }

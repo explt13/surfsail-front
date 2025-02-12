@@ -5,9 +5,6 @@ html{
     scrollbar-width: 1px;
 
 }
-body{
-    
-}
 
 html:not(._touch){
     ::-webkit-scrollbar {
@@ -61,7 +58,7 @@ html:not(._touch){
 
 
 .notification {
-    z-index: 10005;
+    z-index: 20;
     position: fixed;
     top: rem(100);
 
@@ -187,6 +184,8 @@ html:not(._touch){
 }
 
 .page {
+    position: relative;
+    z-index: 2;
     // .page_home
     &_home {
     }
@@ -349,7 +348,7 @@ html:not(._touch){
         position:absolute;
         color:#fff;
         font-weight:600;
-        z-index:5;
+        z-index:1;
         width:7.125rem;
         height:3rem;
         clip-path:polygon(0 100%,25% 40%,75% 40%,100% 100%);
@@ -367,7 +366,7 @@ html:not(._touch){
             text-transform: capitalize;
             display: block;
             position: relative;
-            z-index: 6;
+            z-index: 2;
             bottom:.5rem;
             left:.25rem;
         }
@@ -399,7 +398,7 @@ html:not(._touch){
             height: 100%;
             object-fit: contain;
         }
-        @media (max-width: $phone){
+        @media (max-width: $lrp){
             @include adaptive-value-between('padding-bottom', 252, 186, 767, 320);
         }
     }
