@@ -34,9 +34,7 @@
         &:not(:last-child){
             @include adaptive-value("margin-bottom", 60, 30, 1);
         }
-        // @media (min-width: rem()) {
-
-        // }
+       
     }
 }
 
