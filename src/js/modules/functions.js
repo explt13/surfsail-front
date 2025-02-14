@@ -195,56 +195,56 @@ if (spoilersArray.length > 0) {
 	function initSpoilerBody(spoilersBlock, hideSpoilerBody = true) {
 		const spoilerTitles = spoilersBlock.querySelectorAll('[data-spoiler]');
 		
-		if (spoilersBlock.dataset.spoilerOpened) {
-			const spoilerOpts = spoilersBlock.dataset.spoilerOpened.split(',');
-			// empty value
-			if (!spoilerOpts[0]) {
-				spoilerTitles.forEach((spoilerTitle) => {
-					if (!spoilerTitle.classList.contains('_active')) {
-						spoilerTitle.classList.add('_active');	
-					}
-				});
-			} else {
-				const type = spoilerOpts[1] ? spoilerOpts[1] : 'max';
-				const width = spoilerOpts[0];
-				const matchMedia = window.matchMedia(`(${type}-width: ${width}px)`);
-				if (matchMedia.matches) {
-					spoilerTitles.forEach((spoilerTitle) => {
-						if (!spoilerTitle.classList.contains('_active')) {
-							spoilerTitle.classList.add('_active');
-							spoilerTitle.nextElementSibling.hidden = false;
-						}
-					});
-				}
+		// if (spoilersBlock.dataset.spoilerOpened) {
+		// 	const spoilerOpts = spoilersBlock.dataset.spoilerOpened.split(',');
+		// 	// empty value
+		// 	if (!spoilerOpts[0]) {
+		// 		spoilerTitles.forEach((spoilerTitle) => {
+		// 			if (!spoilerTitle.classList.contains('_active')) {
+		// 				spoilerTitle.classList.add('_active');	
+		// 			}
+		// 		});
+		// 	} else {
+		// 		const type = spoilerOpts[1] ? spoilerOpts[1] : 'max';
+		// 		const width = spoilerOpts[0];
+		// 		const matchMedia = window.matchMedia(`(${type}-width: ${width}px)`);
+		// 		if (matchMedia.matches) {
+		// 			spoilerTitles.forEach((spoilerTitle) => {
+		// 				if (!spoilerTitle.classList.contains('_active')) {
+		// 					spoilerTitle.classList.add('_active');
+		// 					spoilerTitle.nextElementSibling.hidden = false;
+		// 				}
+		// 			});
+		// 		}
 
-				matchMedia.addEventListener('change', function () {
-					if (matchMedia.matches) {
-						spoilerTitles.forEach((spoilerTitle) => {
-							if (!spoilerTitle.classList.contains('_active')) {
-								spoilerTitle.classList.add('_active');
-								spoilerTitle.nextElementSibling.hidden = false;
-							}
-						});
-					} else {
-						spoilerTitles.forEach((spoilerTitle) => {
-							if (spoilerTitle.classList.contains('_active')) {
-								spoilerTitle.classList.remove('_active');
-								spoilerTitle.nextElementSibling.hidden = true;
-							}
-						});
-					}
-				})
-			}
-		}
+		// 		matchMedia.addEventListener('change', function () {
+		// 			if (matchMedia.matches) {
+		// 				spoilerTitles.forEach((spoilerTitle) => {
+		// 					if (!spoilerTitle.classList.contains('_active')) {
+		// 						spoilerTitle.classList.add('_active');
+		// 						spoilerTitle.nextElementSibling.hidden = false;
+		// 					}
+		// 				});
+		// 			} else {
+		// 				spoilerTitles.forEach((spoilerTitle) => {
+		// 					if (spoilerTitle.classList.contains('_active')) {
+		// 						spoilerTitle.classList.remove('_active');
+		// 						spoilerTitle.nextElementSibling.hidden = true;
+		// 					}
+		// 				});
+		// 			}
+		// 		})
+		// 	}
+		// }
 
 		if (spoilerTitles.length > 0) {
 			spoilerTitles.forEach(spoilerTitle => {
 				if (hideSpoilerBody && !spoilerTitle.classList.contains('_active')) {
 					spoilerTitle.removeAttribute('tabindex');
-					spoilerTitle.nextElementSibling.hidden = true;
+					spoilerTitle.nextElementSibling.style.display = 'none';
 				} else {
 					spoilerTitle.setAttribute('tabindex', '-1');
-					spoilerTitle.nextElementSibling.hidden = false;
+					spoilerTitle.nextElementSibling.style.removeProperty('display');
 				}
 			});
 		}
@@ -291,7 +291,7 @@ export const _slideUp = (target, duration = 500) => {
 		target.style.marginTop = 0;
 		target.style.marginBottom = 0;
 		window.setTimeout(() => {
-			target.hidden = true;
+			target.style.display = 'none';
 			target.style.removeProperty('height');
 			target.style.removeProperty('padding-top');
 			target.style.removeProperty('padding-bottom');
@@ -308,8 +308,8 @@ export const _slideUp = (target, duration = 500) => {
 export const _slideDown = (target, duration = 500) => {
 	if (!target.classList.contains('_slide')) {
 		target.classList.add('_slide');
-		if (target.hidden) {
-			target.hidden = false;
+		if (target.style.display == 'none') {
+			target.style.removeProperty('display');
 		}
 		let height = target.offsetHeight;
 		target.style.overflow = 'hidden';
@@ -337,7 +337,7 @@ export const _slideDown = (target, duration = 500) => {
 }
 
 export const _slideToggle = (target, duration = 500) => {
-	if (target.hidden) {
+	if (target.style.display == 'none') {
 		return _slideDown(target, duration);
 	} else {
 		return _slideUp(target, duration);

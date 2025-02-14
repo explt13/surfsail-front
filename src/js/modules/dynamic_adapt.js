@@ -47,7 +47,7 @@ DynamicAdapt.prototype.init = function () {
 		const objectsFilter = Array.prototype.filter.call(this.objects, function (item) {
 			return item.breakpoint === mediaBreakpoint;
 		});
-		matchMedia.addListener(function () {
+		matchMedia.addEventListener('change', function () {
 			_this.mediaHandler(matchMedia, objectsFilter);
 		});
 		this.mediaHandler(matchMedia, objectsFilter);
@@ -87,7 +87,6 @@ DynamicAdapt.prototype.moveTo = function (place, element, destination) {
 DynamicAdapt.prototype.moveBack = function (parent, element, index) {
 	element.classList.remove(this.daClassname);
 	if (parent.children[index] !== undefined) {
-		console.log(parent.children[index])
 		parent.children[index].insertAdjacentElement('beforebegin', element);
 	} else {
 		parent.insertAdjacentElement('beforeend', element);
