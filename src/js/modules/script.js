@@ -216,101 +216,127 @@ const handleCartHeight = () => {
 }
 handleCartHeight();
 
-const setAuthContainerHeight = (authContainer) => {
-    const mq = window.matchMedia('(min-width: 1024px)');
-    document.addEventListener('DOMContentLoaded', function(){
-        const height = authContainer.scrollHeight;
-        if (mq.matches){
-            authContainer.style.height = '100%';
-            authContainer.style.minHeight = height + 'px';
-        }
-        window.addEventListener('resize', function() {
-            if (mq.matches){
-                authContainer.style.height = '100%';
-                authContainer.style.minHeight = height + 'px';
-            } else {
-                authContainer.style.height = "";
-                authContainer.style.minHeight = "";
+const setPlaceholders = () => {
+    const fields = document.querySelectorAll('.form__field:has(input:not([type="checkbox"]))');
+    fields.forEach(field => {
+        const input = field.querySelector('input');
+        field.setAttribute('data-placeholder', input.dataset.placeholder ?? '');
+        input.addEventListener('focusin', function() {
+            if (!field.classList.contains('_minimize-placeholder')) {
+                field.classList.add('_minimize-placeholder');
             }
-        })
-       
-    })
+        });
+        input.addEventListener('focusout', function() {
+            if (input.value.length > 0) return;
+            if (field.classList.contains('_minimize-placeholder')) {
+                field.classList.remove('_minimize-placeholder');
+            }
+        });
+    });
 }
+setPlaceholders();
 
 const handleAuth = () => {
-    const changeButton = document.querySelector('.auth__change-method');
+    const switchButton = document.querySelector('.auth__change-form');
+    if (!switchButton) {
+        return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    let authForm = params.get('auth');
+    const redirectToParamString = params.get('r_link') ? '&r_link=' + params.get('r_link') : '';
 
-    if (changeButton) {
-       
-        const changeText = changeButton.previousElementSibling;
-        const authPage = document.querySelector('.page_auth');
-        const authContainer = changeButton.closest('.auth__container');
-        const authForm = authContainer.querySelector('.form');
-        const authButton = authForm.querySelector('.form__submit span');
-        const password = authForm.querySelector('.form__password');
-        const passwordParent = password.parentElement;
-        const rememberMe = authForm.querySelector('.form__remember');
-        const confirmPassword = authForm.querySelector('.form__password-confirm');
-        const confirmPasswordParent = confirmPassword.parentElement;
-        const spaceHeight = parseInt(window.getComputedStyle(rememberMe).marginBottom) + confirmPasswordParent.scrollHeight + parseInt(window.getComputedStyle(authForm).gap);
-        
-        setAuthContainerHeight(authContainer);
+    if (authForm === null) {
+        window.history.pushState({}, "", window.location.origin + window.location.pathname + '?auth=login' + redirectToParamString);
+        authForm = 'login';
+    }
+    
+    const authBody = document.querySelector('.auth__body');
+    const formEl = authBody.querySelector('.auth__form');
+    const confirmPasswordParent = formEl.querySelector('.form__password-confirm').parentElement;
+    const rememberMe = formEl.querySelector('.form__remember');
+    const dynamicChangeable = document.querySelectorAll('[data-changeable]');
+    authBody.classList.add(`_${authForm}`);
 
-        const event = new CustomEvent('revalidate');
-        changeButton.addEventListener('click', function() {
-            if (authContainer.classList.contains('_login')){
-                passwordParent.insertAdjacentElement('afterend', confirmPasswordParent);
-                _slideDown(confirmPasswordParent, 250);
-                authContainer.classList.remove('_login');
-                rememberMe.style.marginBottom = "";
-         
-                [changeButton, changeText, authButton].forEach(el => {
-                    el.classList.add('_fade_out');
-                })
-                setTimeout(() => {
-                    [changeButton, changeText, authButton].forEach(el => {
-                        el.classList.remove('_fade_out');
-                        el.classList.add('_fade_in');
-                    })
-                    changeButton.textContent = 'Log in';
-                    changeText.textContent = 'Already have an account?';
-                    authButton.textContent = 'Register';
-                    document.dispatchEvent(event);
-                }, 250)
-                setTimeout(() => {
-                    [changeButton, changeText, authButton].forEach(el => {
-                        el.classList.remove('_fade_in');
-                    })
-                },500)
-            } else {
-                _slideUp(confirmPasswordParent, 250);
-                authContainer.classList.add('_login');
-                rememberMe.style.marginBottom = spaceHeight + 'px';
-                [changeButton, changeText, authButton].forEach(el => {
-                    el.classList.add('_fade_out');
-                })
-                setTimeout(() => {
-                    [changeButton, changeText, authButton].forEach(el => {
-                        el.classList.remove('_fade_out');
-                        el.classList.add('_fade_in');
-                    })
-                    changeButton.textContent = 'Register';
-                    changeText.textContent = 'Don\'t have an account?';
-                    authButton.textContent = 'Log in';
-                    confirmPasswordParent.remove();
-                    document.dispatchEvent(event);
-                }, 250)
-                setTimeout(() => {
-                    [changeButton, changeText, authButton].forEach(el => {
-                        el.classList.remove('_fade_in');
-                    })
-                },500)
-            }
-        })
+    const revalidateEvent = new CustomEvent('revalidate');
+
+    const authFormText = {
+        login: {
+            switchFormButton: 'Register',
+            switchFormText: 'Don\'t have an account?',
+            submitFormButton: 'Log in',
+        },
+        register: {
+            switchFormButton: 'Log in',
+            switchFormText: 'Already have an account?',
+            submitFormButton: 'Register',
+        }
+    
+    }
+    
+    function renderFormInit() {
+        if (authForm === 'register') {
+            confirmPasswordParent.style.removeProperty('display');
+            dynamicChangeable.forEach(el => {
+                el.textContent = authFormText[authForm][el.dataset.name];
+            })
+        } else if (authForm === 'login') {
+            dynamicChangeable.forEach(el => {
+                el.textContent = authFormText[authForm][el.dataset.name];
+            })
+
+        }
+
+    }
+    renderFormInit();
+
+    switchButton.addEventListener('click', function() {
+        if (authForm === 'login'){
+            authBody.classList.remove('_login');
+            authBody.classList.add('_register');
+            authForm = 'register';
+            authFormAnimate(authForm);
+            window.history.pushState({}, '', window.location.origin + window.location.pathname  + "?auth=" + authForm + redirectToParamString);
+        } 
+        else if (authForm === 'register') {
+            authBody.classList.remove('_register');
+            authBody.classList.add('_login');
+            authForm = 'login';
+            authFormAnimate(authForm);
+            window.history.pushState({}, '', window.location.origin + window.location.pathname + "?auth=" + authForm + redirectToParamString);
+        }
+    })
+
+
+    function authFormAnimate(form) {
+        if (form === 'register') {
+            _slideDown(confirmPasswordParent, 250);
+        }
+        if (form === 'login') {
+            _slideUp(confirmPasswordParent, 250);
+        }
+        dynamicChangeable.forEach(el => {
+            el.classList.add('_fade_out');
+        });
+        setTimeout(() => {
+            dynamicChangeable.forEach(el => {
+                el.classList.remove('_fade_out');
+                el.classList.add('_fade_in');
+                el.textContent = authFormText[form][el.dataset.name];
+            })
+            document.dispatchEvent(revalidateEvent);
+        }, 250);
+    
+        setTimeout(() => {
+            dynamicChangeable.forEach(el => {
+                el.classList.remove('_fade_in');
+            })
+        }, 500);
     }
 }
 
 handleAuth();
+
+
 
 const displayBenefits = () => {
     const isMobile = document.documentElement.classList.contains('_touch');

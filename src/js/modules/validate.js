@@ -2,7 +2,7 @@ import tippy from "tippy.js";
 
 
 const validateInit = () => {
-    const forms = document.querySelectorAll('form');
+    const forms = document.querySelectorAll('.form-validate');
     if (forms.length > 0) {
         forms.forEach(form => {
             validateForm(form);
@@ -12,7 +12,6 @@ const validateInit = () => {
 
 
 const validateForm = (form) => {
-    const isAjax = form.getAttribute('data-ajax');
     let req_fields = form.querySelectorAll('._req input');
     const errorEl = document.createElement('span');
     const authContainer = form.closest('.auth__container')
@@ -38,9 +37,13 @@ const validateForm = (form) => {
             parentNode.appendChild(errorElClone);
             setTimeout(() => {
                 errorElClone.classList.add('_show-up');
-                tippy(errorElClone, {
+                const tooltip = tippy(errorElClone, {
                     content: msg,
-                    theme: 'error'
+                    theme: 'error',
+                });
+                errorElClone.addEventListener("touchstart", (e) => {
+                    e.stopPropagation();
+                    tooltip.show();
                 });
             }, 5);
         }
