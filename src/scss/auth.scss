@@ -1,20 +1,15 @@
 .page_auth {
     min-height: 100vh;
-    // height: 100vh;
-    background-color: #ffffff;
-    background-image: url('@img/home/auth.jpg');
-    background-repeat: no-repeat;
+    // background-color: white;
+    background: #121212 url('@img/home/auth.jpg') no-repeat 0% / 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     
     position: relative;
     background-size: cover;
-    background-position: 0% 20%;
     @media (max-width: $sml) {
-        background-image: none;
-        max-height: unset;
-        height: unset;
+        height: 100%;
     }
     .container{
         height: 100%;
@@ -26,6 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    // .auth__blur
     &__blur{
         position: absolute;
         top: 0;
@@ -35,13 +31,14 @@
         background-color: rgba(0, 0, 0, .05);
         backdrop-filter: blur(15px);
         @media (max-width: $sml) {
-            background-color: unset;
-            backdrop-filter: blur(0px);
+            // background-color: unset;
+            backdrop-filter: blur(5px);
         }
     }
     // .auth__container
     &__container {
         max-width: rem(1400);
+        min-height: 90vh;
         width: 100%;
         display: flex;
         background-repeat: no-repeat;
@@ -52,38 +49,47 @@
         border-radius: rem(40);
         position: relative;
         transition: background-position 0.9s ease-in-out;
-        &._login{
-            background-position: 0% 20%;
-            .auth__body{
-                left: 0%;
-                border-top-left-radius: rem(39);
-                border-bottom-left-radius: rem(39);
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-        }
         @media (max-width: $sml) {
             background-image: none;
+            justify-content: center;
+        }
+        &:has(.auth__body._login){
+            background-position: 0% 20%;
         }
     }
     // .auth__body
     &__body {
         position: relative;
-        left: 50%;
         flex: 0 0 50%;
         background-color: #ffffff;
         padding: rem(64);
-        border-top-right-radius: rem(39);
-        border-bottom-right-radius: rem(39);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         transition: all 0.9s ease-out;
+         // .auth__body._login
+        &._login {
+            left: 0%;
+            border-top-left-radius: rem(39);
+            border-bottom-left-radius: rem(39);
+        }
+         // .auth__body._register
+        &._register{
+            left: 50%;
+            border-top-right-radius: rem(39);
+            border-bottom-right-radius: rem(39);
+        }
         @media (max-width: $sml) {
             flex: 0 0 100%;
             left: 0;
+            background-color: unset;
             border-top-right-radius: 0;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             box-shadow: unset;
+            &._register,
+            &._login {
+                border-radius:unset;
+                left: 0%;
+            }
         }
         @media (max-width: $mdp) {
             padding: rem(64) 0;
@@ -120,6 +126,7 @@
         font-weight: 400;
         font-size: rem(20);
         color: #000;
+        letter-spacing: 2px;
     }
     // .auth__oauth
     &__oauth {
@@ -139,6 +146,10 @@
         }
         &:not(:last-child){
             margin: 0 0 rem(40) 0;
+        }
+        @media (max-width: $sml) {
+            border: unset;
+            background-color: $white;
         }
     }
     // .auth__or
@@ -166,6 +177,13 @@
         &:not(:last-child){
             margin: 0 0 rem(40) 0;
         }
+        @media (max-width: $sml) {
+            color: $dark;
+            &::before,
+            &::after {
+                background-color: $dark;
+            }
+        }
     }
     // .auth__form
     &__form {
@@ -177,8 +195,8 @@
         font-size: rem(16);
         text-align: center;
     }
-    // .auth__chane-methods
-    &__change-method{
+    // .auth__chane-form
+    &__change-form{
         font-weight: 600;
         cursor: pointer;
         color: $mainColor;
@@ -203,6 +221,9 @@
 
         &:focus{
             outline: 1px solid #b0b0b0;
+        }
+        @media (max-width: $sml) {
+            padding: rem(16) rem(40) rem(16) rem(16);
         }
     }
     &:not(:last-child){

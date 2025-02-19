@@ -19,6 +19,9 @@ html:not(._touch){
         background-color: rgba(93, 138, 136, 0.45);
     }
 }
+button:focus {
+    outline: 1px solid $mainColor;
+}
 .checkbox-csm{
     position: relative;
     accent-color: $fixedOrange;
@@ -130,12 +133,7 @@ html:not(._touch){
     input:not([type="checkbox"]){
         width: 100%;
         font-size: rem(16);
-        &::placeholder{
-            font-weight: 400;
-            font-size: rem(16);
-            color: #2e2e2e;
-            transition: opacity ease-in-out 0.2s;
-        }
+        position: relative;
         outline: none;
         &:focus{
             &::placeholder{
@@ -145,14 +143,36 @@ html:not(._touch){
     }
     // .form__field
     &__field{
-        position: relative;
+        position: relative;     
+        &:has(input:not([type="checkbox"])){
+            &::before {
+                content: attr(data-placeholder);
+                pointer-events: none;
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 1rem;
+                z-index: 5;
+                transform-origin: top left;
+                transition: transform .35s;
+            }
+
+        }
+        &:has(input:not([type="checkbox"]))._minimize-placeholder::before {
+            transform: translateY(-150%) scale(80%);
+        }
+        @media (max-width: $sml) {
+            input {
+                background: rgba(255, 255, 255, 0.5);
+            }
+        }
     }
     &__field-result{
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         right: rem(10);
-
         opacity: 0;
         transition: opacity 0.1s ease-in-out;
         &._show-up{
@@ -164,6 +184,31 @@ html:not(._touch){
         }
         &_error{
             color: $fixedOrange;
+        }
+        @media (max-width: $sml) {
+            height: 100%;
+            width: rem(40);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: rem(0);
+            &::before{
+
+                font-size: rem(24);
+                background-color: white;
+                border-radius: 50%;
+            }
+        } 
+        z-index: 5;
+ 
+    }
+    &__remember {
+        .checkbox__label {
+            color: #2e2e2e;
+            cursor: pointer;
+        }
+        .checkbox__label::before{
+            border: 1px solid #6a6a6a;
         }
     }
 }
