@@ -15,8 +15,8 @@ functions.setClientClasses();
 
 
 if (page !== 'auth') {
-    functions.ibg();
     functions.setSpoilers();
+    functions.ibg();
     functions.setTabs();
     functions.initRatings();
 }

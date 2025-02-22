@@ -175,7 +175,8 @@ button:focus-visible {
                 display: flex;
                 align-items: center;
                 z-index: 5;
-                top: 0;
+                top: 50%;
+                transform: translateY(-47%);
                 right: rem(10);
                 font-size: rem(20);
                 transition: scale 0.1s ease-in-out, right 0.2s ease-in-out;
