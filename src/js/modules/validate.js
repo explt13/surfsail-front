@@ -1,7 +1,7 @@
 import tippy from "tippy.js";
 
 
-const validateInit = () => {
+export const validateInit = () => {
     const forms = document.querySelectorAll('.form-validate');
     if (forms.length > 0) {
         forms.forEach(form => {
@@ -227,5 +227,3 @@ function isAlphaNumeric(str) {
     }
     return true;
 };
-
-validateInit();
