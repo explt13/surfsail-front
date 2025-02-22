@@ -1,14 +1,9 @@
 import { _slideDown, _slideUp } from "./functions.js";
+import { validateInit } from './validate.js';
+import { setViewPassword } from './forms.js'
+
+
 document.addEventListener("click", documentActions);
-
-const menuBlocks = document.querySelectorAll(".sub-menu-catalog__block");
-if (menuBlocks.length > 0){
-    menuBlocks.forEach(block => {
-        const categoryQty = block.querySelectorAll(".sub-menu-catalog__category").length;
-        block.classList.add(`sub-menu-catalog__block_${categoryQty}`);
-    })
-}
-
 
 function documentActions(e){
     const targetElement = e.target;
@@ -54,6 +49,16 @@ function documentActions(e){
     }    
 }
 
+function subMenuBlockGridLayout() {
+    const menuBlocks = document.querySelectorAll(".sub-menu-catalog__block");
+    if (menuBlocks.length > 0){
+        menuBlocks.forEach(block => {
+            const categoryQty = block.querySelectorAll(".sub-menu-catalog__category").length;
+            block.classList.add(`sub-menu-catalog__block_${categoryQty}`);
+        })
+    }
+}
+subMenuBlockGridLayout();
 
 const burgerMenu = () =>{
     const TABLET = 992 / 16
@@ -220,7 +225,12 @@ const setPlaceholders = () => {
     const fields = document.querySelectorAll('.form__field:has(input:not([type="checkbox"]))');
     fields.forEach(field => {
         const input = field.querySelector('input');
-        field.setAttribute('data-placeholder', input.dataset.placeholder ?? '');
+        if (input.value.length > 0) {
+            if (!field.classList.contains('_minimize-placeholder')) {
+                field.classList.add('_minimize-placeholder');
+            }
+        }
+        field.setAttribute('data-placeholder', input.placeholder ?? '');
         input.addEventListener('focusin', function() {
             if (!field.classList.contains('_minimize-placeholder')) {
                 field.classList.add('_minimize-placeholder');
@@ -237,6 +247,9 @@ const setPlaceholders = () => {
 setPlaceholders();
 
 const handleAuth = () => {
+    validateInit();
+    setViewPassword();
+    
     const switchButton = document.querySelector('.auth__change-form');
     if (!switchButton) {
         return;
@@ -253,7 +266,6 @@ const handleAuth = () => {
     const authBody = document.querySelector('.auth__body');
     const formEl = authBody.querySelector('.auth__form');
     const confirmPasswordParent = formEl.querySelector('.form__password-confirm').parentElement;
-    const rememberMe = formEl.querySelector('.form__remember');
     const dynamicChangeable = document.querySelectorAll('[data-changeable]');
     authBody.classList.add(`_${authForm}`);
 
@@ -336,13 +348,22 @@ const handleAuth = () => {
 
 handleAuth();
 
+const bindTabIndexElements = () => {
+    document.addEventListener('keydown', e => {
+        if (e.key === "Enter" && e.target.matches('[tabindex="0"]')) {
+            e.target.click();
+        }
+    });
+}
+
+bindTabIndexElements();
 
 
-const displayBenefits = () => {
+const displayBenefitsWhyUsButton = () => {
     const isMobile = document.documentElement.classList.contains('_touch');
     const whyUs = document.querySelector('.advantages__title-mobile-arrow')
     if (isMobile && whyUs) {
         whyUs.classList.add('_show');
     }
 }
-displayBenefits();
+displayBenefitsWhyUsButton();

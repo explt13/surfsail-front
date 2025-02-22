@@ -108,6 +108,9 @@
     &__column {
         overflow: hidden;
         margin-bottom: 5px;
+        &:has(:focus-visible):focus-within {
+            outline: 2px solid $mainColor;
+        }
     }
 
     @media (max-width: $lrp){
@@ -159,6 +162,10 @@
         @media (max-width: $lrp) {
             padding: rem(10) 0 rem(20) 0;
         }
+        @include adaptive-value-between('margin-bottom', 30, 20, 1920, 767);
+        @media (max-width: $lrp-mf) {
+            margin-bottom: rem(0);
+        }
     }
     &__title._not-spoiler{
         justify-content: flex-start;
@@ -181,11 +188,12 @@
     // .column-item__link
     &__link {
         font-weight: 400;
+        display: inline-block;
         font-size: rem(18);
         line-height: 1.5;
         color: rgba(255, 255, 255, 0.8);
         transition: color 0.15s ease-in-out;
-        padding: rem(10) 0;
+        // padding: rem(10) 0;
         @media (any-hover: hover){
             &:hover{
                 color: $mainColor;

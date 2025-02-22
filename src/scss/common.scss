@@ -19,8 +19,8 @@ html:not(._touch){
         background-color: rgba(93, 138, 136, 0.45);
     }
 }
-button:focus {
-    outline: 1px solid $mainColor;
+button:focus-visible {
+    outline: 2px solid orangered;
 }
 .checkbox-csm{
     position: relative;
@@ -143,8 +143,8 @@ button:focus {
     }
     // .form__field
     &__field{
-        position: relative;     
-        &:has(input:not([type="checkbox"])){
+        position: relative;
+        &:has(input[placeholder]){ // separate via data-?minimize-placeholder
             &::before {
                 content: attr(data-placeholder);
                 pointer-events: none;
@@ -157,17 +157,80 @@ button:focus {
                 transform-origin: top left;
                 transition: transform .35s;
             }
+            input::placeholder {
+                opacity: 0;
+                visibility: hidden;
+                color: transparent;
+            }
+            &._minimize-placeholder::before {
+                transform: translateY(-150%) scale(80%);
+            }
+        }
+        &:has(input:is([type="password"],[type="text"])[data-viewable]) {
+            .show-pass {
+                cursor: pointer;
+                color: $dark;
+                position: absolute;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                z-index: 5;
+                top: 0;
+                right: rem(10);
+                font-size: rem(20);
+                transition: scale 0.1s ease-in-out, right 0.2s ease-in-out;
+                
+                @media (any-hover) {
+                    &:hover {
+                        scale: 1.05;
+                    }
+                }
 
+                &::after{
+                    content: "";
+                    width: rem(0);
+                    height: rem(1.5);
+                    position: absolute;
+                    top: 45%;
+                    left: 50%;
+                    transform: translateY(-50%) translateX(-50%) rotateZ(-55deg);
+                    background-color: $dark;
+                    transition: width 0.15s ease-in-out;
+                }
+
+                &._display::after{
+                    content: "";
+                    width: rem(22);
+                    height: rem(1.5);
+                    position: absolute;
+                    top: 45%;
+                    left: 50%;
+                    z-index: 10;
+                    transform: translateY(-50%) translateX(-50%) rotateZ(-55deg);
+                    background-color: $dark;
+                }
+            }
         }
-        &:has(input:not([type="checkbox"]))._minimize-placeholder::before {
-            transform: translateY(-150%) scale(80%);
+        &:has(.form__field-result) {
+            .show-pass {
+                right: rem(30)!important;
+                @media (max-width: $sml) {
+                    right: rem(40)!important;
+                }
+            }
         }
+
         @media (max-width: $sml) {
             input {
                 background: rgba(255, 255, 255, 0.5);
             }
         }
+
+          // .form__field_auth
+        &_auth {
+        }
     }
+    
     &__field-result{
         position: absolute;
         top: 50%;
@@ -209,6 +272,22 @@ button:focus {
         }
         .checkbox__label::before{
             border: 1px solid #6a6a6a;
+        }
+    }
+    // .form__submit
+    &__submit {
+        font-weight: 500;
+        font-size: rem(16);
+        padding: rem(16);
+        border-radius: rem(8);
+        &_auth {
+            background-color: #000;
+            color: #fff;
+            @media (max-width: $sml) {
+                background-color: rgb(44, 52, 120);
+                backdrop-filter: blur(10px);
+                letter-spacing: rem(2);
+            }
         }
     }
 }

@@ -1,12 +1,17 @@
 //let btn = document.querySelectorAll('button[type="submit"],input[type="submit"]');
 import {_slideToggle, _slideUp, _slideDown} from './functions.js'
-let forms = document.querySelectorAll('_form_val');
-if (forms.length > 0) {
-	for (let index = 0; index < forms.length; index++) {
-		const el = forms[index];
-		el.addEventListener('submit', form_submit);
+
+
+function initFormValidation() {
+	let forms = document.querySelectorAll('._form_validate_v0');
+	if (forms.length > 0) {
+		for (let index = 0; index < forms.length; index++) {
+			const el = forms[index];
+			el.addEventListener('submit', form_submit);
+		}
 	}
 }
+
 function email_test(input) {
 	return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
 }
@@ -152,18 +157,25 @@ function form_clean(form) {
 }
 
 //viewPass
-let viewPass = document.querySelectorAll('._viewpass');
-for (let index = 0; index < viewPass.length; index++) {
-	const element = viewPass[index];
-	element.addEventListener("click", function (e) {
-		if (element.classList.contains('_active')) {
-			element.parentElement.querySelector('input').setAttribute("type", "password");
-		} else {
-			element.parentElement.querySelector('input').setAttribute("type", "text");
-		}
-		element.classList.toggle('_active');
-	});
+export const setViewPassword = () => {
+	const viewPasswordEls = document.querySelectorAll('input[type="password"][data-viewable]');	
+	viewPasswordEls.forEach(passwordEl => {
+		const showIcon = document.createElement('button');
+        showIcon.innerHTML = "&#128065;";
+        showIcon.classList.add("show-pass");
+		showIcon.title = 'Show password';
+		passwordEl.insertAdjacentElement("afterend", showIcon);
+		showIcon.addEventListener('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			const isPassword = passwordEl.type === 'password' ? true : false;
+			passwordEl.type = isPassword ? 'text' : 'password';
+			showIcon.title = isPassword ? 'Show password' : 'Hide password';
+			showIcon.classList.toggle('_display', isPassword);
+		})
+	})
 }
+
 
 //Select
 let selects = document.getElementsByTagName('select');
@@ -501,10 +513,9 @@ if (quantityButtons.length > 0) {
 	}
 }
 
-
+//RANGE
 import * as noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
-//RANGE
 const initRange = () => {
 	const rangeItems = document.querySelectorAll('[data-range]');
 

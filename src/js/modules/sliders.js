@@ -2,10 +2,16 @@ import Swiper from "swiper"; // 'swiper/bundle' -> import all;
 import { Pagination, Navigation, Autoplay, Thumbs, EffectFade } from "swiper/modules";
 
 
-const mainSliders = document.querySelectorAll('.slider-main');
 
-const handleMainScreenSlider = (sliderFractionActive) => {
-    const mainScreenSwiper = new Swiper('.slider-main', {
+export const handleMainScreenSlider = () => {
+    const mainSlider = document.querySelector('.slider-main');
+    if (!mainSlider) return;
+    const sliderFractionActive = mainSlider.querySelector('.pagination-fraction__active')
+    const sliderFractionTotal = mainSlider.querySelector('.pagination-fraction__total');
+    const slideCount = mainSlider.querySelectorAll('.slide-main-block').length;
+    sliderFractionActive.textContent = '01';
+    sliderFractionTotal.textContent = `/${slideCount}`;
+    new Swiper('.slider-main', {
         modules: [Pagination, Autoplay],
         // ------------------------------------ BASE ------------------------------------ //
         init: true,
@@ -19,9 +25,8 @@ const handleMainScreenSlider = (sliderFractionActive) => {
         spaceBetween: 100,
         preventInteractionOnTransition: true,
         grabCursor: false,
-        slideToClickedSlide: false, // click on slide to move on it
+        slideToClickedSlide: false,
         loop: true,
-        // autoHeight: true,
     
         pagination: {
             el: '.pagination-bullets',
@@ -49,67 +54,7 @@ const handleMainScreenSlider = (sliderFractionActive) => {
     });
 }
 
-if (mainSliders.length > 0){
-    mainSliders.forEach(slider => {
-        const sliderFractionActive = slider.querySelector('.pagination-fraction__active')
-        const sliderFractionTotal = slider.querySelector('.pagination-fraction__total');
-        const slideCount = slider.querySelectorAll('.slide-main-block').length;
-        sliderFractionActive.textContent = '01';
-        sliderFractionTotal.textContent = `/${slideCount}`;
-        handleMainScreenSlider(sliderFractionActive);
-    })
-}
-
-const handleAutoplay = (slider) => {
-    let timeLeft = 0;
-    let autoplayTimeout;
-    let leaveTime = 0;
-    let elapsedTime = 0;
-
-    slider.on('beforeTransitionStart', () => {
-        if (leaveTime) {
-            leaveTime = 0;
-        }
-        if (elapsedTime) {
-            elapsedTime = 0;
-        }
-        timeLeft = 3000;
-    });
-
-    slider.el.addEventListener('mouseenter', function(){
-        slider.el.classList.add('animation-stop');
-        slider.autoplay.stop();
-        timeLeft = slider.autoplay.timeLeft;
-        
-        if (leaveTime) {
-            elapsedTime = Date.now() - leaveTime;
-        }
-        if (autoplayTimeout) {
-            clearTimeout(autoplayTimeout);
-        }
-    });
-
-    slider.el.addEventListener('mouseleave', function(){
-        slider.el.classList.remove('animation-stop');
-        leaveTime = Date.now();
-        
-        if (elapsedTime) {
-            timeLeft -= elapsedTime;
-        }
-
-        if (timeLeft > 0) {
-            autoplayTimeout = setTimeout(() => {
-                leaveTime = 0;
-                elapsedTime = 0;
-                slider.slideNext(1000);
-                slider.autoplay.start();
-            }, timeLeft);
-        }
-    });
-}
-
-
-const handleCatalogSlider = () => {
+export const handleCatalogSlider = () => {
     let productsSlider = null;
     const enableSwiper = () => {
         const sliders = document.querySelectorAll('.slider-products');
@@ -196,12 +141,11 @@ const handleCatalogSlider = () => {
     watchMq();
     mq.addEventListener('change', watchMq);
 }
-handleCatalogSlider();
 
-const handleNewCatalogSlider = () => {
+export const handleNewCatalogSlider = () => {
     const sliders = document.querySelectorAll('.slider-new-products');
     if (sliders.length > 0){
-        const newProductSlider = new Swiper('.slider-new-products', {
+        new Swiper('.slider-new-products', {
             modules: [Pagination, Autoplay],
             init: true,
             enabled: true,
@@ -230,7 +174,7 @@ const handleNewCatalogSlider = () => {
                 pauseOnMouseEnter: true,
             },
             breakpoints: {
-                767: {
+                768: {
                     slidesPerView: 1,
                 },
                 992: {
@@ -258,9 +202,8 @@ const handleNewCatalogSlider = () => {
     }
     
 }
-handleNewCatalogSlider();
 
-const handleProductSlider = () => {
+export const handleProductSlider = () => {
     const showSliders = document.querySelectorAll('.images-product__show-image');
     const thumbsSliders = document.querySelectorAll('.images-product__thumbs');
 
@@ -293,7 +236,7 @@ const handleProductSlider = () => {
                 }
             },
         });
-        const showSwiper = new Swiper(".images-product__show-image", {
+        new Swiper(".images-product__show-image", {
             modules: [Thumbs, EffectFade],
             init: true,
             enabled: true,
@@ -307,8 +250,54 @@ const handleProductSlider = () => {
         })
     }
 }
-handleProductSlider();
 
+const handleAutoplay = (slider) => {
+    let timeLeft = 0;
+    let autoplayTimeout;
+    let leaveTime = 0;
+    let elapsedTime = 0;
+
+    slider.on('beforeTransitionStart', () => {
+        if (leaveTime) {
+            leaveTime = 0;
+        }
+        if (elapsedTime) {
+            elapsedTime = 0;
+        }
+        timeLeft = 3000;
+    });
+
+    slider.el.addEventListener('mouseenter', function(){
+        slider.el.classList.add('animation-stop');
+        slider.autoplay.stop();
+        timeLeft = slider.autoplay.timeLeft;
+        
+        if (leaveTime) {
+            elapsedTime = Date.now() - leaveTime;
+        }
+        if (autoplayTimeout) {
+            clearTimeout(autoplayTimeout);
+        }
+    });
+
+    slider.el.addEventListener('mouseleave', function(){
+        slider.el.classList.remove('animation-stop');
+        leaveTime = Date.now();
+        
+        if (elapsedTime) {
+            timeLeft -= elapsedTime;
+        }
+
+        if (timeLeft > 0) {
+            autoplayTimeout = setTimeout(() => {
+                leaveTime = 0;
+                elapsedTime = 0;
+                slider.slideNext(1000);
+                slider.autoplay.start();
+            }, timeLeft);
+        }
+    });
+}
 
 
 // ------------------------------------ BASE ------------------------------------ //

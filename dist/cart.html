@@ -10,7 +10,7 @@
     <title>Catalog</title>
 </head>
 
-<body>
+<body data-page="cart">
     <div class="wrapper">
         <header class="header">
             <div class="header__row header__row_top top-header">
@@ -708,10 +708,10 @@
                                     <button type="submit" class="form-newsletter__button _icon-arrow_sh_r"></button>
                                 </div>
                                 <div class="form-newsletter__agreement checkbox checkbox_terms">
-                                    <input id="newsletter-aggreement" type="checkbox" class="checkbox__input form-newsletter__agreement-button">
-                                    <label for="newsletter-aggreement" class="checkbox__label checkbox__label_terms form-newsletter__label-aggrement">
-                                        <span class="checkbox__box checkbox__box_terms"></span>
-                                        <span class="checkbox__text checkbox__text_terms">I have read and agree to the <a href="" class="form-newsletter__policy">Terms and Conditions.</a></span>
+                                    <input id="newsletter-aggreement" name="newsletter" type="checkbox" class="checkbox__input form-newsletter__agreement-button">
+                                    <label for="newsletter-aggreement" tabindex="0" class="checkbox__label checkbox__label_terms form-newsletter__label-aggrement">
+                                        <div class="checkbox__box checkbox__box_terms"></div>
+                                        <div class="checkbox__text checkbox__text_terms">I have read and agree to the </div>
                                     </label>
                                 </div>
                             </form>

@@ -1,8 +1,6 @@
 import Drift from "drift-zoom";
 
-
-const TABLET = 991 / 16;
-const mql = matchMedia(`(max-width: ${TABLET}rem)`);
+const mql = matchMedia(`(max-width: ${991 / 16}rem)`);
 
 const imgs = document.querySelectorAll(".images-product__show-image img");
 const pane = document.querySelector('.zoom-pane');
@@ -55,7 +53,7 @@ const measurePaneSize = () => {
     
 }
 
-const initZoom = () => {
+export const initZoom = () => {
     if (imgs.length > 0) {
         measurePaneSize();
         imgs.forEach(img => {
@@ -68,5 +66,3 @@ const initZoom = () => {
     }
 }
 initZoom();
-
-
