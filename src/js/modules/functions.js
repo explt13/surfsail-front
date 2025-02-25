@@ -249,9 +249,11 @@ export function setSpoilers () {
 				spoilerTitles.forEach(spoilerTitle => {
 					if (hideSpoilerBody && !spoilerTitle.classList.contains('_active')) {
 						spoilerTitle.removeAttribute('tabindex');
+                        if (!spoilerTitle.nextElementSibling) return;
 						spoilerTitle.nextElementSibling.hidden = true;
 					} else {
 						spoilerTitle.setAttribute('tabindex', '-1');
+                        if (!spoilerTitle.nextElementSibling) return;
 						spoilerTitle.nextElementSibling.hidden = false;
 					}
 				});

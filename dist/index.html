@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/style.min.css?_v=20250226002822" />
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <script src="js/app.min.js" defer></script>
+    <script src="js/app.min.js?_v=20250226002822" defer></script>
 </head>
 
 <body data-page="main">
@@ -414,8 +414,12 @@
                             </div>
                             <div class="main-screen__media media-main-block">
                                 <div class="media-main-block__image">
-                                    <img class="media-main-block__img media-main-block__img_1" src="img/home/surfboard01.png" alt="surfboard-image">
-                                    <img class="media-main-block__img media-main-block__img_2" src="img/home/surfboard02.png" alt="surfboard-image">
+                                    <picture>
+                                        <source srcset="img/home/surfboard01.webp" type="image/webp"><img class="media-main-block__img media-main-block__img_1" src="img/home/surfboard01.png" alt="surfboard-image">
+                                    </picture>
+                                    <picture>
+                                        <source srcset="img/home/surfboard02.webp" type="image/webp"><img class="media-main-block__img media-main-block__img_2" src="img/home/surfboard02.png" alt="surfboard-image">
+                                    </picture>
                                 </div>
                                 <div class="media-main-block__tips">
                                     <button id="tip_1" data-tippy-content="Selecting the correct surfboard is crucial for your skill level and the type of waves you plan to ride. Beginners should opt for longer, more stable boards, while advanced surfers might prefer shorter, more maneuverable ones." class="media-main-block__tip media-main-block__tip_1"><span>+</span></button>
@@ -475,27 +479,51 @@
                     <div class="brands__title section-title" data-spoiler>Brands</div>
                     <div class="brands__cards">
                         <a href="catalog.html" class="brands__item item-brand">
-                            <div class="item-brand__image"><img src="img/brands/01.png" alt="brands-image-01"></div>
+                            <div class="item-brand__image">
+                                <picture>
+                                    <source srcset="img/brands/01.webp" type="image/webp"><img src="img/brands/01.png" alt="brands-image-01">
+                                </picture>
+                            </div>
                             <div class="item-brand__text _icon-arrow_sh_r">Channel Islands</div>
                         </a>
                         <a href="catalog.html" class="brands__item item-brand">
-                            <div class="item-brand__image"><img src="img/brands/02.png" alt="brands-image-02"></div>
+                            <div class="item-brand__image">
+                                <picture>
+                                    <source srcset="img/brands/02.webp" type="image/webp"><img src="img/brands/02.png" alt="brands-image-02">
+                                </picture>
+                            </div>
                             <div class="item-brand__text _icon-arrow_sh_r">DHD</div>
                         </a>
                         <a href="catalog.html" class="brands__item item-brand">
-                            <div class="item-brand__image"><img src="img/brands/03.png" alt="brands-image-03"></div>
+                            <div class="item-brand__image">
+                                <picture>
+                                    <source srcset="img/brands/03.webp" type="image/webp"><img src="img/brands/03.png" alt="brands-image-03">
+                                </picture>
+                            </div>
                             <div class="item-brand__text _icon-arrow_sh_r">Firewire</div>
                         </a>
                         <a href="catalog.html" class="brands__item item-brand">
-                            <div class="item-brand__image"><img src="img/brands/04.png" alt="brands-image-04"></div>
+                            <div class="item-brand__image">
+                                <picture>
+                                    <source srcset="img/brands/04.webp" type="image/webp"><img src="img/brands/04.png" alt="brands-image-04">
+                                </picture>
+                            </div>
                             <div class="item-brand__text _icon-arrow_sh_r">Hayden Shapes</div>
                         </a>
                         <a href="catalog.html" class="brands__item item-brand">
-                            <div class="item-brand__image"><img src="img/brands/05.png" alt="brands-image-05"></div>
+                            <div class="item-brand__image">
+                                <picture>
+                                    <source srcset="img/brands/05.webp" type="image/webp"><img src="img/brands/05.png" alt="brands-image-05">
+                                </picture>
+                            </div>
                             <div class="item-brand__text _icon-arrow_sh_r">JS industries</div>
                         </a>
                         <a href="catalog.html" class="brands__item item-brand">
-                            <div class="item-brand__image"><img src="img/brands/06.png" alt="brands-image-06"></div>
+                            <div class="item-brand__image">
+                                <picture>
+                                    <source srcset="img/brands/06.webp" type="image/webp"><img src="img/brands/06.png" alt="brands-image-06">
+                                </picture>
+                            </div>
                             <div class="item-brand__text _icon-arrow_sh_r">Lost</div>
                         </a>
                         <a href="catalog.html" class="brands__more _icon-arrow_sh_r">
@@ -519,7 +547,9 @@
                                 </ul>
                             </div>
                             <div class="item-category__image item-category__image_1">
-                                <img src="img/categories/01.png" alt="category-image">
+                                <picture>
+                                    <source srcset="img/categories/01.webp" type="image/webp"><img src="img/categories/01.png" alt="category-image">
+                                </picture>
                             </div>
                         </a>
                         <a href="./catalog.html" class="categories__item item-category categories__item">
@@ -532,7 +562,9 @@
                                 </ul>
                             </div>
                             <div class="item-category__image item-category__image_2">
-                                <img src="img/categories/02.png" alt="category-image">
+                                <picture>
+                                    <source srcset="img/categories/02.webp" type="image/webp"><img src="img/categories/02.png" alt="category-image">
+                                </picture>
                             </div>
                         </a>
                         <a href="./catalog.html" class="categories__item item-category categories__item">
@@ -545,7 +577,9 @@
                                 </ul>
                             </div>
                             <div class="item-category__image item-category__image_3">
-                                <img src="img/categories/03.png" alt="category-image">
+                                <picture>
+                                    <source srcset="img/categories/03.webp" type="image/webp"><img src="img/categories/03.png" alt="category-image">
+                                </picture>
                             </div>
                         </a>
                         <a href="./catalog.html" class="categories__item item-category categories__item">
@@ -558,7 +592,9 @@
                                 </ul>
                             </div>
                             <div class="item-category__image item-category__image_4">
-                                <img src="img/categories/04.png" alt="category-image">
+                                <picture>
+                                    <source srcset="img/categories/04.webp" type="image/webp"><img src="img/categories/04.png" alt="category-image">
+                                </picture>
                             </div>
                         </a>
                         <a href="./catalog.html" class="categories__item item-category categories__item">
@@ -571,7 +607,9 @@
                                 </ul>
                             </div>
                             <div class="item-category__image item-category__image_5">
-                                <img src="img/categories/05.png" alt="category-image">
+                                <picture>
+                                    <source srcset="img/categories/05.webp" type="image/webp"><img src="img/categories/05.png" alt="category-image">
+                                </picture>
                             </div>
                         </a>
                         <a href="./catalog.html" class="categories__item item-category categories__item">
@@ -584,7 +622,9 @@
                                 </ul>
                             </div>
                             <div class="item-category__image item-category__image_6">
-                                <img src="img/categories/06.png" alt="category-image">
+                                <picture>
+                                    <source srcset="img/categories/06.webp" type="image/webp"><img src="img/categories/06.png" alt="category-image">
+                                </picture>
                             </div>
                         </a>
                     </div>
@@ -605,7 +645,9 @@
                                             <div class="product-card__band product-card__band_discount"><span>-50%</span></div>
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/01.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -641,7 +683,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/02.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -678,7 +722,9 @@
                                             <div class="product-card__band product-card__band_new"><span>new</span></div>
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/02.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -714,7 +760,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/01.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -750,7 +798,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/03.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -786,7 +836,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/04.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -830,7 +882,9 @@
             <section class="new-products">
                 <div class="new-products__container container">
                     <div class="new-products__decorbg">
-                        <img src="img/home/new_bg_small.jpg" alt="bg-new-products-small">
+                        <picture>
+                            <source srcset="img/home/new_bg_small.webp" type="image/webp"><img src="img/home/new_bg_small.jpg" alt="bg-new-products-small">
+                        </picture>
                     </div>
                     <div class="new-products__body">
                         <div class="new-products__content">
@@ -848,7 +902,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/01.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -884,7 +940,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/04.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -920,7 +978,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/02.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -956,7 +1016,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/03.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -992,7 +1054,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/01.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1048,7 +1112,9 @@
                                             <div class="product-card__band product-card__band_discount"><span>-50%</span></div>
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/01.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1084,7 +1150,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/02.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1121,7 +1189,9 @@
                                             <div class="product-card__band product-card__band_new"><span>new</span></div>
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/02.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/02.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1157,7 +1227,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/01.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1193,7 +1265,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/03.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/03.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1229,7 +1303,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/surfboards/04.webp" type="image/webp"><img loading="lazy" src="img/products/surfboards/04.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1279,7 +1355,9 @@
                         <div class="block-articles__cards cards-articles">
                             <article class="cards-articles__card card-article">
                                 <a href="" class="card-article__image">
-                                    <img src="img/articles/01.jpg" alt="article-image">
+                                    <picture>
+                                        <source srcset="img/articles/01.webp" type="image/webp"><img src="img/articles/01.jpg" alt="article-image">
+                                    </picture>
                                 </a>
                                 <div class="card-article__body">
                                     <a href="" class="card-article__title">Mastering the Waves: Essential Tips for Beginner Surfers</a>
@@ -1288,7 +1366,9 @@
                             </article>
                             <article class="cards-articles__card card-article">
                                 <a href="" class="card-article__image">
-                                    <img src="img/articles/02.jpg" alt="article-image">
+                                    <picture>
+                                        <source srcset="img/articles/02.webp" type="image/webp"><img src="img/articles/02.jpg" alt="article-image">
+                                    </picture>
                                 </a>
                                 <div class="card-article__body">
                                     <a href="" class="card-article__title">Choosing the Perfect Surfboard: A Comprehensive Guide</a>
@@ -1297,7 +1377,9 @@
                             </article>
                             <article class="cards-articles__card card-article">
                                 <a href="" class="card-article__image">
-                                    <img src="img/articles/03.jpg" alt="article-image">
+                                    <picture>
+                                        <source srcset="img/articles/03.webp" type="image/webp"><img src="img/articles/03.jpg" alt="article-image">
+                                    </picture>
                                 </a>
                                 <div class="card-article__body">
                                     <a href="" class="card-article__title">Surfing Safely: Must-Have Gear and Techniques</a>
@@ -1306,7 +1388,9 @@
                             </article>
                             <article class="cards-articles__card card-article">
                                 <a href="" class="card-article__image">
-                                    <img src="img/articles/04.jpg" alt="article-image">
+                                    <picture>
+                                        <source srcset="img/articles/04.webp" type="image/webp"><img src="img/articles/04.jpg" alt="article-image">
+                                    </picture>
                                 </a>
                                 <div class="card-article__body">
                                     <a href="" class="card-article__title">Exploring the Best Surfing Spots: From Coast to Coast</a>
@@ -1328,7 +1412,9 @@
                                     <a href="" class="card-recommend__button button">More details</a>
                                 </div>
                                 <div class="card-recommend__image card-recommend__image_first">
-                                    <img src="img/products/vests/01.jpg" alt="recommend-product-1">
+                                    <picture>
+                                        <source srcset="img/products/vests/01.webp" type="image/webp"><img src="img/products/vests/01.jpg" alt="recommend-product-1">
+                                    </picture>
                                 </div>
                             </div>
                             <div class="cards-recommend__card card-recommend">
@@ -1338,7 +1424,9 @@
                                     <a href="" class="card-recommend__button button">More details</a>
                                 </div>
                                 <div class="card-recommend__image card-recommend__image_second">
-                                    <img src="img/products/bags/01.jpg" alt="recommend-product-2">
+                                    <picture>
+                                        <source srcset="img/products/bags/01.webp" type="image/webp"><img src="img/products/bags/01.jpg" alt="recommend-product-2">
+                                    </picture>
                                 </div>
                             </div>
                         </div>
@@ -1359,7 +1447,9 @@
                                         <article class="product-card">
                                             <a href="./product.html" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/helmets/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/helmets/01.webp" type="image/webp"><img loading="lazy" src="img/products/helmets/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1399,7 +1489,9 @@
                                         <article class="product-card">
                                             <a href="./product" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/swimsuits/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/swimsuits/01.webp" type="image/webp"><img loading="lazy" src="img/products/swimsuits/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1440,7 +1532,9 @@
                                         <article class="product-card">
                                             <a href="./product" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/helmets/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/helmets/01.webp" type="image/webp"><img loading="lazy" src="img/products/helmets/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1480,7 +1574,9 @@
                                         <article class="product-card">
                                             <a href="./product" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/swimsuits/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/swimsuits/01.webp" type="image/webp"><img loading="lazy" src="img/products/swimsuits/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1521,7 +1617,9 @@
                                         <article class="product-card">
                                             <a href="./product" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/helmets/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/helmets/01.webp" type="image/webp"><img loading="lazy" src="img/products/helmets/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
@@ -1561,7 +1659,9 @@
                                         <article class="product-card">
                                             <a href="./product" class="product-card__image-container">
                                                 <div class="product-card__image">
-                                                    <img loading="lazy" src="img/products/swimsuits/01.jpg" alt="product-card-image">
+                                                    <picture>
+                                                        <source srcset="img/products/swimsuits/01.webp" type="image/webp"><img loading="lazy" src="img/products/swimsuits/01.jpg" alt="product-card-image">
+                                                    </picture>
                                                 </div>
                                             </a>
                                             <div class="product-card__information information-product-card">
