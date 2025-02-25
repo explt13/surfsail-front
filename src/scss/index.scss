@@ -465,7 +465,6 @@
         flex: 0 0 calc(25% - rem(20) * 3 / 4);
         display: flex;
         justify-content: flex-end;
-        flex-direction: row-reverse;
         gap: rem(16);
         align-self: center;
         font-size: rem(18);
@@ -497,7 +496,7 @@
     display: flex;
     gap: rem(16);
 
-    @media (max-width: rem(1129)){
+    @media (max-width: em(1129, 16)){
         flex-grow: 1;
     }
     &:hover{
@@ -519,7 +518,6 @@
     &__text {
         flex: 1 1 auto;
         display: flex;
-        flex-direction: row-reverse;
         font-size: rem(18);
         align-items: center;
         justify-content: flex-end;
@@ -698,7 +696,7 @@
             }
         }
     }
-    @media (max-width: rem(1480)){
+    @media (max-width: em(1480, 16)){
         flex: 0 1 calc(50% - rem(15));
     }
     @media (max-width: $lrp){
@@ -773,7 +771,6 @@
         display: flex;
         align-items: center;
         gap: rem(15);
-        flex-direction: row-reverse;
         &::before{
             color: $secondaryColor;
             font-size: rem(16);
@@ -917,8 +914,7 @@
     }
     // .new-products__link
     &__link {
-        display: inline-flex;
-        flex-direction: row-reverse;
+        display: inline-flex!important;
         align-items: center;
         gap: rem(20);
         font-weight: 600;

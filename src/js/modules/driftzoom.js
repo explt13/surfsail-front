@@ -1,6 +1,6 @@
 import Drift from "drift-zoom";
 
-const mql = matchMedia(`(max-width: ${991 / 16}rem)`);
+const mql = matchMedia(`(max-width: ${991 / 16}em)`);
 
 const imgs = document.querySelectorAll(".images-product__show-image img");
 const pane = document.querySelector('.zoom-pane');

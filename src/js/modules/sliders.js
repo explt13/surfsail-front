@@ -118,8 +118,7 @@ export const handleCatalogSlider = () => {
         }
     }
     enableSwiper();
-    const MOBILE = 768 / 16;
-    const mq = window.matchMedia(`(min-width: ${MOBILE}rem)`);
+    const mq = window.matchMedia(`(min-width: ${768 / 16}em)`);
     const watchMq = () => {
         if (mq.matches) {
             if (!productsSlider) {
