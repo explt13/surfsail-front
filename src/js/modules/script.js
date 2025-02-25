@@ -61,8 +61,7 @@ function subMenuBlockGridLayout() {
 subMenuBlockGridLayout();
 
 const burgerMenu = () =>{
-    const TABLET = 992 / 16
-    const mql = matchMedia(`(max-width: ${TABLET}rem)`)
+    const mql = matchMedia(`(max-width: ${991 / 16}em)`)
     const button = document.querySelector('.icon-menu');
     if (button) {
         const menu = () => {
@@ -113,7 +112,7 @@ const handleHeader = () => {
     const catalogHeader = document.querySelector('.catalog-header');
 
     if (topHeader){
-        const mq = window.matchMedia('(min-width: 992px)')
+        const mq = window.matchMedia(`(min-width: ${992 / 16}em)`)
         const topHeaderHeight = topHeader.scrollHeight
         const bodyHeaderHeight = bodyHeader.scrollHeight;
         const catalogHeaderHeight = catalogHeader.scrollHeight;
@@ -207,7 +206,7 @@ const handleSubMenuMore = () => {
 
 
 const handleCartHeight = () => {
-    const mq = window.matchMedia("(min-width: 992px)");
+    const mq = window.matchMedia(`(min-width: ${992 / 16}em)`);
     if (mq.matches){
         const cartContainer = document.querySelector('.cart__container');
         if (cartContainer) {

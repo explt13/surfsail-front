@@ -235,9 +235,9 @@ function select_item(select) {
 
 	let select_type_content = '';
 	if (select_type == 'input') {
-		select_type_content = '<div class="select__value icon-select-arrow"><input autocomplete="off" type="text" name="form[]" value="' + select_selected_text + '" data-error="Error" data-value="' + select_selected_text + '" class="select__input"></div>';
+		select_type_content = '<div class="select__value _ipl-after _icon-arrow_sh_d"><input autocomplete="off" type="text" name="form[]" value="' + select_selected_text + '" data-error="Error" data-value="' + select_selected_text + '" class="select__input"></div>';
 	} else {
-		select_type_content = '<div class="select__value icon-select-arrow"><span>' + select_selected_text + '</span></div>';
+		select_type_content = '<div class="select__value _ipl-after _icon-arrow_sh_d"><span>' + select_selected_text + '</span></div>';
 	}
 
 	select_parent.insertAdjacentHTML('beforeend',

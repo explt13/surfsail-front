@@ -7,7 +7,7 @@
     &__body {
         display: grid;
         gap: rem(30);
-        @media (min-width: rem(1045)){
+        @media (min-width: em(1045, 16)){
             grid-template-columns: rem(375) 1fr;
         }
     }
@@ -79,10 +79,10 @@
 
 
 .filter-catalog {
-    // .filter-catalog__title
     margin: rem(52) 0 0 0;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
     background-color: #fefefe;
+    // .filter-catalog__title
     &__title {
         font-weight: 700;
         font-size: 20px;
@@ -91,6 +91,9 @@
         background-color: $secondaryColor;
         width: 100%;
 
+    }
+    &:not(._init) &__title[data-spoiler] {
+        justify-content: center;
     }
     // .filter-catalog__items
     &__items {
@@ -110,7 +113,6 @@
         align-items: center;
         font-weight: 400;
         font-size: rem(20);
-        flex-direction: row-reverse;
         width: 100%;
         &::before{
             transition: transform 0.3s ease-in-out;
@@ -169,7 +171,6 @@
         color: $white;
         background-color: $secondaryColor;
         display: flex;
-        flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
         padding: rem(12) rem(30);
