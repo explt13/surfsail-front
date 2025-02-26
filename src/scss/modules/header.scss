@@ -152,8 +152,6 @@
         color: $white;
         &_catalog{
             justify-content: space-between;
-            display: flex;
-            flex-direction: row-reverse;
             align-items: center;
             &::before{
                 height: rem(14);
@@ -455,7 +453,7 @@
         flex-direction: column;
         row-gap: rem(5);
 
-        @media (max-width: rem(1350)){
+        @media (max-width: em(1350, 16)){
             display: none; 
         }
     }
@@ -558,23 +556,17 @@
         }
         
         &[data-parent]::before{
-            @extend %ic;
-            @extend ._icon-arrow_sh_d;
             display: none;
             @media (max-width: $tbl){
                 font-size: rem(10);
-                display: block;
+                display: inline-block;
                 transform: rotate(-90deg);
             }
         }
         &[data-parent]{
             @media (max-width: $tbl){
                 justify-content: space-between;
-                flex-direction: row-reverse;
             }
-        }
-        @media (max-width: $tbl){
-
         }
     }
     // .menu-catalog__sub-menu

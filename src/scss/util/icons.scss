@@ -12,9 +12,14 @@
 [class*="_icon-"] {
   &::before {
     @extend %ic;
-    display: block;
+    display: inline-block;
     cursor: pointer;
   }
+}
+
+[class*="_icon-"]._ipl-after {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 // append/change icons here
