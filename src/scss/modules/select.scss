@@ -18,14 +18,12 @@
 	}
 	// .select__value
 	&__value {
-		display: flex;
-		height: 30px;
+		height: rem(30);
 		align-items: center;
 		justify-content: space-between;
-		flex-direction: row-reverse;
 
 		span {
-			height: 1em;
+			height: unset;
 			overflow: hidden;
 			display: -webkit-box;
 			-webkit-line-clamp: 1;
@@ -62,7 +60,7 @@
 		text-align: left;
 		width: 100%;
 		margin: 0px 0px 0px 0px;
-		@media (min-width: 992px) {
+		@media (min-width: $tbl-mf) {
 			&:hover {
 				background: #d9d9d9;
 			}
@@ -89,7 +87,7 @@
             border-radius: rem(3);
             border: 1px solid rgba(0, 0, 0, 0.3);
 			width: 100%;
-			&:focus{
+			&:focus-visible{
 				border: 1px solid $mainColor;
 			}
         }
@@ -100,10 +98,7 @@
             color: rgba(0, 0, 0, 0.5);
             justify-content: space-between;
             &::before {
-                content: "\e900";
-                @extend %ic;
                 opacity: 0.5;
-                display: inline-block;
                 transition: all 0.3s ease 0s;
                 font-size: rem(8);
             }
@@ -114,7 +109,7 @@
             font-weight: 400;
             font-size: rem(16);
             color: rgba(0, 0, 0, 0.5);
-			&:focus{
+			&:focus-visible{
 				border: 1px solid $mainColor;
 			}
             @media (any-hover: hover){
@@ -163,8 +158,6 @@
 				border-bottom-right-radius: rem(3);
             }
 			&::before{
-				content: "\e900";
-                @extend %ic;
 				position: relative;
 				z-index: 1;
 				color: #fff;

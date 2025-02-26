@@ -5,14 +5,13 @@ export class DynamicAdapt
 {
 	constructor(type) {
 		this.type = type;
+		this.objects = [];
+		this.daClassname = "_dynamic_adapt_";
 	}
 
 	init() {
 		const _this = this;
 
-		this.objects = [];
-		this.daClassname = "_dynamic_adapt_";
-	
 		this.nodes = document.querySelectorAll("[data-da]");
 	
 	
@@ -30,11 +29,12 @@ export class DynamicAdapt
 			this.objects.push(object);
 		}
 	
-		this.arraySort(this.objects);
+		this.arraySort();
 	
 		this.mediaQueries = Array.prototype.map.call(this.objects, function (item) {
-			return '(' + this.type + "-width: " + item.breakpoint / 16 + "rem)," + item.breakpoint; // | / 16 |  rem
+			return '(' + this.type + "-width: " + item.breakpoint / 16 + "em)," + item.breakpoint; // 16 = 1em
 		}, this);
+		
 		this.mediaQueries = Array.prototype.filter.call(this.mediaQueries, function (item, index, self) {
 			return Array.prototype.indexOf.call(self, item) === index;
 		});
@@ -100,9 +100,9 @@ export class DynamicAdapt
 		return Array.prototype.indexOf.call(array, element);
 	}
 
-	arraySort(arr) {
+	arraySort() {
 		if (this.type === "min") {
-			Array.prototype.sort.call(arr, function (a, b) {
+			Array.prototype.sort.call(this.objects, function (a, b) {
 				if (a.breakpoint === b.breakpoint) {
 					if (a.place === b.place) {
 						return 0;
@@ -122,7 +122,7 @@ export class DynamicAdapt
 				return a.breakpoint - b.breakpoint;
 			});
 		} else {
-			Array.prototype.sort.call(arr, function (a, b) {
+			Array.prototype.sort.call(this.objects, function (a, b) {
 				if (a.breakpoint === b.breakpoint) {
 					if (a.place === b.place) {
 						return 0;

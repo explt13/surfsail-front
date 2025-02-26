@@ -228,7 +228,7 @@
         color: rgba(20, 20, 20, 0.5);
     }
 
-    @media (min-width: rem(768)){
+    @media (min-width: $lrp-mf){
         grid-template-columns: rem(200) 1fr;
     }
 }
@@ -245,7 +245,7 @@
     // .options-product__value
     &__value {
     }
-    @media (min-width: rem(768)){
+    @media (min-width: $lrp-mf){
         grid-template-columns: rem(200) 1fr;
     }
 }
@@ -272,7 +272,7 @@
         gap: rem(20);
         flex-wrap: wrap;
         flex: 1 1 auto;
-        @media (min-width: rem(1416)){
+        @media (min-width: em(1416, 16)){
             justify-content: flex-end;
         }
     }
@@ -282,9 +282,7 @@
         min-width: rem(168);
         width: 100%;
         display: flex;
-        flex-direction: row-reverse;
         gap: rem(15);
-
     }
     // .actions-product__buy
     &__buy {
@@ -292,7 +290,7 @@
         min-width: rem(168);
         width: 100%;
     }
-    @media (max-width: rem(1415)){
+    @media (max-width: em(1415, 16)){
         &__row {
             flex-direction: column;
         }
