@@ -39,6 +39,9 @@
 		&_minus {
             
 		}
+		&:disabled {
+			background-color: gray;
+		}
 	}
 	// .quantity__input
 	&__input {

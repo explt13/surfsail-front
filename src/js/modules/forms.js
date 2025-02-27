@@ -201,7 +201,7 @@ export const setPlaceholders = () => {
 }
 
 //Select
-export function intiSelects () {
+export function initSelects () {
 	let selects = document.getElementsByTagName('select');
 	if (selects.length > 0) {
 		for (let index = 0; index < selects.length; index++) {
@@ -390,34 +390,116 @@ function selects_update_all() {
 	}
 }
 
-//QUANTITY
+// Quantity
 export function initQuantityButtons() {
-	let quantityButtons = document.querySelectorAll('.quantity__button');
-	if (quantityButtons.length > 0) {
-		for (let index = 0; index < quantityButtons.length; index++) {
-			const quantityButton = quantityButtons[index];
-			quantityButton.addEventListener("click", function (e) {
-				let value = parseInt(quantityButton.closest('.quantity').querySelector('input').value);
-				if (quantityButton.classList.contains('quantity__button_plus')) {
-					value++;
-				} else {
-					value = value - 1;
-					if (value < 1) {
-						value = 1
-					}
-				}
-				quantityButton.closest('.quantity').querySelector('input').value = value;
-			});
+	const quantityEls = document.querySelectorAll('.quantity');
+	quantityEls.forEach(quantity => {
+		const quantityId = quantity.dataset.id;
+		const input = quantity.querySelector('input');
+		const minusButton = quantity.querySelector('.quantity__button_minus');
+		const plusButton = quantity.querySelector('.quantity__button_plus');
+		const maxValue = input.dataset.max ? parseInt(input.dataset.max) : null;
+		const minValue = input.dataset.min ? parseInt(input.dataset.min) : 1;
+		const focusTo = document.querySelector(`[data-for-quantity="${quantityId}"]`);
+		let prevValue = input.value;
+
+		function initButtons() {
+			let value = parseInt(input.value);
+			if (value <= minValue) {
+				value = minValue;
+				minusButton.disabled = true;
+			}
+			if (maxValue && value >= maxValue) {
+				value = maxValue;
+				plusButton.disabled = true;
+			}
 		}
-	}
+		initButtons();
+
+		minusButton.addEventListener('click', function(e) {
+			let value = parseInt(input.value);
+			e.stopPropagation();
+			value--;
+			if (value <= minValue) {
+				value = minValue;
+				this.disabled = true;
+			}
+			if (maxValue && value == maxValue - 1) {
+				plusButton.disabled = false;
+			}
+			input.value = value;
+		})
+		plusButton.addEventListener('click', function(e) {
+			let value = parseInt(input.value);
+			e.stopPropagation();
+			value++;
+			if (maxValue && value >= maxValue) {
+				value = maxValue;
+				this.disabled = true;
+			}
+			if (value == minValue + 1) {
+				minusButton.disabled = false;
+			}
+			input.value = value;
+		});
+
+		function setValue(el) {
+			let value = el.value;
+			if (value == "") {
+				value = prevValue;
+			}
+			if (maxValue && value > maxValue) {
+				value = maxValue;
+				prevValue = maxValue;
+				plusButton.disabled = true;
+				minusButton.disabled = false;
+			}
+			if (value < minValue) {
+				value = minValue;
+				prevValue = minValue;
+				minusButton.disabled = true;
+				plusButton.disabled = false;
+			}
+			el.value = value;
+		}
+
+		input.addEventListener('keydown', function(e) {
+			if (e.key === 'Enter') {
+				e.preventDefault();
+				if (focusTo) {
+					setValue(e.target);
+					focusTo.focus();
+				} else {
+					e.target.blur()
+				}
+			}
+		});
+		input.addEventListener('blur', function(e) {
+			setValue(e.target);
+		})
+
+		input.addEventListener('input', function(e) {
+			let value = e.target.value;
+			if (value === "") {
+				input.value = "";
+				return;
+			}
+			if (!value.match(/^-?\d+$/)) {
+				input.value = prevValue;
+				return
+			}
+			value = parseInt(value);
+			prevValue = value;
+			input.value = value;
+			
+		})
+	})
 }
 
-
-
-//RANGE
-import * as noUiSlider from 'nouislider';
-import wNumb from 'wnumb';
-const initRange = () => {
+// Range
+export const initRange = async () => {
+	const noUiSlider = await import('nouislider');
+	const wNumb = await import('wnumb');
 	const rangeItems = document.querySelectorAll('[data-range]');
 
 	if (rangeItems.length > 0){
@@ -434,7 +516,7 @@ const initRange = () => {
 					'min': [Number(fromValue.dataset.rangeFrom)],
 					'max': [Number(toValue.dataset.rangeTo)]
 				},
-				format: wNumb({
+				format: wNumb.default({
 					decimals: 0, // default is 2
 					thousand: ' ', // thousand delimiter
 					prefix: '$ ', // appended after the number
@@ -453,5 +535,3 @@ const initRange = () => {
 		})
 	}
 }
-
-initRange();
