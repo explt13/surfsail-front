@@ -2,7 +2,7 @@
 import {_slideToggle, _slideUp, _slideDown} from './functions.js'
 
 
-function initFormValidation() {
+export function initFormValidation() {
 	let forms = document.querySelectorAll('._form_validate_v0');
 	if (forms.length > 0) {
 		for (let index = 0; index < forms.length; index++) {
@@ -10,13 +10,6 @@ function initFormValidation() {
 			el.addEventListener('submit', form_submit);
 		}
 	}
-}
-
-function email_test(input) {
-	return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
-}
-function _is_hidden(el) {
-	return (el.offsetParent === null)
 }
 
 async function form_submit(e) {
@@ -145,7 +138,7 @@ function form_clean(form) {
 			checkbox.checked = false;
 		}
 	}
-	let selects = form.querySelectorAll('select');
+	const selects = form.querySelectorAll('select');
 	if (selects.length > 0) {
 		for (let index = 0; index < selects.length; index++) {
 			const select = selects[index];
@@ -154,6 +147,12 @@ function form_clean(form) {
 			select_item(select);
 		}
 	}
+}
+function email_test(input) {
+	return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+}
+function _is_hidden(el) {
+	return (el.offsetParent === null)
 }
 
 //viewPass
@@ -176,36 +175,60 @@ export const setViewPassword = () => {
 	})
 }
 
+// set minifying placeholders
+export const setPlaceholders = () => {
+    const fields = document.querySelectorAll('.form__field:has(input:not([type="checkbox"]))');
+    fields.forEach(field => {
+        const input = field.querySelector('input');
+        if (input.value.length > 0) {
+            if (!field.classList.contains('_minimize-placeholder')) {
+                field.classList.add('_minimize-placeholder');
+            }
+        }
+        field.setAttribute('data-placeholder', input.placeholder ?? '');
+        input.addEventListener('focusin', function() {
+            if (!field.classList.contains('_minimize-placeholder')) {
+                field.classList.add('_minimize-placeholder');
+            }
+        });
+        input.addEventListener('focusout', function() {
+            if (input.value.length > 0) return;
+            if (field.classList.contains('_minimize-placeholder')) {
+                field.classList.remove('_minimize-placeholder');
+            }
+        });
+    });
+}
 
 //Select
-let selects = document.getElementsByTagName('select');
-if (selects.length > 0) {
-	selects_init();
-}
-function selects_init() {
-	for (let index = 0; index < selects.length; index++) {
-		const select = selects[index];
-		select_init(select);
-	}
-	//select_callback();
-	document.addEventListener('click', function (e) {
-		selects_close(e);
-	});
-	document.addEventListener('keydown', function (e) {
-		if (e.code === 'Escape') {
-			selects_close(e);
+export function intiSelects () {
+	let selects = document.getElementsByTagName('select');
+	if (selects.length > 0) {
+		for (let index = 0; index < selects.length; index++) {
+			const select = selects[index];
+			select_init(select);
 		}
-	});
+		//select_callback();
+		document.addEventListener('click', function (e) {
+			selects_close(e);
+		});
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') {
+				selects_close(e);
+			}
+		});
+	}
+	
 }
+
 function selects_close(e) {
 	const selects = document.querySelectorAll('.select');
 	if (!e.target.closest('.select') && !e.target.classList.contains('_option')) {
-		for (let index = 0; index < selects.length; index++) {
-			const select = selects[index];
+		selects.forEach(function(select) {
 			const select_body_options = select.querySelector('.select__options');
 			select.classList.remove('_active');
 			_slideUp(select_body_options, 100);
-		}
+		})
 	}
 }
 function select_init(select) {
@@ -367,151 +390,29 @@ function selects_update_all() {
 	}
 }
 
-//Placeholers
-let inputs = document.querySelectorAll('input[data-value],textarea[data-value]');
-inputs_init(inputs);
-
-function inputs_init(inputs) {
-	if (inputs.length > 0) {
-		for (let index = 0; index < inputs.length; index++) {
-			const input = inputs[index];
-			const input_g_value = input.getAttribute('data-value');
-			input_placeholder_add(input);
-			if (input.value != '' && input.value != input_g_value) {
-				input_focus_add(input);
-			}
-			input.addEventListener('focus', function (e) {
-				if (input.value == input_g_value) {
-					input_focus_add(input);
-					input.value = '';
-				}
-				if (input.getAttribute('data-type') === "pass") {
-					if (input.parentElement.querySelector('._viewpass')) {
-						if (!input.parentElement.querySelector('._viewpass').classList.contains('_active')) {
-							input.setAttribute('type', 'password');
-						}
-					} else {
-						input.setAttribute('type', 'password');
+//QUANTITY
+export function initQuantityButtons() {
+	let quantityButtons = document.querySelectorAll('.quantity__button');
+	if (quantityButtons.length > 0) {
+		for (let index = 0; index < quantityButtons.length; index++) {
+			const quantityButton = quantityButtons[index];
+			quantityButton.addEventListener("click", function (e) {
+				let value = parseInt(quantityButton.closest('.quantity').querySelector('input').value);
+				if (quantityButton.classList.contains('quantity__button_plus')) {
+					value++;
+				} else {
+					value = value - 1;
+					if (value < 1) {
+						value = 1
 					}
 				}
-				if (input.classList.contains('_date')) {
-					/*
-					input.classList.add('_mask');
-					Inputmask("99.99.9999", {
-						//"placeholder": '',
-						clearIncomplete: true,
-						clearMaskOnLostFocus: true,
-						onincomplete: function () {
-							input_clear_mask(input, input_g_value);
-						}
-					}).mask(input);
-					*/
-				}
-				if (input.classList.contains('_phone')) {
-					//'+7(999) 999 9999'
-					//'+38(999) 999 9999'
-					//'+375(99)999-99-99'
-					input.classList.add('_mask');
-					Inputmask("+375 (99) 9999999", {
-						//"placeholder": '',
-						clearIncomplete: true,
-						clearMaskOnLostFocus: true,
-						onincomplete: function () {
-							input_clear_mask(input, input_g_value);
-						}
-					}).mask(input);
-				}
-				if (input.classList.contains('_digital')) {
-					input.classList.add('_mask');
-					Inputmask("9{1,}", {
-						"placeholder": '',
-						clearIncomplete: true,
-						clearMaskOnLostFocus: true,
-						onincomplete: function () {
-							input_clear_mask(input, input_g_value);
-						}
-					}).mask(input);
-				}
-				form_remove_error(input);
+				quantityButton.closest('.quantity').querySelector('input').value = value;
 			});
-			input.addEventListener('blur', function (e) {
-				if (input.value == '') {
-					input.value = input_g_value;
-					input_focus_remove(input);
-					if (input.classList.contains('_mask')) {
-						input_clear_mask(input, input_g_value);
-					}
-					if (input.getAttribute('data-type') === "pass") {
-						input.setAttribute('type', 'text');
-					}
-				}
-			});
-			if (input.classList.contains('_date')) {
-				const calendarItem = datepicker(input, {
-					customDays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-					customMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					overlayButton: 'Apply',
-					overlayPlaceholder: 'Year (4 digits)',
-					startDay: 1,
-					formatter: (input, date, instance) => {
-						const value = date.toLocaleDateString()
-						input.value = value
-					},
-					onSelect: function (input, instance, date) {
-						input_focus_add(input.el);
-					}
-				});
-				const dataFrom = input.getAttribute('data-from');
-				const dataTo = input.getAttribute('data-to');
-				if (dataFrom) {
-					calendarItem.setMin(new Date(dataFrom));
-				}
-				if (dataTo) {
-					calendarItem.setMax(new Date(dataTo));
-				}
-			}
 		}
 	}
 }
-function input_placeholder_add(input) {
-	const input_g_value = input.getAttribute('data-value');
-	if (input.value == '' && input_g_value != '') {
-		input.value = input_g_value;
-	}
-}
-function input_focus_add(input) {
-	input.classList.add('_focus');
-	input.parentElement.classList.add('_focus');
-}
-function input_focus_remove(input) {
-	input.classList.remove('_focus');
-	input.parentElement.classList.remove('_focus');
-}
-function input_clear_mask(input, input_g_value) {
-	input.inputmask.remove();
-	input.value = input_g_value;
-	input_focus_remove(input);
-}
 
-//QUANTITY
-let quantityButtons = document.querySelectorAll('.quantity__button');
-if (quantityButtons.length > 0) {
-	for (let index = 0; index < quantityButtons.length; index++) {
-		const quantityButton = quantityButtons[index];
-		quantityButton.addEventListener("click", function (e) {
-			let value = parseInt(quantityButton.closest('.quantity').querySelector('input').value);
-			if (quantityButton.classList.contains('quantity__button_plus')) {
-				value++;
-			} else {
-				value = value - 1;
-				if (value < 1) {
-					value = 1
-				}
-			}
-			quantityButton.closest('.quantity').querySelector('input').value = value;
-		});
-	}
-}
+
 
 //RANGE
 import * as noUiSlider from 'nouislider';

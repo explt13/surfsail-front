@@ -1,27 +1,35 @@
-
-import "./modules/forms.js";
-
-import "./modules/tippy.js";
 import './modules/script.js';
+import {intiSelects, initQuantityButtons} from "./modules/forms.js";
+import {setClientClasses, setSpoilers, ibg, setTabs, initRatings} from './modules/functions.js'
+import {Relocator} from "./modules/relocator.js";
+
 
 const page = document.body.dataset.page;
 
-import {DynamicAdapt} from "./modules/dynamic_adapt.js";
-const da = new DynamicAdapt("max");
-da.init();
+const relocator = new Relocator("max");
+relocator.init();
+setClientClasses();
+intiSelects();
+initQuantityButtons();
 
-const functions = await import('./modules/functions.js')
-functions.setClientClasses();
-
+if (page === 'auth') {
+    const auth = await import('./modules/auth.js');
+    auth.initAuth();
+}
 
 if (page !== 'auth') {
-    functions.setSpoilers();
-    functions.ibg();
-    functions.setTabs();
-    functions.initRatings();
+    setSpoilers();
+    ibg();
+    setTabs();
+    initRatings();
 }
+
 if (page === 'main') {
-    const sliders = await import ("./modules/sliders.js");
+    const sliders = await import("./modules/sliders.js");
+    const home = await import('./modules/home.js');
+
+    home.setTippies();
+    home.displayBenefitsWhyUsButton();
     sliders.handleMainScreenSlider();
     sliders.handleNewCatalogSlider();
     sliders.handleCatalogSlider();
@@ -29,7 +37,7 @@ if (page === 'main') {
 
 if (page === 'product') {
     const zoom = await import("./modules/driftzoom.js");
-    const sliders = await import ("./modules/sliders.js");
+    const sliders = await import("./modules/sliders.js");
     zoom.initZoom();
     sliders.handleCatalogSlider();
     sliders.handleProductSlider();
