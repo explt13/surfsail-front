@@ -1,5 +1,5 @@
 import './modules/script.js';
-import {intiSelects, initQuantityButtons} from "./modules/forms.js";
+import {initSelects, initQuantityButtons, initRange} from "./modules/forms.js";
 import {setClientClasses, setSpoilers, ibg, setTabs, initRatings} from './modules/functions.js'
 import {Relocator} from "./modules/relocator.js";
 
@@ -8,8 +8,9 @@ const page = document.body.dataset.page;
 
 const relocator = new Relocator("max");
 relocator.init();
+
 setClientClasses();
-intiSelects();
+initSelects();
 initQuantityButtons();
 
 if (page === 'auth') {
@@ -33,6 +34,10 @@ if (page === 'main') {
     sliders.handleMainScreenSlider();
     sliders.handleNewCatalogSlider();
     sliders.handleCatalogSlider();
+}
+
+if (page === 'catalog') {
+    initRange();
 }
 
 if (page === 'product') {
