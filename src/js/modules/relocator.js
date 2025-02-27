@@ -1,23 +1,23 @@
 "use strict";
 
 
-export class DynamicAdapt
+export class Relocator
 {
 	constructor(type) {
 		this.type = type;
 		this.objects = [];
-		this.daClassname = "_dynamic_adapt_";
+		this.classname = "_relocator_";
 	}
 
 	init() {
 		const _this = this;
 
-		this.nodes = document.querySelectorAll("[data-da]");
+		this.nodes = document.querySelectorAll("[data-relocate]");
 	
 	
 		for (let i = 0; i < this.nodes.length; i++) {
 			const node = this.nodes[i];
-			const data = node.dataset.da.trim();
+			const data = node.dataset.relocate.trim();
 			const dataArray = data.split(",");
 			const object = {};
 			object.element = node;
@@ -66,7 +66,7 @@ export class DynamicAdapt
 		} else {
 			for (let i = 0; i < objects.length; i++) {
 				const object = objects[i];
-				if (object.element.classList.contains(this.daClassname)) {
+				if (object.element.classList.contains(this.classname)) {
 					this.moveBack(object.parent, object.element, object.index);
 				}
 			}
@@ -74,7 +74,7 @@ export class DynamicAdapt
 	}
 
 	moveTo(place, element, destination) {
-		element.classList.add(this.daClassname);
+		element.classList.add(this.classname);
 		if (place === 'last' || place >= destination.children.length) {
 			destination.insertAdjacentElement('beforeend', element);
 			return;
@@ -87,7 +87,7 @@ export class DynamicAdapt
 	}
 	
 	moveBack(parent, element, index) {
-		element.classList.remove(this.daClassname);
+		element.classList.remove(this.classname);
 		if (parent.children[index] !== undefined) {
 			parent.children[index].insertAdjacentElement('beforebegin', element);
 		} else {
