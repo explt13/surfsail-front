@@ -60,6 +60,7 @@ button:focus-visible {
 }
 
 
+
 .notification {
     z-index: 20;
     position: fixed;
@@ -70,62 +71,7 @@ button:focus-visible {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-    }
-    // .notification__item
-    &__item{
-        transform: translateX(-100%);
-        transition: transform 0.5s ease-in-out;
-        &._active{
-            transform: translateX(0);
-        }
-        &:not(:last-child){
-            margin: 0 0 rem(8) 0;
-        }
-    }
-    // .notification__body
-    &__body{
-        position: relative;
-        border-top-right-radius: rem(5);
-        border-bottom-right-radius: rem(5);
-        &._success{
-            background-color: $greenColor;
-        }
-        &._alert{
-            background-color: $fixedOrange;
-        }
-        &._failure{
-            background-color: $redColor;
-        }
-        padding: rem(10);
-    }
-    // .notification__message
-    &__message {
-        color: white;
-        display: flex;
-        align-items: center;
-        gap: rem(10);
-        &::before{
-            font-size: rem(36);
-        }
-    }
-    // .notification__message
-    &__time {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 99%;
-        height: rem(2);
-        border-bottom-right-radius: rem(5);
-        background-color: white;
-        &._start{
-            animation: time 3s linear forwards;
-        }
-    }
-}
 
-@keyframes time {
-    to{
-        width: 0%;
     }
 }
 
