@@ -1,17 +1,20 @@
-import './modules/script.js';
 import {initSelects, initQuantityButtons, initRange} from "./modules/forms.js";
 import {setClientClasses, setSpoilers, ibg, setTabs, initRatings} from './modules/functions.js'
 import {Relocator} from "./modules/relocator.js";
 
 
+(async () => {
+    setClientClasses();
+    initSelects();
+    initQuantityButtons();
+    const relocator = new Relocator("max");
+    relocator.init();
+    await import ('./modules/script.js');
+    await import ("./modules/notification.js");
+    
+})();
+
 const page = document.body.dataset.page;
-
-const relocator = new Relocator("max");
-relocator.init();
-
-setClientClasses();
-initSelects();
-initQuantityButtons();
 
 if (page === 'auth') {
     const auth = await import('./modules/auth.js');
