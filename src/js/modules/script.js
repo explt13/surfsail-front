@@ -212,6 +212,11 @@ const notification = (timems = 3000) => {
 
     function getStyles() {
         return `
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         .notification__item {
             transform: translateX(-100%);
             transition: transform 0.35s ease-in-out;
@@ -241,6 +246,11 @@ const notification = (timems = 3000) => {
             display: flex;
             align-items: center;
             gap: 0.625em;
+            max-width: 25rem;
+            width: 100%;
+            overflow: hidden;
+            text-wrap: balance;
+            word-wrap: anywhere;
         }
         .notification__message::after{
             font-family: "icons"!important;
@@ -248,6 +258,7 @@ const notification = (timems = 3000) => {
             font-weight: normal;
             font-variant: normal;
             text-transform: none;
+            align-self: flex-start;
             line-height: 1;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -268,6 +279,7 @@ const notification = (timems = 3000) => {
         .notification__close {
             outline: none;
             background: transparent;
+            cursor: pointer;
             border: none;
             position: absolute;
             top: 0;
@@ -325,11 +337,28 @@ const notification = (timems = 3000) => {
     const style = document.createElement('style');
     style.innerHTML = getStyles();
     shadowRoot.appendChild(style);
-
     
     function getNotifictionType(code) {
         return '_alert'
     }
+
+    document.addEventListener('notification-deleted', function(e) {
+        const hovered = shadowRoot.querySelector('.notification__item:hover');
+        const notificationsArray = Array.from(shadowRoot.children);
+        
+        // first notification has index 1 because there is a style element
+        const hoveredIndex = notificationsArray.indexOf(hovered);
+        const currentNotificationIndex = notificationsArray.indexOf(e.detail.notification);
+
+        // if the current notification lower than the hovered one, do NOT delete, but just hide
+        if (currentNotificationIndex < hoveredIndex) {
+            e.detail.reject();
+            setTimeout(() => {
+                e.detail.notification.style.visibility = 'hidden';
+            }, 350);
+        }
+        e.detail.resolve();
+    })
     
     return function (code, msg) {
         let timeId;
@@ -348,7 +377,7 @@ const notification = (timems = 3000) => {
             item.classList.add('_slide-in');
             item.classList.add('_active');
         });
-       
+
         item.addEventListener('mouseenter', function() {
             time.style.animationPlayState = 'paused';
             clearTimeout(timeId);
@@ -357,28 +386,56 @@ const notification = (timems = 3000) => {
         item.addEventListener('mouseleave', function() {
             time.style.animationPlayState = 'running';
             startedAt = Date.now();
-            timeId = removeNotification(timeId, item, seconds);
+            timeId = removeNotification(item, seconds);
+            const elsArray = Array.from(shadowRoot.children)
+            const itemIndex = elsArray.indexOf(item);
+            const prevEls = elsArray.filter((item, index) => index > 0 && index < itemIndex);
+            prevEls.forEach(el => {
+                removeNotification(el, 0);
+            })
         });
 
         closeBtn.addEventListener('click', function(e) {
             e.stopPropagation();
-            timeId = removeNotification(timeId, item, 0);
-        })
+            timeId = removeNotification(item, 0);
+        });
 
         message.textContent = msg;
-        timeId = removeNotification(timeId, item, seconds);
+        timeId = removeNotification(item, seconds);
         shadowRoot.appendChild(clonedContent);
     }
 
-    function removeNotification(timeId, notification, seconds) {
-        timeId = setTimeout(() => {
+    function delay(callback, seconds, timer=null) {
+        let timeId;
+        const promise = new Promise((resolve, reject) => {
+            timeId = setTimeout(() => {
+                callback(resolve, reject);
+            }, seconds)
+        })
+        if (timer) {
+            timer.id = timeId;
+        }
+        return promise
+    }
+
+    function removeNotification(notification, seconds) {
+        let timer = {};
+        
+        delay((resolve, reject) => {
             notification.classList.remove('_slide-in');
-            setTimeout(() => {
-                notification.classList.remove('_active');
-                notification.remove();
-            }, 350)
-        }, seconds);
-        return timeId;
+            document.dispatchEvent(new CustomEvent('notification-deleted', {detail: {notification, resolve, reject}}));
+        }, seconds, timer)
+        .then(() => delay((resolve, reject) => {
+            _slideUp(notification, 200);
+            resolve();
+        }, 350))
+        .then(() => delay((resolve, reject) => {
+            notification.classList.remove('_active');
+            notification.remove();
+            resolve();
+        }, 200))
+        .catch(() => {})
+        return timer.id;
     }
 }
 document.querySelector('.body-header__container').addEventListener('click', function() {
@@ -386,38 +443,3 @@ document.querySelector('.body-header__container').addEventListener('click', func
 })
 
 const notificationClient = notification();
-
-// const notificationContainer = document.querySelector('.notification__container');
-    
-    // const notificationItem = document.createElement('div');
-    // notificationItem.classList.add('notification__item');
-    // setTimeout(() => {
-    //     notificationItem.classList.add('_active');
-    // }, 0);
-    // notificationContainer.appendChild(notificationItem);
-
-    // const notificationBody = document.createElement('div');
-    // notificationBody.classList.add('notification__body');
-    
-    // notificationBody.classList.add(type);
-    // notificationItem.appendChild(notificationBody);
-
-    // const notificationMessage = document.createElement('div');
-    // notificationMessage.classList.add('notification__message');
-    // notificationMessage.classList.add(`_icon-notif${type}`);
-    // notificationMessage.textContent = msg;
-    // notificationBody.appendChild(notificationMessage);
-
-    // const notificationTime = document.createElement('div');
-    // notificationTime.classList.add('notification__time');
-    // setTimeout(() => {
-    //     notificationTime.classList.add('_start');
-    // }, 500)
-    // notificationBody.appendChild(notificationTime);
-
-    // setTimeout(() => {
-    //     notificationItem.classList.remove('_active');
-    //     setTimeout(() => {
-    //         notificationItem.remove();
-    //     }, 500)
-    // }, 3500);
