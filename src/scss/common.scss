@@ -65,6 +65,10 @@ button:focus-visible {
     z-index: 20;
     position: fixed;
     top: rem(100);
+    @media (max-width: $lrp) {
+        top: rem(10);
+        width: 100%;
+    }
 
     // .notification__container
     &__container{

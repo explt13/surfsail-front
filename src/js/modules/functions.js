@@ -29,9 +29,9 @@ function setIsWebp() {
 
 function setIsMobileClass(isMobile) {
     if (isMobile.any()) {
-        document.querySelector('html').classList.add('_touch');
+        document.documentElement.classList.add('_touch');
     } else{
-        document.querySelector('html').classList.remove('_touch');
+        document.documentElement.classList.remove('_touch');
     }
 }
 
