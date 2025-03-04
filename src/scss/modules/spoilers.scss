@@ -1,3 +1,7 @@
+[data-spoiler] +[hidden] {
+    display: none !important;
+}
+
 [data-spoilers]:not(._init) {
     :where([data-spoiler][class*="_icon"]) {
         &::before {

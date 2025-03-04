@@ -3,6 +3,7 @@ import {setClientClasses, setSpoilers, ibg, setTabs, initRatings} from './module
 import {Relocator} from "./modules/relocator.js";
 
 
+
 (async () => {
     setClientClasses();
     initSelects();

@@ -6,7 +6,7 @@
     }
     &__wrapper{
         @include adaptive-value("padding-top", 44, 20, 1);
-        padding-bottom: rem(20);
+        padding-bottom: rem(0);
         position: relative;
         @media (max-width: $tbl){
             &::before{
@@ -125,7 +125,7 @@
     }
     &__img{
         position: absolute;
-        top: 0;
+        top: 20%;
         left: 20%;
         height: 100%;
         filter:contrast(0.9) grayscale(0.3);
@@ -188,7 +188,7 @@
         // .media-main-block__tip_1
         &_1 {
             top: percent(186, 634);
-            left: percent(102, 634);
+            left: percent(172, 634);
         }
         // .media-main-block__tip_2
         &_2 {
