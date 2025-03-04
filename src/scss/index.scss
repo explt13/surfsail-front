@@ -35,11 +35,12 @@
     // .main-screen__slider
     &__slider {
         @include adaptive-value-between("max-width", 760, 540, 1560, 992);
-        // @include adaptive-value-between("padding-bottom", 124, 34, 1560, 992);
+        padding: rem(20);
         width: 100%;
     }
     // .main-screen__media
     &__media {
+        align-self: flex-end;
     }
 
     @media (max-width: $tbl){
@@ -181,7 +182,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 102%;
+            width: 100%;
             height: 100%;
             transition: font-size 0.3s ease-in-out;
         }
@@ -924,8 +925,8 @@
         color: #e8aa31;
         &::before{
             position: relative;
-            top: 1px;
-            font-size: 16px;
+            top: rem(1);
+            font-size: rem(16);
         }
         
     }
@@ -1004,7 +1005,7 @@
     }
     // .card-article__body
     &__body {
-        padding: 20px 30px;
+        padding: em(20) em(30);
         display: grid;
         grid-template-rows: 1fr auto;
         gap: rem(8);
@@ -1045,7 +1046,7 @@
 .cards-recommend {
     position: relative;
     display: grid;
-    gap: 48px;
+    gap: rem(48);
     grid-template-columns: repeat(auto-fit, minmax(rem(560), 1fr));
     @media (max-width: $mdp){
         grid-template-columns: repeat(1, 1fr);
@@ -1055,7 +1056,7 @@
 }
 .card-recommend {
     position: relative;
-    min-height: 290px;
+    min-height: rem(290);
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
     display: flex;
     overflow: hidden;
@@ -1074,13 +1075,13 @@
     &__body{
         display: flex;
         flex-direction: column;
-        gap: 48px;
+        gap: rem(48);
         @include adaptive-value('padding', 30, 20, 1);
     }
      // .card-recommend__text
     &__text{
         font-weight: 400;
-        font-size: 18px;
+        font-size: rem(18);
         line-height: 1.5;
     }
     // .card-recommend__button
