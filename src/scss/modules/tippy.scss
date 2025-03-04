@@ -6,13 +6,14 @@
 }
 .tippy-box {
 	position: relative;
-	background-color: $mainColor;
+	background-color: $secondaryColor;
 	color: $white;
 	border-radius: 4px;
-	font-size: rem(14);
+	font-size: rem(16);
 	line-height: 1.4;
 	outline: 0;
 	transition-property: transform, visibility, opacity;
+	box-shadow: 0 0 2px black;
 }
 .tippy-box[data-placement^="top"] > .tippy-arrow {
 	bottom: 0;
@@ -58,7 +59,7 @@
 .tippy-arrow {
 	width: 16px;
 	height: 16px;
-	color: $mainColor;
+	color: $secondaryColor;
 }
 .tippy-arrow:before {
 	content: "";
