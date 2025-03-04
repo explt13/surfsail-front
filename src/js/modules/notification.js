@@ -9,7 +9,6 @@ export const notification = (timems = 3000) => {
     let slideInTime = 350;
     if (document.documentElement.classList.contains('_touch')) {
         slideInTime = 200;
-        console.log(slideInTime);
     }
     let reduceTime = 200;
 
