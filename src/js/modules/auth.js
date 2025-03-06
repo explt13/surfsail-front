@@ -1,5 +1,6 @@
 import { validateInit } from './validate.js';
 import { setViewPassword, setPlaceholders } from './forms.js'
+import { _slideDown, _slideUp } from './functions.js';
 
 export const initAuth = () => {
     validateInit();

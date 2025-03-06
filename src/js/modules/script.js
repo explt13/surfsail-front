@@ -1,6 +1,3 @@
-import { _slideDown, _slideUp } from "./functions.js";
-
-
 document.addEventListener("click", documentClickActions);
 document.addEventListener('keydown', documentKeyActions);
 
