@@ -46,12 +46,18 @@ const buildNoImgs = gulp.series(reset, mainTasksNoImgs);
 const deployZIP = gulp.series(reset, mainTasks, zip);
 const deployFTP = gulp.series(reset, mainTasks, ftp);
 
+const minifyScss = gulp.series(reset, scss);
+const minifyJs = gulp.series(reset, js);
+const minifyImgs = gulp.series(reset, images);
+
 export { dev }
 export { test }
 export { build }
 export { buildNoImgs }
 export { deployZIP }
 export { deployFTP }
-
+export { minifyScss }
+export { minifyJs }
+export { minifyImgs }
 
 gulp.task('default', dev);
