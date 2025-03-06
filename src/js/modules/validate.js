@@ -116,10 +116,10 @@ const validateForm = (form) => {
     }
 
     initFieldsValidation();
-    registerSubmitForm(form, errors, req_fields);
+    registerSubmitForm(form, fieldMap, errors, req_fields, successEl, errorEl);
 }
 
-const registerSubmitForm = (form, errors, req_fields) => {
+const registerSubmitForm = (form, fieldMap, errors, req_fields, successEl, errorEl) => {
     form.addEventListener('submit', async(e) => {
         errors = 0;
         e.preventDefault();
