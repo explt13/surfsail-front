@@ -1,4 +1,3 @@
-//let btn = document.querySelectorAll('button[type="submit"],input[type="submit"]');
 import {_slideToggle, _slideUp, _slideDown} from './functions.js'
 
 
