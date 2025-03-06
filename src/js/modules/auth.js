@@ -44,13 +44,14 @@ export const initAuth = () => {
     
     function renderFormInit() {
         if (authForm === 'register') {
-            confirmPasswordParent.style.removeProperty('display');
             dynamicChangeable.forEach(el => {
                 el.textContent = authFormText[authForm][el.dataset.name];
+                confirmPasswordParent.hidden = false;
             })
         } else if (authForm === 'login') {
             dynamicChangeable.forEach(el => {
                 el.textContent = authFormText[authForm][el.dataset.name];
+                confirmPasswordParent.hidden = true;
             })
 
         }
