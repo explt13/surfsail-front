@@ -77,6 +77,7 @@ export const notification = (timems = 3000) => {
         }
         .notification__item._alert .notification__message::after{
             content: "\\e911";
+            font-size: 1.5em
         }
         .notification__item._failure .notification__message::after{
             content: "\\e90f";
@@ -172,8 +173,17 @@ export const notification = (timems = 3000) => {
     style.innerHTML = getStyles();
     shadowRoot.appendChild(style);
     
+    
     function getNotifictionType(code) {
-        return '_alert'
+        let type;
+        if (code >= 200 && code < 300) {
+            type = '_success';
+        } else if (code >= 100 && code < 200 || code >= 300 && code < 400) {
+            type = '_alert';
+        } else if (code >= 400) {
+            type = '_failure';
+        }
+        return type;
     }
 
     document.addEventListener('notification-deleted', function(e) {
@@ -202,7 +212,7 @@ export const notification = (timems = 3000) => {
         const item = clonedContent.querySelector('.notification__item');
         const time = clonedContent.querySelector('.notification__time');
         const closeBtn = clonedContent.querySelector('.notification__close');
-        item.classList.add('_success');
+        item.classList.add(type);
         requestAnimationFrame(() => {
             void item.offsetWidth;
             item.classList.add('_slide-in');
