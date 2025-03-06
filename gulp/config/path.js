@@ -33,7 +33,17 @@ export const path = {
         videos: `${srcFolder}/videos/*.mp4`,
         files: `${srcFolder}/files/**/*.*`,
     },
-    clean: buildFolder,
+    getCleanFolder: () => {
+        const only = process.argv.find(item => item.startsWith('--only') );
+        if (only) {
+            const target = only.split('=')[1];
+            if (target === 'html') {
+                return buildFolder + '/*.html';
+            }
+            return buildFolder + '/' + target;
+        }
+        return buildFolder;
+    },
     buildFolder: buildFolder,
     srcFolder: srcFolder,
     rootFolder: rootFolder,

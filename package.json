@@ -10,9 +10,10 @@
     "build": "gulp build --build",
     "zip": "gulp deployZIP --build",
     "ftp": "gulp deployFTP --build",
-    "scss": "gulp minifyScss --build",
-    "js": "gulp minifyJs --build",
-    "imgs": "gulp minifyImgs --build"
+    "scss": "gulp minifyScss --build --only=scss",
+    "js": "gulp minifyJs --build --only=js",
+    "imgs": "gulp minifyImgs --build --only=img",
+    "html": "gulp rebuildHtml --build --only=html"
   },
   "type": "module",
   "author": "explt13",

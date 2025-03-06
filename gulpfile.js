@@ -33,12 +33,13 @@ function watcher(){
     gulp.watch(path.watch.images, images);
     gulp.watch(path.watch.videos, videos);
 }
-
-
+console.log(global.app.path.getCleanFolder());
+// tasks
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle)
 const mainTasks = gulp.series(fonts, gulp.parallel(files, html, scss, js, images, videos));
 const mainTasksNoImgs = gulp.series(fonts, gulp.parallel(files, html, scss, js, videos));
 
+// full build
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
 const test = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
 const build = gulp.series(reset, mainTasks);
@@ -46,9 +47,11 @@ const buildNoImgs = gulp.series(reset, mainTasksNoImgs);
 const deployZIP = gulp.series(reset, mainTasks, zip);
 const deployFTP = gulp.series(reset, mainTasks, ftp);
 
+// specific build
 const minifyScss = gulp.series(reset, scss);
 const minifyJs = gulp.series(reset, js);
 const minifyImgs = gulp.series(reset, images);
+const rebuildHtml = gulp.series(reset, html);
 
 export { dev }
 export { test }
@@ -59,5 +62,6 @@ export { deployFTP }
 export { minifyScss }
 export { minifyJs }
 export { minifyImgs }
+export { rebuildHtml }
 
 gulp.task('default', dev);
