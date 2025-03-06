@@ -9,8 +9,10 @@
     "build-no-imgs": "gulp buildNoImgs --build",
     "build": "gulp build --build",
     "zip": "gulp deployZIP --build",
-    "deploy": "gulp deployFTP --build",
-    "svgSprites": "gulp svgSprites"
+    "ftp": "gulp deployFTP --build",
+    "scss": "gulp minifyScss --build",
+    "js": "gulp minifyJs --build",
+    "imgs": "gulp minifyImgs --build"
   },
   "type": "module",
   "author": "explt13",
