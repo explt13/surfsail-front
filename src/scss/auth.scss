@@ -1,7 +1,7 @@
 .page_auth {
     min-height: 100vh;
     // background-color: white;
-    background: #121212 url('@img/home/auth.jpg') no-repeat 0% 20%;
+    background: #484848 url('@img/home/auth.jpg') no-repeat 0% 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,10 +30,6 @@
         height: 100%;
         background-color: rgba(0, 0, 0, .05);
         backdrop-filter: blur(15px);
-        @media (max-width: $sml) {
-            // background-color: unset;
-            backdrop-filter: blur(5px);
-        }
     }
     // .auth__container
     &__container {
@@ -65,14 +61,18 @@
         padding: rem(64);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         transition: all 0.9s ease-out;
+        left: 25%;
+        scale: 0.5;
          // .auth__body._login
         &._login {
+            scale: 1;
             left: 0%;
             border-top-left-radius: rem(39);
             border-bottom-left-radius: rem(39);
         }
          // .auth__body._register
         &._register{
+            scale: 1;
             left: 50%;
             border-top-right-radius: rem(39);
             border-bottom-right-radius: rem(39);
