@@ -12,11 +12,11 @@ export const initAuth = () => {
         return;
     }
     const params = new URLSearchParams(window.location.search);
-    let authForm = params.get('auth');
+    let authForm = params.get('form');
     const redirectToParamString = params.get('r_link') ? '&r_link=' + params.get('r_link') : '';
 
     if (authForm === null) {
-        window.history.pushState({}, "", window.location.origin + window.location.pathname + '?auth=login' + redirectToParamString);
+        window.history.pushState({}, "", window.location.origin + window.location.pathname + '?form=login' + redirectToParamString);
         authForm = 'login';
     }
     
@@ -65,14 +65,14 @@ export const initAuth = () => {
             authBody.classList.add('_register');
             authForm = 'register';
             authFormAnimate(authForm);
-            window.history.pushState({}, '', window.location.origin + window.location.pathname  + "?auth=" + authForm + redirectToParamString);
+            window.history.pushState({}, '', window.location.origin + window.location.pathname  + "?form=" + authForm + redirectToParamString);
         } 
         else if (authForm === 'register') {
             authBody.classList.remove('_register');
             authBody.classList.add('_login');
             authForm = 'login';
             authFormAnimate(authForm);
-            window.history.pushState({}, '', window.location.origin + window.location.pathname + "?auth=" + authForm + redirectToParamString);
+            window.history.pushState({}, '', window.location.origin + window.location.pathname + "?form=" + authForm + redirectToParamString);
         }
     })
 
