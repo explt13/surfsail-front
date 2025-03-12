@@ -11,4 +11,4 @@ const handleCartHeight = () => {
         }
     }
 }
-handleCartHeight();
+export {cartContainerHeight}

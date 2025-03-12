@@ -43,6 +43,10 @@ if (page === 'main') {
 if (page === 'catalog') {
     initRange();
 }
+if (page === 'cart' || page === 'favorite') {
+    const cart = await import('./modules/cart.js');
+    cart.cartContainerHeight();
+}
 
 if (page === 'product') {
     const zoom = await import("./modules/driftzoom.js");
